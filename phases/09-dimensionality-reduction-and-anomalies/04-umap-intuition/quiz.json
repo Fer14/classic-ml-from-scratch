@@ -1,0 +1,80 @@
+[
+  {
+    "id": "umap-pre-1",
+    "stage": "pre",
+    "question": "What do UMAP and t-SNE have in common?",
+    "options": [
+      "Both are linear projections",
+      "Both build neighbor similarities in high dimension and optimize a low-dimensional layout to match them",
+      "Both require class labels",
+      "Both compute exact pairwise distances in the embedding for every pair of points"
+    ],
+    "correct": 1,
+    "explanation": "Both are neighbor-embedding methods: similarities in the original space, a heavy-tailed kernel in the embedding, and gradient-based layout."
+  },
+  {
+    "id": "umap-pre-2",
+    "stage": "pre",
+    "question": "Which practical advantage does UMAP have over classic t-SNE?",
+    "options": [
+      "It always gives the same picture regardless of parameters",
+      "It produces exact distances between clusters",
+      "It scales to very large datasets and supports transforming new points",
+      "It needs no hyperparameters"
+    ],
+    "correct": 2,
+    "explanation": "UMAP only uses k neighbors per point and negative sampling, which makes it fast, and the fitted model can place new points with transform."
+  },
+  {
+    "id": "umap-post-1",
+    "stage": "post",
+    "question": "In UMAP's graph construction, what is the role of rho_i (distance to the nearest neighbor)?",
+    "options": [
+      "It sets the number of neighbors",
+      "It guarantees every point is connected to at least one neighbor with weight 1",
+      "It normalizes the weights to sum to one",
+      "It removes outliers from the graph"
+    ],
+    "correct": 1,
+    "explanation": "Subtracting rho_i before the exponential makes the nearest neighbor's weight exp(0) = 1, so no point ends up isolated."
+  },
+  {
+    "id": "umap-post-2",
+    "stage": "post",
+    "question": "You want to run a clustering algorithm on a UMAP embedding. Which min_dist should you choose?",
+    "options": [
+      "Close to 0, so points of a cluster pack tightly",
+      "As large as possible, to spread clusters out",
+      "Exactly 1.0, the default for clustering",
+      "min_dist has no effect on cluster tightness"
+    ],
+    "correct": 0,
+    "explanation": "min_dist controls how tightly points can pack. A value near 0 produces dense, well-separated clumps that density-based clustering handles well."
+  },
+  {
+    "id": "umap-post-3",
+    "stage": "post",
+    "question": "Why does UMAP use negative sampling?",
+    "options": [
+      "To remove noisy edges from the graph",
+      "To approximate the repulsion between all non-neighbor pairs without computing O(n^2) terms",
+      "To choose the number of dimensions",
+      "To fit the a and b curve parameters"
+    ],
+    "correct": 1,
+    "explanation": "The repulsive part of the loss involves every non-neighbor pair. Sampling a few random points per edge gives a cheap unbiased push."
+  },
+  {
+    "id": "umap-post-4",
+    "stage": "post",
+    "question": "In the lesson, t-SNE with PCA initialization kept global structure better than the tiny UMAP. What is the main lesson?",
+    "options": [
+      "UMAP is broken",
+      "t-SNE always preserves global structure",
+      "Global structure in neighbor embeddings depends heavily on initialization and n_neighbors, not just on the algorithm's name",
+      "Centroid correlation is not a valid metric"
+    ],
+    "correct": 2,
+    "explanation": "Both methods optimize local losses. How much global arrangement survives depends mostly on the starting layout and on how wide the neighborhoods are."
+  }
+]

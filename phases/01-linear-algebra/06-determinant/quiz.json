@@ -1,0 +1,80 @@
+[
+  {
+    "id": "det-pre-1",
+    "stage": "pre",
+    "question": "What is the determinant of [[3, 1], [2, 4]]?",
+    "options": [
+      "14",
+      "10",
+      "12",
+      "-2"
+    ],
+    "correct": 1,
+    "explanation": "ad - bc = 3*4 - 1*2 = 12 - 2 = 10."
+  },
+  {
+    "id": "det-pre-2",
+    "stage": "pre",
+    "question": "Geometrically, what does |det(M)| measure for a 2x2 matrix M?",
+    "options": [
+      "The length of the first column",
+      "The angle M rotates by",
+      "The factor by which M scales areas",
+      "The number of non-zero entries"
+    ],
+    "correct": 2,
+    "explanation": "The unit square maps to the parallelogram spanned by M's columns, whose area is |det(M)|. Since M is linear, every region's area scales by the same factor."
+  },
+  {
+    "id": "det-post-1",
+    "stage": "post",
+    "question": "A transformation has determinant -3. What does it do?",
+    "options": [
+      "Shrinks areas to one third",
+      "Collapses the plane to a line",
+      "Rotates by -3 radians",
+      "Triples areas and flips orientation"
+    ],
+    "correct": 3,
+    "explanation": "|det| = 3 means areas are tripled; the negative sign means orientation is reversed, like a reflection."
+  },
+  {
+    "id": "det-post-2",
+    "stage": "post",
+    "question": "det(A) = 2 and det(B) = 5 for 3x3 matrices. What is det(A B^-1)?",
+    "options": [
+      "0.4",
+      "10",
+      "-3",
+      "2.5"
+    ],
+    "correct": 0,
+    "explanation": "det(A B^-1) = det(A) * det(B^-1) = det(A) / det(B) = 2 / 5 = 0.4."
+  },
+  {
+    "id": "det-post-3",
+    "stage": "post",
+    "question": "Why do libraries compute determinants by elimination instead of cofactor expansion?",
+    "options": [
+      "Cofactor expansion gives wrong answers",
+      "Elimination takes O(n^3) work while cofactor expansion takes O(n!)",
+      "Elimination works only on symmetric matrices",
+      "Cofactor expansion cannot handle negative numbers"
+    ],
+    "correct": 1,
+    "explanation": "Both are correct, but the cofactor recursion has n! terms. Elimination multiplies the pivots of a triangular form in about n^3/3 operations."
+  },
+  {
+    "id": "det-post-4",
+    "stage": "post",
+    "question": "np.linalg.det returns 0.0 for a 300x300 diagonal covariance with all variances 0.001. What is going on?",
+    "options": [
+      "The matrix is singular",
+      "The matrix is not square",
+      "The true determinant 10^-900 underflows float64; use np.linalg.slogdet",
+      "Diagonal matrices always have determinant 0"
+    ],
+    "correct": 2,
+    "explanation": "The product of 300 values of 0.001 is far below the smallest representable float. The matrix is perfectly invertible; slogdet returns log|det| = 300 * log(0.001) without underflow."
+  }
+]

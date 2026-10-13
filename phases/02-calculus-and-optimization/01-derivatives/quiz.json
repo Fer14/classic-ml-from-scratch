@@ -1,0 +1,80 @@
+[
+  {
+    "id": "derivatives-pre-1",
+    "stage": "pre",
+    "question": "If the derivative of a loss with respect to a weight is negative, what happens to the loss when you increase the weight slightly?",
+    "options": [
+      "The loss increases",
+      "The loss decreases",
+      "The loss stays exactly the same",
+      "It cannot be determined from the derivative"
+    ],
+    "correct": 1,
+    "explanation": "A negative derivative means the function is decreasing at that point, so a small increase in the weight lowers the loss."
+  },
+  {
+    "id": "derivatives-pre-2",
+    "stage": "pre",
+    "question": "What is the derivative of f(x) = x^3?",
+    "options": [
+      "x^2",
+      "3x^3",
+      "3x^2",
+      "x^4 / 4"
+    ],
+    "correct": 2,
+    "explanation": "The power rule gives d/dx x^n = n x^(n-1), so the derivative of x^3 is 3x^2. x^4/4 is the antiderivative, not the derivative."
+  },
+  {
+    "id": "derivatives-post-1",
+    "stage": "post",
+    "question": "Why is the central difference (f(x+h) - f(x-h)) / 2h more accurate than the forward difference (f(x+h) - f(x)) / h?",
+    "options": [
+      "It uses a larger step size",
+      "The second-order Taylor terms cancel, so its error shrinks like h^2 instead of h",
+      "It avoids floating-point arithmetic",
+      "It evaluates the function fewer times"
+    ],
+    "correct": 1,
+    "explanation": "Expanding f(x+h) and f(x-h) with Taylor series, the h^2 f''(x)/2 terms cancel in the central formula, leaving an error proportional to h^2."
+  },
+  {
+    "id": "derivatives-post-2",
+    "stage": "post",
+    "question": "You shrink h from 1e-5 to 1e-11 in a central difference and the error gets worse. What is the cause?",
+    "options": [
+      "The function is not differentiable",
+      "The Taylor series diverges for small h",
+      "Catastrophic cancellation: f(x+h) and f(x-h) agree in almost all digits, so their difference loses precision",
+      "Central differences only work for polynomials"
+    ],
+    "correct": 2,
+    "explanation": "Doubles carry about 16 significant digits. With tiny h, subtracting two nearly equal values destroys most of them, and the rounding error divided by 2h dominates."
+  },
+  {
+    "id": "derivatives-post-3",
+    "stage": "post",
+    "question": "What is the derivative of the sigmoid function s(x) = 1 / (1 + e^-x)?",
+    "options": [
+      "s(x) * (1 - s(x))",
+      "e^-x",
+      "1 - s(x)^2",
+      "s(x)^2"
+    ],
+    "correct": 0,
+    "explanation": "The sigmoid derivative is s(x)(1 - s(x)). This compact form is why sigmoid gradients are cheap to compute in logistic regression. 1 - s^2 is the tanh pattern."
+  },
+  {
+    "id": "derivatives-post-4",
+    "stage": "post",
+    "question": "The tangent line at x0 approximates f(x0 + dx). How does the approximation error typically grow with dx for a smooth function?",
+    "options": [
+      "It stays constant",
+      "It grows roughly like dx",
+      "It grows roughly like dx^2",
+      "It shrinks as dx grows"
+    ],
+    "correct": 2,
+    "explanation": "The first-order Taylor approximation drops the f''(x0) dx^2 / 2 term, so the gap is roughly proportional to dx^2. In the lesson the gap went 0.0005, 0.046, 1.25 for dx = 0.01, 0.1, 0.5."
+  }
+]

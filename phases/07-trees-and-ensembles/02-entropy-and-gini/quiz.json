@@ -1,0 +1,67 @@
+[
+  {
+    "id": "impurity-pre-1",
+    "stage": "pre",
+    "question": "What is the entropy (in bits) of a node with a 50/50 split between two classes?",
+    "options": [
+      "0",
+      "0.5",
+      "1",
+      "2"
+    ],
+    "correct": 2,
+    "explanation": "H = -(0.5 log2 0.5 + 0.5 log2 0.5) = 1 bit. That is the maximum entropy for two classes."
+  },
+  {
+    "id": "impurity-pre-2",
+    "stage": "pre",
+    "question": "Which interpretation fits Gini impurity?",
+    "options": [
+      "The number of bits needed to encode a label",
+      "The probability that two samples drawn at random from the node have different labels",
+      "The fraction of samples in the minority class",
+      "The variance of the feature values in the node"
+    ],
+    "correct": 1,
+    "explanation": "1 - sum p_k^2 is the probability that two independent draws (with replacement) from the node's class distribution disagree."
+  },
+  {
+    "id": "impurity-post-1",
+    "stage": "post",
+    "question": "Split A gives children (300,100) and (100,300); Split B gives (200,400) and (200,0). Why does misclassification error fail to prefer B?",
+    "options": [
+      "Misclassification error is not defined for unbalanced children",
+      "Both splits misclassify 200 samples, and its piecewise-linear shape cannot reward the pure node B creates",
+      "Misclassification error always prefers balanced splits",
+      "B has a higher misclassification error than A"
+    ],
+    "correct": 1,
+    "explanation": "Misclassification only counts majority-vote mistakes, which are 200 for both splits. Strictly concave measures like entropy and Gini reward B for producing a pure child."
+  },
+  {
+    "id": "impurity-post-2",
+    "stage": "post",
+    "question": "Why does plain information gain favor a customer-ID column when using multiway splits?",
+    "options": [
+      "IDs are numeric and entropy only works on numbers",
+      "Splitting into one child per unique value makes every child pure, so the gain equals the full parent entropy",
+      "IDs are correlated with the label by construction",
+      "Information gain is undefined for categorical features"
+    ],
+    "correct": 1,
+    "explanation": "Each ID becomes its own size-1 leaf with zero entropy. Gain ratio corrects this by dividing by the split's own entropy, which is huge for many small children."
+  },
+  {
+    "id": "impurity-post-3",
+    "stage": "post",
+    "question": "In practice, how different are trees grown with Gini and with entropy?",
+    "options": [
+      "Very different; entropy trees are always deeper",
+      "Usually nearly identical; the choice is a minor hyperparameter",
+      "Gini only works for binary classification",
+      "Entropy cannot be used in scikit-learn"
+    ],
+    "correct": 1,
+    "explanation": "The two curves have very similar shapes, so they rarely disagree on the best split. Gini is the default because it avoids a logarithm."
+  }
+]

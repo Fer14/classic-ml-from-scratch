@@ -1,0 +1,67 @@
+[
+  {
+    "id": "pandas-pre-1",
+    "stage": "pre",
+    "question": "What is the main thing a pandas DataFrame offers that a 2-D NumPy array does not?",
+    "options": [
+      "Faster matrix multiplication",
+      "Named columns, a row index, and a separate dtype per column",
+      "GPU acceleration",
+      "Automatic model training"
+    ],
+    "correct": 1,
+    "explanation": "A NumPy array has one dtype and no labels. A DataFrame is a set of labeled columns that can each have different types, sharing a common index."
+  },
+  {
+    "id": "pandas-pre-2",
+    "stage": "pre",
+    "question": "What does df.groupby('city')['price'].mean() return?",
+    "options": [
+      "The overall mean price",
+      "The mean price of each row",
+      "One mean price per distinct city",
+      "The number of cities"
+    ],
+    "correct": 2,
+    "explanation": "groupby splits rows by city, applies mean to the price column of each group, and combines the results into a Series indexed by city."
+  },
+  {
+    "id": "pandas-post-1",
+    "stage": "post",
+    "question": "A column of whole-number sizes has two empty cells. After pd.read_csv, what dtype is that column?",
+    "options": [
+      "int64",
+      "str",
+      "bool",
+      "float64"
+    ],
+    "correct": 3,
+    "explanation": "Empty cells become NaN, and NaN is a float. Standard int64 has no way to represent missing values, so pandas uses float64."
+  },
+  {
+    "id": "pandas-post-2",
+    "stage": "post",
+    "question": "Which expression correctly filters rows where city is Madrid AND size is above 100?",
+    "options": [
+      "df[(df['city'] == 'Madrid') & (df['size_m2'] > 100)]",
+      "df[df.city == 'Madrid' and df.size_m2 > 100]",
+      "df.filter(city='Madrid', size_m2>100)",
+      "df[df['city'] == 'Madrid' & df['size_m2'] > 100]"
+    ],
+    "correct": 0,
+    "explanation": "Element-wise logic uses & and |, and each comparison needs parentheses because & binds more tightly than ==. Python's `and` cannot combine boolean arrays."
+  },
+  {
+    "id": "pandas-post-3",
+    "stage": "post",
+    "question": "Why does building a dict from the right table make a join faster than comparing every pair of rows?",
+    "options": [
+      "Dicts sort the rows automatically",
+      "Dict lookups take roughly constant time, so the join costs O(n + m) instead of O(n x m)",
+      "Dicts remove duplicate rows",
+      "It is not faster; it only uses less memory"
+    ],
+    "correct": 1,
+    "explanation": "This is a hash join. Building the dict is O(m) and each of the n lookups is O(1) on average, versus checking all n x m pairs."
+  }
+]

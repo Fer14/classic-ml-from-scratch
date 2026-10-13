@@ -1,0 +1,67 @@
+[
+  {
+    "id": "devenv-pre-1",
+    "stage": "pre",
+    "question": "What is the main purpose of a virtual environment?",
+    "options": [
+      "To isolate a project's installed packages from other projects and the system Python",
+      "To make Python code run faster",
+      "To run Python inside a virtual machine",
+      "To encrypt your source code"
+    ],
+    "correct": 0,
+    "explanation": "A virtual environment gives a project its own site-packages folder, so package versions installed for one project cannot break another project or OS tools."
+  },
+  {
+    "id": "devenv-pre-2",
+    "stage": "pre",
+    "question": "Which file records the exact versions of every dependency, including transitive ones?",
+    "options": [
+      "README.md",
+      "uv.lock",
+      "pyproject.toml",
+      ".python-version"
+    ],
+    "correct": 1,
+    "explanation": "pyproject.toml declares direct dependencies with version ranges. The lockfile (uv.lock) pins every resolved package, direct and transitive, to an exact version."
+  },
+  {
+    "id": "devenv-post-1",
+    "stage": "post",
+    "question": "Inside a running Python process, how can you tell whether a virtual environment is active?",
+    "options": [
+      "sys.version contains the word venv",
+      "os.getcwd() ends with .venv",
+      "sys.prefix differs from sys.base_prefix",
+      "platform.system() returns Virtual"
+    ],
+    "correct": 2,
+    "explanation": "When a venv is active, sys.prefix points to the venv folder while sys.base_prefix still points to the base interpreter. Outside a venv they are equal."
+  },
+  {
+    "id": "devenv-post-2",
+    "stage": "post",
+    "question": "You run `uv run python main.py` in a fresh clone that has no .venv folder. What happens?",
+    "options": [
+      "It fails because you must activate the environment first",
+      "It runs with the system Python",
+      "It downloads the latest version of every package, ignoring the lockfile",
+      "uv creates .venv, installs the locked dependencies, then runs the script with the project interpreter"
+    ],
+    "correct": 3,
+    "explanation": "uv run syncs the project environment to uv.lock if needed and then executes the command inside it. No manual activation is required."
+  },
+  {
+    "id": "devenv-post-3",
+    "stage": "post",
+    "question": "importlib.metadata.version('sklearn') raises PackageNotFoundError even though `import sklearn` works. Why?",
+    "options": [
+      "Metadata is looked up by distribution name, which is scikit-learn, not the import name sklearn",
+      "scikit-learn is installed in a different venv",
+      "importlib.metadata only works for standard-library modules",
+      "The package is corrupted and must be reinstalled"
+    ],
+    "correct": 0,
+    "explanation": "Installed distributions are registered under their published name (scikit-learn). The import name (sklearn) is a different string, so the metadata lookup must use the distribution name."
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "e2e-pre-1",
+    "stage": "pre",
+    "question": "When should you split off the test set in a project?",
+    "options": [
+      "After feature engineering, so the test set has the final features",
+      "First, before exploring the data or making any modeling decision",
+      "After choosing the best model",
+      "Only if cross-validation is not used"
+    ],
+    "correct": 1,
+    "explanation": "Any decision informed by the test data biases the final estimate. Splitting first keeps the test set a fair stand-in for future data."
+  },
+  {
+    "id": "e2e-pre-2",
+    "stage": "pre",
+    "question": "In load_breast_cancer, malignant is encoded as 0. Why does that matter when computing recall with sklearn?",
+    "options": [
+      "It does not matter",
+      "sklearn treats label 1 as the positive class by default, so recall would measure detection of benign tumors",
+      "Recall cannot be computed for label 0",
+      "Logistic regression only predicts label 1"
+    ],
+    "correct": 1,
+    "explanation": "Metrics like recall_score use pos_label=1 by default. Flip the target (or pass pos_label) so the class you care about is positive."
+  },
+  {
+    "id": "e2e-post-1",
+    "stage": "post",
+    "question": "Logistic regression, random forest and gradient boosting all score within one standard deviation of each other in CV. Which is a sensible choice?",
+    "options": [
+      "The one with the highest test score",
+      "The most complex model, since it can capture more patterns",
+      "The simplest model, since the difference is within noise and it is easier to explain and maintain",
+      "Average all three test scores"
+    ],
+    "correct": 2,
+    "explanation": "Differences within CV noise are not evidence of a better model. Prefer simplicity, and never pick using the test set."
+  },
+  {
+    "id": "e2e-post-2",
+    "stage": "post",
+    "question": "How should you choose the decision threshold without touching the test set?",
+    "options": [
+      "Always use 0.5",
+      "Use out-of-fold probabilities on the training set and pick the threshold that meets the target metric",
+      "Try thresholds on the test set and keep the best",
+      "Use the predicted probabilities of the training rows from a model fit on all training data"
+    ],
+    "correct": 1,
+    "explanation": "Out-of-fold predictions come from models that did not see the row, so they behave like held-out predictions. In-sample predictions are overconfident."
+  },
+  {
+    "id": "e2e-post-3",
+    "stage": "post",
+    "question": "Lowering the threshold from 0.5 to 0.21 reduced accuracy from 0.974 to 0.895. When is that the right call?",
+    "options": [
+      "Never, accuracy should always be maximized",
+      "When missing a positive (false negative) is much more costly than a false alarm, and the lower threshold catches more positives",
+      "Only when the dataset is balanced",
+      "Only if ROC-AUC also increases"
+    ],
+    "correct": 1,
+    "explanation": "The threshold encodes the cost trade-off. Trading extra false positives for fewer missed cancers can be correct even though accuracy falls. ROC-AUC does not depend on the threshold."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "eigen-pre-1",
+    "stage": "pre",
+    "question": "A = [[3, 0], [0, 2]]. Which vector is an eigenvector of A?",
+    "options": [
+      "[1, 1]",
+      "[1, -1]",
+      "[0, 1]",
+      "[2, 3]"
+    ],
+    "correct": 2,
+    "explanation": "A [0, 1] = [0, 2] = 2 * [0, 1]. The vector stays on its line and is scaled by 2. [1, 1] goes to [3, 2], a different direction."
+  },
+  {
+    "id": "eigen-pre-2",
+    "stage": "pre",
+    "question": "Geometrically, what is an eigenvector of a transformation?",
+    "options": [
+      "A vector that becomes zero",
+      "A vector of length 1",
+      "The first column of the matrix",
+      "A non-zero vector that stays on its own line through the origin, only getting scaled"
+    ],
+    "correct": 3,
+    "explanation": "A v = lambda v: the image of v is a multiple of v, so v is not knocked off its span. The multiple lambda is the eigenvalue."
+  },
+  {
+    "id": "eigen-post-1",
+    "stage": "post",
+    "question": "A 2x2 matrix has trace 7 and determinant 10. What are its eigenvalues?",
+    "options": [
+      "2 and 5",
+      "3 and 4",
+      "1 and 10",
+      "7 and 10"
+    ],
+    "correct": 0,
+    "explanation": "Eigenvalues sum to the trace and multiply to the determinant: lambda^2 - 7 lambda + 10 = 0 gives 2 and 5."
+  },
+  {
+    "id": "eigen-post-2",
+    "stage": "post",
+    "question": "Why does a 90-degree rotation matrix have no real eigenvectors?",
+    "options": [
+      "Its determinant is zero",
+      "Every non-zero vector is turned off its original line, so none stays on its span",
+      "It is symmetric",
+      "Its eigenvalues are both 1"
+    ],
+    "correct": 1,
+    "explanation": "A rotation changes the direction of every vector. The characteristic equation lambda^2 + 1 = 0 only has complex roots +-i."
+  },
+  {
+    "id": "eigen-post-3",
+    "stage": "post",
+    "question": "Power iteration converges to which eigenvector?",
+    "options": [
+      "The one with the smallest eigenvalue",
+      "A random eigenvector each time",
+      "The one with the largest absolute eigenvalue",
+      "The first standard basis vector"
+    ],
+    "correct": 2,
+    "explanation": "Each multiplication scales the component along eigenvector i by lambda_i. The component with the largest |lambda| grows fastest and dominates after normalization."
+  },
+  {
+    "id": "eigen-post-4",
+    "stage": "post",
+    "question": "You compute the eigen-decomposition of a dataset's covariance matrix. What does the largest eigenvalue's eigenvector represent?",
+    "options": [
+      "The mean of the data",
+      "The feature with the largest values",
+      "The direction of zero variance",
+      "The direction along which the data varies the most"
+    ],
+    "correct": 3,
+    "explanation": "Covariance eigenvectors are the perpendicular axes of the data cloud, and each eigenvalue is the variance along its axis. The top one is the first principal component."
+  }
+]

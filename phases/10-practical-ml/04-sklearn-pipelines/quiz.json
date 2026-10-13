@@ -1,0 +1,67 @@
+[
+  {
+    "id": "pipelines-pre-1",
+    "stage": "pre",
+    "question": "You standardize features using the mean and standard deviation of the whole dataset, then split into train and test. What is the problem?",
+    "options": [
+      "Standardization cannot be applied before splitting",
+      "Statistics computed from test rows influence the training data, a form of data leakage",
+      "The model will not converge",
+      "There is no problem; standardization does not use labels"
+    ],
+    "correct": 1,
+    "explanation": "Any step with a fit learns from the data it sees. Fitting on all rows lets test information leak into training. The effect is small for scaling but large for steps like feature selection."
+  },
+  {
+    "id": "pipelines-pre-2",
+    "stage": "pre",
+    "question": "What should a preprocessing step do at prediction time on new data?",
+    "options": [
+      "Refit its statistics on the new data",
+      "Apply the statistics learned during training with transform",
+      "Skip preprocessing because the model is already trained",
+      "Fit on the new data together with the training data"
+    ],
+    "correct": 1,
+    "explanation": "Transformers learn statistics in fit on training data and reuse them in transform for every later input, so train and production see identical transformations."
+  },
+  {
+    "id": "pipelines-post-1",
+    "stage": "post",
+    "question": "On 100 rows of pure noise with random labels, selecting the top 20 of 2000 features on all data and then cross-validating gives about 80% accuracy. Why?",
+    "options": [
+      "Logistic regression can learn from noise",
+      "The selected features correlate with the labels by chance across all rows, including the validation folds, so the validation folds are not independent",
+      "Cross-validation always overestimates by 30%",
+      "2000 features is too many for logistic regression"
+    ],
+    "correct": 1,
+    "explanation": "The selector picked features that happen to match the labels of every row, validation rows included. Doing selection inside each training fold removes the leak and the score falls to about 50%."
+  },
+  {
+    "id": "pipelines-post-2",
+    "stage": "post",
+    "question": "What does ColumnTransformer do?",
+    "options": [
+      "It transposes the data matrix",
+      "It applies different transformers to different column subsets and concatenates the outputs",
+      "It removes columns with missing values",
+      "It selects the best columns automatically"
+    ],
+    "correct": 1,
+    "explanation": "ColumnTransformer routes, for example, numeric columns through imputation and scaling and categorical columns through one-hot encoding, then stacks the results side by side."
+  },
+  {
+    "id": "pipelines-post-3",
+    "stage": "post",
+    "question": "In GridSearchCV over a Pipeline with steps named 'preprocess' and 'model', how do you tune the C of the logistic regression?",
+    "options": [
+      "{'C': [0.1, 1, 10]}",
+      "{'model.C': [0.1, 1, 10]}",
+      "{'model__C': [0.1, 1, 10]}",
+      "You cannot tune a model inside a pipeline"
+    ],
+    "correct": 2,
+    "explanation": "sklearn addresses nested parameters as step__param with a double underscore. The search then refits the full pipeline per fold, so tuning stays leak-free."
+  }
+]

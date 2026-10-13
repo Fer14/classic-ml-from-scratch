@@ -1,0 +1,80 @@
+[
+  {
+    "id": "tree-pre-1",
+    "stage": "pre",
+    "question": "What shape do the decision boundaries of a standard decision tree have?",
+    "options": [
+      "A single straight line at any angle",
+      "Smooth curves defined by a kernel",
+      "Axis-aligned steps made of rectangles",
+      "Circles centered on training points"
+    ],
+    "correct": 2,
+    "explanation": "Each split compares one feature to a threshold, so every cut is parallel to an axis. The resulting regions are rectangles, giving staircase-shaped boundaries."
+  },
+  {
+    "id": "tree-pre-2",
+    "stage": "pre",
+    "question": "What is the Gini impurity of a node containing labels [0, 0, 1, 1]?",
+    "options": [
+      "0.0",
+      "0.25",
+      "0.5",
+      "1.0"
+    ],
+    "correct": 2,
+    "explanation": "Gini = 1 - (0.5^2 + 0.5^2) = 0.5, the maximum for a two-class node."
+  },
+  {
+    "id": "tree-post-1",
+    "stage": "post",
+    "question": "Why is the impurity of each child weighted by its share of samples when scoring a split?",
+    "options": [
+      "So that splitting off a single pure sample does not look like a great split",
+      "To make the computation faster",
+      "Because Gini is undefined for small nodes",
+      "To guarantee the tree is balanced"
+    ],
+    "correct": 0,
+    "explanation": "Without weighting, isolating one sample in a pure leaf would cut the average impurity a lot while barely helping. Weighting by size reflects how many samples actually become purer."
+  },
+  {
+    "id": "tree-post-2",
+    "stage": "post",
+    "question": "What does a regression tree predict at a leaf?",
+    "options": [
+      "The median of all training targets",
+      "A linear fit through the leaf's samples",
+      "The mean of the training targets in that leaf",
+      "The target of the nearest training point"
+    ],
+    "correct": 2,
+    "explanation": "The mean minimizes squared error within the leaf, and the variance used as impurity is exactly the MSE of predicting that mean."
+  },
+  {
+    "id": "tree-post-3",
+    "stage": "post",
+    "question": "A tree with max_depth=10 reaches 100% training accuracy but lower test accuracy than max_depth=5. What happened?",
+    "options": [
+      "The Gini computation overflowed",
+      "The deep tree overfit by creating leaves for noisy training points",
+      "Deeper trees always have lower bias and lower variance",
+      "The test set was too large"
+    ],
+    "correct": 1,
+    "explanation": "Without limits, a tree keeps splitting until leaves are pure, memorizing noise. That is high variance: perfect on training data, worse on new data."
+  },
+  {
+    "id": "tree-post-4",
+    "stage": "post",
+    "question": "Why do practical tree algorithms use greedy split selection?",
+    "options": [
+      "Greedy splits are guaranteed to be globally optimal",
+      "Finding the optimal tree is NP-hard, so greedy is the tractable approximation",
+      "Greedy search is required for Gini but not entropy",
+      "It removes the need for a stopping criterion"
+    ],
+    "correct": 1,
+    "explanation": "Searching all possible trees is computationally infeasible. Choosing the best split at each node without lookahead is fast and works well in practice."
+  }
+]

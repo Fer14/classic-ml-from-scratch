@@ -1,0 +1,67 @@
+[
+  {
+    "id": "mle-pre-1",
+    "stage": "pre",
+    "question": "You observe 23 clicks in 200 views and model each view as Bernoulli(p). What is the maximum likelihood estimate of p?",
+    "options": [
+      "0.5",
+      "0.115",
+      "23",
+      "It cannot be estimated without a prior"
+    ],
+    "correct": 1,
+    "explanation": "Setting the derivative of the Bernoulli log-likelihood to zero gives p = k/n = 23/200 = 0.115."
+  },
+  {
+    "id": "mle-pre-2",
+    "stage": "pre",
+    "question": "Why do we maximize the log-likelihood instead of the likelihood?",
+    "options": [
+      "The log changes the location of the maximum to a better one",
+      "The log turns a product of many small numbers into a numerically stable sum with the same argmax",
+      "The likelihood is always negative",
+      "Only the log-likelihood has derivatives"
+    ],
+    "correct": 1,
+    "explanation": "The product of hundreds of probabilities underflows to 0. The log is monotonic, so the maximizer is unchanged, and sums are stable and easy to differentiate."
+  },
+  {
+    "id": "mle-post-1",
+    "stage": "post",
+    "question": "Minimizing mean squared error for a regression model is equivalent to maximum likelihood under which noise assumption?",
+    "options": [
+      "Uniform noise",
+      "Laplace noise",
+      "Gaussian noise with constant variance",
+      "Poisson noise"
+    ],
+    "correct": 2,
+    "explanation": "The Gaussian negative log-likelihood is a constant plus the sum of squared residuals divided by 2σ^2, so it has the same minimizer as MSE."
+  },
+  {
+    "id": "mle-post-2",
+    "stage": "post",
+    "question": "What does the MLE of a normal distribution's variance divide by?",
+    "options": [
+      "n, so it is slightly biased",
+      "n - 1, so it is unbiased",
+      "n + 1",
+      "The number of parameters"
+    ],
+    "correct": 0,
+    "explanation": "Setting the derivative to zero gives (1/n) sum (x_i - x̄)^2, the biased estimator. scipy.stats.norm.fit returns this value."
+  },
+  {
+    "id": "mle-post-3",
+    "stage": "post",
+    "question": "When fitting σ by gradient ascent, why optimize log σ instead of σ?",
+    "options": [
+      "It makes the log-likelihood linear",
+      "It guarantees σ = exp(log σ) stays positive regardless of step size",
+      "It removes the need for a learning rate",
+      "scipy requires it"
+    ],
+    "correct": 1,
+    "explanation": "Reparameterizing with an unconstrained variable means any update to log σ yields a valid positive σ, avoiding log of negative numbers or division by zero."
+  }
+]

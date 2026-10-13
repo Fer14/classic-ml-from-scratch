@@ -1,0 +1,67 @@
+[
+  {
+    "id": "tuning-pre-1",
+    "stage": "pre",
+    "question": "Which of these is a hyperparameter rather than a parameter?",
+    "options": [
+      "The weights of a linear regression",
+      "The regularization strength alpha in ridge regression",
+      "The split thresholds chosen inside a decision tree",
+      "The intercept of a logistic regression"
+    ],
+    "correct": 1,
+    "explanation": "Alpha is fixed before training and controls model capacity. Weights, intercepts and split thresholds are learned from the training data."
+  },
+  {
+    "id": "tuning-pre-2",
+    "stage": "pre",
+    "question": "Why can you not choose hyperparameters by minimizing training error?",
+    "options": [
+      "Training error cannot be computed for most models",
+      "The most flexible setting always wins on training data, so you would pick an overfit model",
+      "Training error is always zero",
+      "Hyperparameters do not affect training error"
+    ],
+    "correct": 1,
+    "explanation": "Lower regularization or higher capacity always fits training data at least as well. You need held-out data, typically via cross-validation, to see generalization."
+  },
+  {
+    "id": "tuning-post-1",
+    "stage": "post",
+    "question": "With a budget of 36 trials and 2 hyperparameters where only one really matters, why does random search usually beat a 6x6 grid?",
+    "options": [
+      "Random search uses more folds",
+      "Random search tests 36 distinct values of the important hyperparameter, while the grid tests only 6",
+      "Grid search cannot use cross-validation",
+      "Random search always finds the global optimum"
+    ],
+    "correct": 1,
+    "explanation": "A grid repeats the same few values of each hyperparameter. Independent random sampling covers many more distinct values of each one for the same number of trials."
+  },
+  {
+    "id": "tuning-post-2",
+    "stage": "post",
+    "question": "Why should alpha in ridge regression be searched on a log scale?",
+    "options": [
+      "Because alpha must be an integer",
+      "Because its effect is multiplicative, so 0.001 vs 0.01 matters as much as 1 vs 10",
+      "Because sklearn requires it",
+      "Because negative values are not allowed on a linear scale"
+    ],
+    "correct": 1,
+    "explanation": "Scale-like hyperparameters change behavior per order of magnitude. A linear grid from 0 to 10 would spend almost all trials above 1 and miss the small values."
+  },
+  {
+    "id": "tuning-post-3",
+    "stage": "post",
+    "question": "You tried 200 configurations and the best one has CV R^2 = 0.92. What is the most accurate statement?",
+    "options": [
+      "The model will score exactly 0.92 on new data",
+      "0.92 is an optimistic estimate because it is the maximum of many noisy scores; use a held-out test set or nested CV for an unbiased estimate",
+      "0.92 is pessimistic because CV uses less data",
+      "The test set can now be used to pick between the top 5 configurations"
+    ],
+    "correct": 1,
+    "explanation": "Selecting the maximum of many noisy estimates biases it upward. The untouched test set, used once, or nested cross-validation gives an honest estimate."
+  }
+]

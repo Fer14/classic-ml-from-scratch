@@ -1,0 +1,67 @@
+[
+  {
+    "id": "regularization-pre-1",
+    "stage": "pre",
+    "question": "A model has training MSE 0.01 and test MSE 4.5. What is the most likely diagnosis?",
+    "options": [
+      "Underfitting",
+      "Overfitting",
+      "A perfect fit",
+      "A bug in the test set"
+    ],
+    "correct": 1,
+    "explanation": "A very low training error with a much higher test error is the classic sign of overfitting: the model fitted noise in the training data."
+  },
+  {
+    "id": "regularization-pre-2",
+    "stage": "pre",
+    "question": "What does L2 regularization add to the training loss?",
+    "options": [
+      "lambda times the number of features",
+      "lambda times the sum of absolute residuals",
+      "lambda times the sum of squared weights",
+      "lambda times the training accuracy"
+    ],
+    "correct": 2,
+    "explanation": "Ridge regression adds lambda * sum(w_j^2), which makes large weights expensive and pushes the model toward smoother functions."
+  },
+  {
+    "id": "regularization-post-1",
+    "stage": "post",
+    "question": "As lambda increases from 0 to a very large value in ridge regression, what happens to the training error?",
+    "options": [
+      "It decreases monotonically",
+      "It increases monotonically",
+      "It stays exactly the same",
+      "It first increases and then decreases"
+    ],
+    "correct": 1,
+    "explanation": "The penalty restricts how well the weights can fit the training data, so training error can only go up. Test error typically falls first and then rises."
+  },
+  {
+    "id": "regularization-post-2",
+    "stage": "post",
+    "question": "Why should you standardize features before fitting ridge regression?",
+    "options": [
+      "Ridge regression fails with an error on unscaled data",
+      "The penalty treats all weights equally, so features on larger scales would be penalized less for the same effect",
+      "Standardization removes outliers",
+      "It makes the intercept equal to zero"
+    ],
+    "correct": 1,
+    "explanation": "A feature measured in large units needs a tiny weight and is barely penalized, while one in small units needs a large weight and is heavily penalized. Standardizing makes the penalty comparable across features."
+  },
+  {
+    "id": "regularization-post-3",
+    "stage": "post",
+    "question": "Which of these is NOT a form of regularization?",
+    "options": [
+      "Stopping gradient descent at the epoch with the lowest validation error",
+      "Adding an L1 penalty on the weights",
+      "Collecting more training data",
+      "Choosing lambda by its test-set score"
+    ],
+    "correct": 3,
+    "explanation": "Early stopping, weight penalties and more data all limit memorization. Choosing lambda on the test set is a form of leakage, not regularization; use a validation set or cross-validation."
+  }
+]

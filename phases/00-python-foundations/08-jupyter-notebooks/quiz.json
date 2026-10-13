@@ -1,0 +1,67 @@
+[
+  {
+    "id": "jupyter-pre-1",
+    "stage": "pre",
+    "question": "What is stored inside a .ipynb file?",
+    "options": [
+      "Compiled Python bytecode",
+      "A snapshot of every variable in memory",
+      "A zip archive of the virtual environment",
+      "A JSON document with cells, their source code, and their last outputs"
+    ],
+    "correct": 3,
+    "explanation": "A notebook is a JSON file listing markdown and code cells, with each code cell's stored outputs. Variables in the kernel are never saved to the file."
+  },
+  {
+    "id": "jupyter-pre-2",
+    "stage": "pre",
+    "question": "You delete a cell that defined `df`, but later cells using `df` still work. Why?",
+    "options": [
+      "The kernel's namespace still holds `df`; deleting a cell does not delete variables",
+      "Jupyter caches the deleted cell's source",
+      "Python automatically recreates missing variables",
+      "The notebook file still contains the cell"
+    ],
+    "correct": 0,
+    "explanation": "The kernel is a long-lived process with one shared namespace. Variables persist until they are explicitly deleted or the kernel restarts."
+  },
+  {
+    "id": "jupyter-post-1",
+    "stage": "post",
+    "question": "A cell contains `print('a')` followed by `x.shape` on the last line. What outputs does it produce?",
+    "options": [
+      "Only the printed 'a'",
+      "A stream output with 'a' and an execute_result with the value of x.shape",
+      "Only x.shape",
+      "Nothing, because x.shape is not printed"
+    ],
+    "correct": 1,
+    "explanation": "print writes to stdout, captured as a stream output. The value of the cell's last expression becomes the execute_result shown as Out[n]."
+  },
+  {
+    "id": "jupyter-post-2",
+    "stage": "post",
+    "question": "Cells on the page show execution counts [1], [4], [2], [5] from top to bottom. What does this tell you?",
+    "options": [
+      "The notebook is corrupted",
+      "Cells 3 and 6 failed",
+      "Cells were run out of order, so the displayed outputs may not match running the code top to bottom",
+      "The kernel is still running"
+    ],
+    "correct": 2,
+    "explanation": "Execution counts record the order the kernel ran cells. Non-increasing counts mean the visible outputs came from a different sequence than the page shows."
+  },
+  {
+    "id": "jupyter-post-3",
+    "stage": "post",
+    "question": "What is the most reliable way to check that a notebook's results are reproducible?",
+    "options": [
+      "Save the notebook twice",
+      "Run only the cells you changed",
+      "Copy the outputs into a markdown cell",
+      "Restart the kernel and run all cells top to bottom"
+    ],
+    "correct": 3,
+    "explanation": "Restarting clears all hidden state. Running every cell in order then executes exactly the program shown on the page, as nbclient and nbconvert --execute do."
+  }
+]

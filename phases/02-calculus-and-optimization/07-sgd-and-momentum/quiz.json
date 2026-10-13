@@ -1,0 +1,80 @@
+[
+  {
+    "id": "sgdmomentum-pre-1",
+    "stage": "pre",
+    "question": "What is the main advantage of stochastic gradient descent over full-batch gradient descent on a large dataset?",
+    "options": [
+      "It computes the exact gradient",
+      "Each update is much cheaper, so you get many more updates for the same computation",
+      "It never needs a learning rate",
+      "It always reaches a lower final loss"
+    ],
+    "correct": 1,
+    "explanation": "A mini-batch gradient costs b/n of a full gradient, so for the same work SGD takes n/b updates instead of one."
+  },
+  {
+    "id": "sgdmomentum-pre-2",
+    "stage": "pre",
+    "question": "With 10,000 training samples and a batch size of 100, how many weight updates happen in one epoch?",
+    "options": [
+      "1",
+      "100",
+      "1,000",
+      "10,000"
+    ],
+    "correct": 1,
+    "explanation": "One epoch is one pass over the data: 10,000 / 100 = 100 mini-batches, so 100 updates."
+  },
+  {
+    "id": "sgdmomentum-post-1",
+    "stage": "post",
+    "question": "Why does SGD with a constant learning rate keep bouncing around the minimum instead of settling?",
+    "options": [
+      "The loss function is non-convex",
+      "Individual sample gradients do not vanish at the minimum, so each noisy step moves the weights by about eta times the noise",
+      "Shuffling the data changes the minimum",
+      "The batch size is too large"
+    ],
+    "correct": 1,
+    "explanation": "The full gradient is zero at the minimum, but mini-batch gradients are not. A constant step size keeps the weights jittering in a ball whose size scales with eta; decaying eta or growing the batch shrinks it."
+  },
+  {
+    "id": "sgdmomentum-post-2",
+    "stage": "post",
+    "question": "Why does momentum speed up gradient descent in a long, narrow valley?",
+    "options": [
+      "It increases the learning rate in every direction equally",
+      "Velocity builds up along the consistent valley-floor direction, while alternating gradients across the valley cancel out",
+      "It computes second derivatives",
+      "It removes the need for gradients"
+    ],
+    "correct": 1,
+    "explanation": "Consistent gradient components accumulate in the velocity (up to 1/(1-beta) times), and oscillating components cancel, so progress along the floor accelerates while zig-zag is damped."
+  },
+  {
+    "id": "sgdmomentum-post-3",
+    "stage": "post",
+    "question": "You add momentum beta = 0.9 to a working SGD setup without changing eta, and the final loss gets worse. What is the likely explanation?",
+    "options": [
+      "Momentum does not work with mini-batches",
+      "The effective learning rate became about eta / (1 - beta) = 10 times larger, raising the noise floor",
+      "Momentum makes the loss non-convex",
+      "Beta must be negative"
+    ],
+    "correct": 1,
+    "explanation": "In steady state momentum multiplies the step by 1/(1-beta). Scale eta down by (1 - beta) to keep the same effective step size."
+  },
+  {
+    "id": "sgdmomentum-post-4",
+    "stage": "post",
+    "question": "How does Nesterov momentum differ from standard momentum?",
+    "options": [
+      "It uses no velocity term",
+      "It evaluates the gradient at the look-ahead point w + beta * v instead of at w",
+      "It uses the full-batch gradient",
+      "It doubles the learning rate"
+    ],
+    "correct": 1,
+    "explanation": "Nesterov computes the gradient where momentum is about to carry the weights, so it can brake one step earlier when it is about to overshoot."
+  }
+]

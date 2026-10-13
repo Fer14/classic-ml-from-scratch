@@ -1,0 +1,67 @@
+[
+  {
+    "id": "datastruct-pre-1",
+    "stage": "pre",
+    "question": "You need to check millions of times whether a word has been seen before. Which container should hold the seen words?",
+    "options": [
+      "list",
+      "tuple",
+      "set",
+      "str"
+    ],
+    "correct": 2,
+    "explanation": "Sets are hash tables, so membership tests take about constant time. Lists and tuples must be scanned element by element."
+  },
+  {
+    "id": "datastruct-pre-2",
+    "stage": "pre",
+    "question": "Which of these can be used as a dictionary key?",
+    "options": [
+      "[1, 2]",
+      "{1, 2}",
+      "{'a': 1}",
+      "(1, 2)"
+    ],
+    "correct": 3,
+    "explanation": "Dict keys must be hashable. Tuples of hashable values are immutable and hashable; lists, sets, and dicts are mutable and are not."
+  },
+  {
+    "id": "datastruct-post-1",
+    "stage": "post",
+    "question": "A = {the, cat, sat} and B = {the, dog, sat}. What is the Jaccard similarity of A and B?",
+    "options": [
+      "0.5",
+      "0.667",
+      "0.25",
+      "1.0"
+    ],
+    "correct": 0,
+    "explanation": "The intersection is {the, sat} (2 elements) and the union is {the, cat, sat, dog} (4 elements). 2 / 4 = 0.5."
+  },
+  {
+    "id": "datastruct-post-2",
+    "stage": "post",
+    "question": "In a bag-of-words matrix, what does cell (i, j) contain?",
+    "options": [
+      "The position of word j in document i",
+      "The number of times vocabulary word j appears in document i",
+      "Whether documents i and j share a word",
+      "The length of document i divided by the vocabulary size"
+    ],
+    "correct": 1,
+    "explanation": "Rows are documents, columns are vocabulary words, and each cell counts how often that word occurs in that document. Word order is discarded."
+  },
+  {
+    "id": "datastruct-post-3",
+    "stage": "post",
+    "question": "Why does CountVectorizer return a sparse matrix instead of a dense list of lists?",
+    "options": [
+      "Sparse matrices are required by Python",
+      "Sparse matrices sort the vocabulary automatically",
+      "With a large vocabulary almost every cell is zero, so storing only non-zeros saves enormous amounts of memory",
+      "Dense matrices cannot store integers"
+    ],
+    "correct": 2,
+    "explanation": "Each document uses a tiny fraction of the vocabulary. Storing only non-zero entries and their positions keeps memory proportional to the number of words actually present."
+  }
+]

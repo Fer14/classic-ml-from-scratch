@@ -1,0 +1,67 @@
+[
+  {
+    "id": "ridge-pre-1",
+    "stage": "pre",
+    "question": "What does ridge regression add to the least squares loss?",
+    "options": [
+      "alpha times the sum of absolute weights",
+      "alpha times the sum of squared weights",
+      "alpha times the number of nonzero weights",
+      "alpha times the squared intercept"
+    ],
+    "correct": 1,
+    "explanation": "Ridge adds an L2 penalty alpha * ||w||^2. The intercept is normally left unpenalized."
+  },
+  {
+    "id": "ridge-pre-2",
+    "stage": "pre",
+    "question": "Two features are almost identical copies. What typically happens to their OLS coefficients?",
+    "options": [
+      "Both become exactly zero",
+      "They are stable and equal",
+      "Their sum is well determined but the split between them is unstable and noise-driven",
+      "OLS automatically drops one of them"
+    ],
+    "correct": 2,
+    "explanation": "The data pins down the combined effect, but the direction a - b has almost no variance, so OLS estimates along it have huge variance."
+  },
+  {
+    "id": "ridge-post-1",
+    "stage": "post",
+    "question": "What is the ridge closed-form solution on centered data?",
+    "options": [
+      "w = (X^T X)^(-1) X^T y + alpha",
+      "w = (X^T X + alpha I)^(-1) X^T y",
+      "w = (X^T X - alpha I)^(-1) X^T y",
+      "w = alpha X^T y"
+    ],
+    "correct": 1,
+    "explanation": "Setting the gradient -2 X^T(y - Xw) + 2 alpha w to zero gives (X^T X + alpha I) w = X^T y."
+  },
+  {
+    "id": "ridge-post-2",
+    "stage": "post",
+    "question": "In the SVD view, a principal direction with a very small singular value s gets which shrink factor?",
+    "options": [
+      "Close to 1, it is kept intact",
+      "Close to 0, because s^2 / (s^2 + alpha) is small",
+      "Exactly alpha",
+      "Negative, it flips sign"
+    ],
+    "correct": 1,
+    "explanation": "The factor s^2 / (s^2 + alpha) is near 0 when s^2 is much smaller than alpha, so ridge suppresses directions the data barely constrains."
+  },
+  {
+    "id": "ridge-post-3",
+    "stage": "post",
+    "question": "Why must you standardize features before fitting ridge?",
+    "options": [
+      "Ridge cannot run on unscaled data",
+      "The penalty treats all weights equally, so features in small units would be penalized more than features in large units",
+      "Standardization makes the intercept zero, which is required",
+      "It changes the OLS solution"
+    ],
+    "correct": 1,
+    "explanation": "A feature's weight depends on its units. Without standardization, the same penalty hits features unequally, and the results depend on arbitrary unit choices."
+  }
+]

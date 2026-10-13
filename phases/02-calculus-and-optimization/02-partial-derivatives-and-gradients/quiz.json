@@ -1,0 +1,80 @@
+[
+  {
+    "id": "gradients-pre-1",
+    "stage": "pre",
+    "question": "For f(x, y) = x^2 * y, what is the partial derivative with respect to x?",
+    "options": [
+      "2x",
+      "2xy",
+      "x^2",
+      "2x + y"
+    ],
+    "correct": 1,
+    "explanation": "Treat y as a constant: d/dx (x^2 * y) = y * 2x = 2xy."
+  },
+  {
+    "id": "gradients-pre-2",
+    "stage": "pre",
+    "question": "A model has 50 weights. How many entries does the gradient of its loss have?",
+    "options": [
+      "1",
+      "2",
+      "50",
+      "2500"
+    ],
+    "correct": 2,
+    "explanation": "The gradient has one partial derivative per input variable, so it has the same shape as the weight vector: 50 entries."
+  },
+  {
+    "id": "gradients-post-1",
+    "stage": "post",
+    "question": "Why does gradient descent step in the direction of the negative gradient?",
+    "options": [
+      "Because the gradient is always negative",
+      "Because the directional derivative grad f . u is most negative when u points opposite to the gradient",
+      "Because it guarantees reaching the global minimum",
+      "Because the negative gradient is perpendicular to the level curves"
+    ],
+    "correct": 1,
+    "explanation": "The rate of change along unit vector u is |grad f| cos(theta). It is minimized at theta = 180 degrees, so -grad f is the direction of steepest descent."
+  },
+  {
+    "id": "gradients-post-2",
+    "stage": "post",
+    "question": "What is the gradient of the MSE loss L(w) = (1/n)|Xw - y|^2 with respect to w?",
+    "options": [
+      "(2/n) X (Xw - y)",
+      "(2/n) X^T (Xw - y)",
+      "(1/n) (Xw - y)^2",
+      "(2/n) X^T X"
+    ],
+    "correct": 1,
+    "explanation": "Each weight's partial derivative is the average of residuals times its feature column, times 2. Stacked, this is (2/n) X^T (Xw - y), a vector with one entry per weight."
+  },
+  {
+    "id": "gradients-post-3",
+    "stage": "post",
+    "question": "You move a small step along a level curve of f (perpendicular to the gradient). What happens to f, to first order?",
+    "options": [
+      "It increases at rate |grad f|",
+      "It decreases at rate |grad f|",
+      "It stays the same",
+      "It doubles"
+    ],
+    "correct": 2,
+    "explanation": "The directional derivative grad f . u is zero when u is perpendicular to the gradient, so f is constant to first order along level curves."
+  },
+  {
+    "id": "gradients-post-4",
+    "stage": "post",
+    "question": "Why is a numerical gradient not used to train models with millions of weights?",
+    "options": [
+      "It is always inaccurate",
+      "It requires about 2 function evaluations per weight, which is far too slow",
+      "It only works for convex functions",
+      "It cannot be computed in NumPy"
+    ],
+    "correct": 1,
+    "explanation": "A central-difference gradient needs 2d loss evaluations for d weights. Analytic gradients (or automatic differentiation) cost about one evaluation, so numerical gradients are reserved for checking."
+  }
+]

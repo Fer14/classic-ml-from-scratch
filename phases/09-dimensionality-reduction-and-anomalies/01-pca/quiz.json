@@ -1,0 +1,67 @@
+[
+  {
+    "id": "pca-pre-1",
+    "stage": "pre",
+    "question": "What does PCA look for in a dataset?",
+    "options": [
+      "The features most correlated with the target label",
+      "Orthogonal directions along which the data has the most variance",
+      "Clusters of similar points",
+      "The rows that are outliers"
+    ],
+    "correct": 1,
+    "explanation": "PCA is unsupervised. It finds orthogonal unit directions ordered by how much variance the data has when projected onto them."
+  },
+  {
+    "id": "pca-pre-2",
+    "stage": "pre",
+    "question": "Why is it usually necessary to standardize features before PCA?",
+    "options": [
+      "PCA only works on values between 0 and 1",
+      "Standardization removes outliers",
+      "PCA maximizes variance, so features with large units would dominate the components",
+      "Standardization makes the covariance matrix diagonal"
+    ],
+    "correct": 2,
+    "explanation": "Variance depends on units. Without scaling, a feature measured in large units dominates the top components regardless of how informative it is."
+  },
+  {
+    "id": "pca-post-1",
+    "stage": "post",
+    "question": "The eigenvalues of a 4x4 covariance matrix are 6, 3, 0.8 and 0.2. What fraction of variance do the first two components explain?",
+    "options": [
+      "0.50",
+      "0.75",
+      "0.90",
+      "0.98"
+    ],
+    "correct": 2,
+    "explanation": "(6 + 3) / (6 + 3 + 0.8 + 0.2) = 9 / 10 = 0.90."
+  },
+  {
+    "id": "pca-post-2",
+    "stage": "post",
+    "question": "Your PCA implementation and sklearn return components that are identical except one has the opposite sign. What does that mean?",
+    "options": [
+      "One implementation has a bug",
+      "Nothing important: if w is an eigenvector, -w is too, and the subspace is identical",
+      "The data was not centered",
+      "The explained variance will differ"
+    ],
+    "correct": 1,
+    "explanation": "Eigenvectors are defined up to sign. Flipping a component flips the sign of its coordinates but describes the same axis and the same variance."
+  },
+  {
+    "id": "pca-post-3",
+    "stage": "post",
+    "question": "You keep k components and reconstruct the data. What is the reconstruction error equal to?",
+    "options": [
+      "The variance along the discarded components",
+      "The largest eigenvalue",
+      "Zero, PCA is lossless",
+      "The number of discarded components"
+    ],
+    "correct": 0,
+    "explanation": "Projection removes exactly the variance in the dropped directions, so the mean squared reconstruction error equals the sum of the discarded eigenvalues (scaled by the number of features when averaged per entry)."
+  }
+]

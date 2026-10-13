@@ -1,0 +1,80 @@
+[
+  {
+    "id": "convexity-pre-1",
+    "stage": "pre",
+    "question": "Which statement is true for every convex function?",
+    "options": [
+      "It has exactly one minimum point",
+      "Every local minimum is also a global minimum",
+      "Its derivative is always positive",
+      "It is a polynomial"
+    ],
+    "correct": 1,
+    "explanation": "Convexity guarantees that any local minimum is global. It does not guarantee a unique minimizer (that needs strict convexity) or a positive derivative."
+  },
+  {
+    "id": "convexity-pre-2",
+    "stage": "pre",
+    "question": "Which of these 1D functions is convex everywhere?",
+    "options": [
+      "sin(x)",
+      "x^3",
+      "x^2 + 5",
+      "x^4 - 3x^2"
+    ],
+    "correct": 2,
+    "explanation": "x^2 + 5 has second derivative 2 > 0 everywhere. sin and x^3 change curvature, and x^4 - 3x^2 has negative curvature near 0."
+  },
+  {
+    "id": "convexity-post-1",
+    "stage": "post",
+    "question": "How do you certify that a twice-differentiable multivariable function is convex?",
+    "options": [
+      "Check that its gradient is zero somewhere",
+      "Check that its Hessian is positive semidefinite (all eigenvalues >= 0) everywhere",
+      "Check that it has a single critical point",
+      "Check that it is bounded below"
+    ],
+    "correct": 1,
+    "explanation": "A twice-differentiable function is convex if and only if its Hessian is positive semidefinite at every point."
+  },
+  {
+    "id": "convexity-post-2",
+    "stage": "post",
+    "question": "Why is the MSE loss of linear regression convex in the weights?",
+    "options": [
+      "Because the targets are real numbers",
+      "Because its Hessian (2/n) X^T X satisfies v^T X^T X v = |Xv|^2 >= 0 for every v",
+      "Because gradient descent converges on it",
+      "Because it has no bias term"
+    ],
+    "correct": 1,
+    "explanation": "X^T X is always positive semidefinite since v^T X^T X v is a squared norm. So the MSE Hessian has no negative curvature in any direction."
+  },
+  {
+    "id": "convexity-post-3",
+    "stage": "post",
+    "question": "Two features in your linear regression are exact copies. What happens to the MSE loss?",
+    "options": [
+      "It becomes non-convex",
+      "It stays convex but is no longer strictly convex, so many weight vectors achieve the same minimum",
+      "It has no minimum",
+      "Gradient descent always diverges"
+    ],
+    "correct": 1,
+    "explanation": "X^T X becomes singular (a zero eigenvalue), so there is a flat direction: weight can move between the duplicate features without changing the loss."
+  },
+  {
+    "id": "convexity-post-4",
+    "stage": "post",
+    "question": "Why does scikit-learn's KMeans have an n_init parameter while LogisticRegression does not?",
+    "options": [
+      "KMeans is slower",
+      "The k-means objective is non-convex, so different starts reach different local minima; logistic loss is convex",
+      "LogisticRegression uses random initialization internally",
+      "KMeans is a supervised model"
+    ],
+    "correct": 1,
+    "explanation": "With a non-convex objective, the result depends on the starting point, so k-means runs several initializations and keeps the best. Convex logistic loss reaches the same optimum from any start."
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "crossval-pre-1",
+    "stage": "pre",
+    "question": "In 5-fold cross-validation, how many times is each sample used for validation?",
+    "options": [
+      "Zero times",
+      "Exactly once",
+      "Four times",
+      "Five times"
+    ],
+    "correct": 1,
+    "explanation": "The folds are disjoint and cover the dataset, so each sample is in exactly one validation fold and in the training data of the other four."
+  },
+  {
+    "id": "crossval-pre-2",
+    "stage": "pre",
+    "question": "What is the main advantage of k-fold cross-validation over a single validation split?",
+    "options": [
+      "It is always faster",
+      "It removes the need for any test set in every situation",
+      "It uses all samples for validation and averages over splits, giving a less noisy estimate",
+      "It guarantees the model will not overfit"
+    ],
+    "correct": 2,
+    "explanation": "A single split depends heavily on which samples happen to land in validation. Averaging k scores reduces that variance and uses all the data."
+  },
+  {
+    "id": "crossval-post-1",
+    "stage": "post",
+    "question": "You standardize the whole dataset and then run 5-fold CV. What is the problem?",
+    "options": [
+      "Standardization is not allowed with ridge regression",
+      "The validation folds influenced the scaling statistics used for training, which leaks information",
+      "The folds will have different sizes",
+      "There is no problem; scaling is not learned from data"
+    ],
+    "correct": 1,
+    "explanation": "The mean and standard deviation are learned from data. Computing them on all rows lets validation data shape the training inputs. Fit preprocessing inside each fold, e.g. with a pipeline."
+  },
+  {
+    "id": "crossval-post-2",
+    "stage": "post",
+    "question": "Each patient in your dataset has 10 X-ray images. Which splitter should you use?",
+    "options": [
+      "Plain KFold with shuffle=True",
+      "LeaveOneOut",
+      "GroupKFold with patient ID as the group",
+      "TimeSeriesSplit"
+    ],
+    "correct": 2,
+    "explanation": "If images from the same patient appear in both training and validation, the model can recognize the patient and the score is inflated. Group k-fold keeps all of a patient's rows together."
+  },
+  {
+    "id": "crossval-post-3",
+    "stage": "post",
+    "question": "Two lambda values have mean CV R^2 of 0.487 and 0.488 with fold standard deviations around 0.07. What should you conclude?",
+    "options": [
+      "The second lambda is clearly better",
+      "The first lambda is clearly better",
+      "The difference is far below the fold-to-fold noise; treat them as tied and prefer the simpler model",
+      "Cross-validation failed and must be rerun with LOO"
+    ],
+    "correct": 2,
+    "explanation": "A difference of 0.001 is tiny relative to the spread across folds. The one-standard-error rule says to pick the simpler (more regularized) model among ties."
+  }
+]

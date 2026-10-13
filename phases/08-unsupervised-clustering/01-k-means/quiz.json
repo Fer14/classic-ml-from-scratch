@@ -1,0 +1,80 @@
+[
+  {
+    "id": "kmeans-pre-1",
+    "stage": "pre",
+    "question": "What makes clustering different from the classification problems in earlier phases?",
+    "options": [
+      "Clustering only works on two-dimensional data",
+      "Clustering has no labels; it must discover groups from the data geometry alone",
+      "Clustering always uses a neural network",
+      "Clustering predicts a continuous number instead of a class"
+    ],
+    "correct": 1,
+    "explanation": "Clustering is unsupervised: no target column exists. The algorithm proposes groups based only on similarity between points."
+  },
+  {
+    "id": "kmeans-pre-2",
+    "stage": "pre",
+    "question": "Which point minimizes the sum of squared Euclidean distances to a set of points?",
+    "options": [
+      "The median of the points",
+      "The point farthest from the origin",
+      "The mean of the points",
+      "Any point in the set"
+    ],
+    "correct": 2,
+    "explanation": "Setting the derivative of sum ||x - mu||^2 with respect to mu to zero gives mu = mean(x). This is exactly the k-means update step."
+  },
+  {
+    "id": "kmeans-post-1",
+    "stage": "post",
+    "question": "Why is Lloyd's algorithm guaranteed to terminate?",
+    "options": [
+      "Neither the assignment nor the update step can increase inertia, and there are finitely many assignments",
+      "It always runs a fixed 100 iterations",
+      "The learning rate decays to zero",
+      "It removes one point per iteration"
+    ],
+    "correct": 0,
+    "explanation": "Each step is a coordinate-wise minimization, so inertia never goes up. Since the number of possible assignments is finite, it cannot cycle forever and must stop."
+  },
+  {
+    "id": "kmeans-post-2",
+    "stage": "post",
+    "question": "Two runs of k-means on the same data give inertia 563 and 2386. What happened?",
+    "options": [
+      "The data changed between runs",
+      "The second run used a different distance metric",
+      "The second run had a bug, since k-means always finds the global minimum",
+      "Different initial centroids led to different local minima"
+    ],
+    "correct": 3,
+    "explanation": "K-means converges to a local minimum that depends on initialization. Running several initializations (n_init) and keeping the best is the standard fix."
+  },
+  {
+    "id": "kmeans-post-3",
+    "stage": "post",
+    "question": "Why does k-means struggle with two concentric rings?",
+    "options": [
+      "It cannot handle more than one feature",
+      "Its objective favors compact, roughly spherical clusters separated by straight boundaries",
+      "Rings have too many points",
+      "It requires labels for ring-shaped data"
+    ],
+    "correct": 1,
+    "explanation": "Minimizing squared distance to a single center produces convex Voronoi regions. A ring is not compact around any center, so k-means splits the rings with a straight line."
+  },
+  {
+    "id": "kmeans-post-4",
+    "stage": "post",
+    "question": "What is the cost of one k-means iteration for n points, k clusters and d features?",
+    "options": [
+      "O(n^2 * d)",
+      "O(k^3)",
+      "O(n * k * d)",
+      "O(2^n)"
+    ],
+    "correct": 2,
+    "explanation": "Each iteration computes the distance from every point to every centroid, which is n * k distances of d dimensions each."
+  }
+]

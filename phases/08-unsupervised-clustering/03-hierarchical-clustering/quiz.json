@@ -1,0 +1,80 @@
+[
+  {
+    "id": "hierarchical-pre-1",
+    "stage": "pre",
+    "question": "What does agglomerative clustering produce that k-means does not?",
+    "options": [
+      "Cluster centroids",
+      "A full tree of nested merges from n clusters down to one",
+      "Probabilistic cluster memberships",
+      "A label for noise points"
+    ],
+    "correct": 1,
+    "explanation": "Agglomerative clustering records every merge, giving a dendrogram that contains the partitions for every possible number of clusters."
+  },
+  {
+    "id": "hierarchical-pre-2",
+    "stage": "pre",
+    "question": "In single linkage, the distance between two clusters is:",
+    "options": [
+      "The smallest distance between any point in one cluster and any point in the other",
+      "The largest distance between any pair of points across the clusters",
+      "The distance between their centroids",
+      "The number of points in the smaller cluster"
+    ],
+    "correct": 0,
+    "explanation": "Single linkage uses the closest pair. Complete linkage uses the farthest pair, and average linkage uses the mean of all pairs."
+  },
+  {
+    "id": "hierarchical-post-1",
+    "stage": "post",
+    "question": "On two interleaving half-moons, which linkage recovers the true clusters?",
+    "options": [
+      "Ward",
+      "Complete",
+      "Single",
+      "None of them can"
+    ],
+    "correct": 2,
+    "explanation": "Single linkage merges along nearest neighbors, so it follows each curved crescent. Ward and complete favor compact clusters and cut the moons in half."
+  },
+  {
+    "id": "hierarchical-post-2",
+    "stage": "post",
+    "question": "The last merge heights in a dendrogram are 4.6, 4.9, 5.4, 24.9, 28.0. How many clusters does the tree suggest?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "5"
+    ],
+    "correct": 2,
+    "explanation": "The large jump from 5.4 to 24.9 means three well-separated groups were forced together. Cutting anywhere in that gap leaves 3 clusters."
+  },
+  {
+    "id": "hierarchical-post-3",
+    "stage": "post",
+    "question": "Why is naive agglomerative clustering limited to moderate dataset sizes?",
+    "options": [
+      "It needs labels",
+      "It only works in two dimensions",
+      "It cannot handle more than 10 clusters",
+      "It stores an n x n distance matrix (O(n^2) memory) and the naive loop is O(n^3) time"
+    ],
+    "correct": 3,
+    "explanation": "The pairwise distance matrix grows quadratically. For a million points that is 10^12 entries, far beyond memory."
+  },
+  {
+    "id": "hierarchical-post-4",
+    "stage": "post",
+    "question": "What does the Lance-Williams formula let you do?",
+    "options": [
+      "Update distances from a newly merged cluster to all others using only the previous distances",
+      "Choose the optimal number of clusters",
+      "Convert single linkage into Ward linkage",
+      "Compute centroids without a distance matrix"
+    ],
+    "correct": 0,
+    "explanation": "It expresses each linkage's new distance as a function of d(i,k), d(j,k), d(i,j) and cluster sizes, avoiding recomputation from raw points."
+  }
+]

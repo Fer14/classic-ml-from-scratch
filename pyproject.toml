@@ -1,0 +1,13 @@
+[project]
+name = "classic-ml-from-scratch"
+version = "0.1.0"
+description = "Classic machine learning from first principles: Python, linear algebra, calculus, probability, and every classic supervised and unsupervised algorithm, built from scratch."
+requires-python = ">=3.12"
+dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pandas>=3.0.6",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.18.1",
+]

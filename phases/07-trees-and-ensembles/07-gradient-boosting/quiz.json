@@ -1,0 +1,80 @@
+[
+  {
+    "id": "gb-pre-1",
+    "stage": "pre",
+    "question": "In gradient boosting for squared-error regression, what does each new tree try to predict?",
+    "options": [
+      "The original target y",
+      "The residuals y - F(x) of the current ensemble",
+      "The sign of the target",
+      "The bootstrap sample weights"
+    ],
+    "correct": 1,
+    "explanation": "Each tree is fit to what the ensemble still gets wrong. For squared error those residuals are exactly the negative gradient of the loss."
+  },
+  {
+    "id": "gb-pre-2",
+    "stage": "pre",
+    "question": "Which statement about the number of trees is true for gradient boosting but not for random forests?",
+    "options": [
+      "More trees always reduce test error",
+      "Too many trees can overfit, so the count should be chosen on validation data",
+      "Trees can be trained in parallel independently",
+      "The number of trees has no effect"
+    ],
+    "correct": 1,
+    "explanation": "Boosting keeps fitting the training data more closely with each tree, so test error eventually rises. Random forest error just plateaus as trees are added."
+  },
+  {
+    "id": "gb-post-1",
+    "stage": "post",
+    "question": "For binary log-loss with F the log-odds and p = sigmoid(F), what is the pseudo-residual?",
+    "options": [
+      "y - F",
+      "sign(y - p)",
+      "y - p",
+      "p * (1 - p)"
+    ],
+    "correct": 2,
+    "explanation": "The derivative of log-loss with respect to the log-odds is p - y, so the negative gradient is y - p. p(1 - p) is the second derivative, used in the Newton leaf value."
+  },
+  {
+    "id": "gb-post-2",
+    "stage": "post",
+    "question": "You lower the learning rate from 0.3 to 0.05. What should you expect?",
+    "options": [
+      "Fewer trees are needed to reach the best validation score",
+      "More trees are needed, and the best validation score is often slightly better",
+      "The model becomes a random forest",
+      "The trees must become deeper to compensate"
+    ],
+    "correct": 1,
+    "explanation": "Shrinkage makes each step smaller, so more trees are needed. Smaller steps act as regularization and usually generalize better, which is why lr and n_estimators are tuned together."
+  },
+  {
+    "id": "gb-post-3",
+    "stage": "post",
+    "question": "What is the leaf value used for log-loss boosting in Friedman's algorithm and XGBoost?",
+    "options": [
+      "The mean of the targets y in the leaf",
+      "The majority class in the leaf",
+      "The sum of gradients divided by the sum of Hessians in the leaf (a Newton step)",
+      "The learning rate times the number of samples in the leaf"
+    ],
+    "correct": 2,
+    "explanation": "A one-step Newton update sum(y - p) / sum(p(1 - p)) gives a better leaf value than the plain mean residual, because it accounts for the curvature of the loss."
+  },
+  {
+    "id": "gb-post-4",
+    "stage": "post",
+    "question": "What does setting subsample=0.5 do in gradient boosting?",
+    "options": [
+      "Uses half the features at each split",
+      "Fits each tree on a random half of the rows, drawn without replacement",
+      "Halves the learning rate",
+      "Stops training after half of n_estimators"
+    ],
+    "correct": 1,
+    "explanation": "Stochastic gradient boosting fits each tree on a random fraction of rows. It adds randomness that reduces variance and also speeds up training."
+  }
+]

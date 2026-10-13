@@ -1,0 +1,67 @@
+[
+  {
+    "id": "matplotlib-pre-1",
+    "stage": "pre",
+    "question": "You make a histogram of 100 values with 10 equal-width bins between min = 0 and max = 50. What is the width of each bin?",
+    "options": [
+      "10",
+      "50",
+      "5",
+      "0.5"
+    ],
+    "correct": 2,
+    "explanation": "Width = (max - min) / number of bins = (50 - 0) / 10 = 5."
+  },
+  {
+    "id": "matplotlib-pre-2",
+    "stage": "pre",
+    "question": "Your script calls plt.show() and crashes on a remote server with no display. What is the standard fix?",
+    "options": [
+      "Install a desktop environment on the server",
+      "Lower the figure DPI",
+      "Plot fewer points",
+      "Use the Agg backend and save the figure to a file with savefig"
+    ],
+    "correct": 3,
+    "explanation": "The Agg backend renders to image files without a display. Select it with matplotlib.use('Agg') before importing pyplot and save with figure.savefig."
+  },
+  {
+    "id": "matplotlib-post-1",
+    "stage": "post",
+    "question": "What does `figure, axes = plt.subplots(2, 3)` give you?",
+    "options": [
+      "A Figure and a 2x3 array of Axes objects",
+      "One Axes with 6 lines",
+      "Two figures with three axes each",
+      "A Figure and a list of 5 Axes"
+    ],
+    "correct": 0,
+    "explanation": "subplots returns the Figure and a NumPy array of Axes with shape (2, 3). You draw on each one with axes[row, col].plot(...) and so on."
+  },
+  {
+    "id": "matplotlib-post-2",
+    "stage": "post",
+    "question": "Training loss keeps decreasing while validation loss reaches a minimum at epoch 31 and then rises. What does the plot tell you?",
+    "options": [
+      "The learning rate is too small",
+      "The model starts overfitting after about epoch 31",
+      "The validation set is corrupted",
+      "Training should continue for more epochs"
+    ],
+    "correct": 1,
+    "explanation": "When the model keeps improving on training data but gets worse on unseen data, it is memorizing noise. Stopping near the validation minimum is called early stopping."
+  },
+  {
+    "id": "matplotlib-post-3",
+    "stage": "post",
+    "question": "Why set `axes.set_aspect('equal')` when plotting vectors or 2-D geometry?",
+    "options": [
+      "It makes the plot load faster",
+      "It forces both axes to start at zero",
+      "It makes one data unit the same length on x and y, so angles and lengths look correct",
+      "It adds a grid"
+    ],
+    "correct": 2,
+    "explanation": "Without equal aspect, x and y are scaled independently and perpendicular vectors may not look perpendicular. Equal aspect preserves geometry."
+  }
+]

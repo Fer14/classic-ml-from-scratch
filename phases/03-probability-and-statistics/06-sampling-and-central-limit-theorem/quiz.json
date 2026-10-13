@@ -1,0 +1,67 @@
+[
+  {
+    "id": "clt-pre-1",
+    "stage": "pre",
+    "question": "You average n independent samples from a population with standard deviation σ. What is the standard deviation of that average?",
+    "options": [
+      "σ",
+      "σ / n",
+      "σ / sqrt(n)",
+      "σ * sqrt(n)"
+    ],
+    "correct": 2,
+    "explanation": "Var(mean) = σ^2 / n, so the standard error is σ / sqrt(n). Quadrupling n halves it."
+  },
+  {
+    "id": "clt-pre-2",
+    "stage": "pre",
+    "question": "The population is strongly right-skewed (exponential). What happens to the distribution of the sample mean as n grows?",
+    "options": [
+      "It stays exponential",
+      "It becomes more skewed",
+      "It becomes approximately normal",
+      "It becomes uniform"
+    ],
+    "correct": 2,
+    "explanation": "The central limit theorem says sample means of i.i.d. finite-variance data approach a normal distribution regardless of the population's shape."
+  },
+  {
+    "id": "clt-post-1",
+    "stage": "post",
+    "question": "What is the correct interpretation of a 95% confidence interval?",
+    "options": [
+      "There is a 95% probability that the true mean is in this specific interval",
+      "95% of the data points lie inside the interval",
+      "If you repeated the sampling many times, 95% of intervals built this way would contain the true mean",
+      "The sample mean is correct with 95% probability"
+    ],
+    "correct": 2,
+    "explanation": "The 95% describes the long-run behavior of the procedure. A probability statement about the parameter for one interval requires a Bayesian credible interval."
+  },
+  {
+    "id": "clt-post-2",
+    "stage": "post",
+    "question": "How does the bootstrap generate each resample?",
+    "options": [
+      "Draw n points from the original sample without replacement",
+      "Draw n points from the original sample with replacement",
+      "Draw n/2 points from the population",
+      "Add Gaussian noise to every point"
+    ],
+    "correct": 1,
+    "explanation": "Each bootstrap resample has the same size as the original and is drawn with replacement, so some points repeat and about 36.8% are left out."
+  },
+  {
+    "id": "clt-post-3",
+    "stage": "post",
+    "question": "With n = 5 draws from an exponential population, the nominal 95% normal interval covered the true mean only about 81% of the time. Why?",
+    "options": [
+      "The simulation had a bug",
+      "With small samples from a skewed population, the sample mean is not yet close to normal and s underestimates σ",
+      "Confidence intervals only work for the median",
+      "The standard error formula is wrong for exponential data"
+    ],
+    "correct": 1,
+    "explanation": "The CLT is asymptotic. For small n and skewed data, the normal approximation and the plug-in s are unreliable, so actual coverage falls below the nominal level."
+  }
+]

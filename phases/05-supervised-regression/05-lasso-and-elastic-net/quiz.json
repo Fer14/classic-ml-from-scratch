@@ -1,0 +1,80 @@
+[
+  {
+    "id": "lasso-pre-1",
+    "stage": "pre",
+    "question": "Which penalty can set regression weights exactly to zero?",
+    "options": [
+      "L2 penalty, sum of squared weights",
+      "L1 penalty, sum of absolute weights",
+      "No penalty, plain OLS",
+      "Penalizing only the intercept"
+    ],
+    "correct": 1,
+    "explanation": "The L1 penalty has a constant slope of alpha near zero, so it can overpower a weak data signal and pin the weight at exactly zero. L2's slope vanishes near zero."
+  },
+  {
+    "id": "lasso-pre-2",
+    "stage": "pre",
+    "question": "In two dimensions, what shape is the constraint region ||w||_1 <= t?",
+    "options": [
+      "A circle",
+      "A square aligned with the axes",
+      "A diamond with corners on the axes",
+      "An ellipse"
+    ],
+    "correct": 2,
+    "explanation": "|w1| + |w2| <= t is a diamond. The RSS contours tend to touch it first at a corner, where one coordinate is zero."
+  },
+  {
+    "id": "lasso-post-1",
+    "stage": "post",
+    "question": "What is soft-thresholding S(1.2, 0.5)?",
+    "options": [
+      "1.2",
+      "0.7",
+      "0",
+      "1.7"
+    ],
+    "correct": 1,
+    "explanation": "S(v, t) = sign(v) * max(|v| - t, 0) = max(1.2 - 0.5, 0) = 0.7."
+  },
+  {
+    "id": "lasso-post-2",
+    "stage": "post",
+    "question": "Why does lasso use coordinate descent instead of a closed-form solution?",
+    "options": [
+      "The L1 penalty is not differentiable at zero, so there is no normal equation, but each one-dimensional subproblem has an exact solution",
+      "Coordinate descent is required for any convex problem",
+      "Lasso is non-convex",
+      "Matrix inversion is not allowed with L1"
+    ],
+    "correct": 0,
+    "explanation": "|w| has a kink at 0, so setting the gradient to zero does not give a linear system. Fixing all but one weight reduces the problem to a 1D case solved by soft-thresholding."
+  },
+  {
+    "id": "lasso-post-3",
+    "stage": "post",
+    "question": "You have three almost identical features. How do lasso and elastic net typically differ?",
+    "options": [
+      "Both zero all three",
+      "Lasso spreads weight evenly, elastic net picks one",
+      "Lasso tends to pick one and zero the others, elastic net spreads weight across the group",
+      "They give identical coefficients"
+    ],
+    "correct": 2,
+    "explanation": "The L2 part of elastic net makes the objective strictly convex and favors sharing weight among correlated features, the grouping effect."
+  },
+  {
+    "id": "lasso-post-4",
+    "stage": "post",
+    "question": "What happens for any alpha greater than alpha_max = max_j |x_j . y_centered| / n?",
+    "options": [
+      "Lasso equals OLS",
+      "All weights are exactly zero and the model predicts the mean",
+      "The solver diverges",
+      "Only the largest weight is kept"
+    ],
+    "correct": 1,
+    "explanation": "Above alpha_max, no feature's correlation with the residual exceeds the threshold, so soft-thresholding returns zero for every coordinate."
+  }
+]

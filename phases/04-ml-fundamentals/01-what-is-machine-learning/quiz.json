@@ -1,0 +1,67 @@
+[
+  {
+    "id": "mlintro-pre-1",
+    "stage": "pre",
+    "question": "What is the key difference between traditional programming and supervised machine learning?",
+    "options": [
+      "Machine learning does not need any data",
+      "Traditional programming produces rules from data and answers; machine learning applies fixed rules",
+      "Machine learning produces the rules (a model) from data and known answers",
+      "There is no difference; machine learning is just faster code"
+    ],
+    "correct": 2,
+    "explanation": "In traditional programming you write the rules. In supervised learning you provide inputs with known answers and an algorithm searches for the rule that best maps one to the other."
+  },
+  {
+    "id": "mlintro-pre-2",
+    "stage": "pre",
+    "question": "Predicting tomorrow's temperature in degrees Celsius is an example of which task?",
+    "options": [
+      "Classification",
+      "Regression",
+      "Clustering",
+      "Dimensionality reduction"
+    ],
+    "correct": 1,
+    "explanation": "The target is a continuous number, so it is a supervised regression problem."
+  },
+  {
+    "id": "mlintro-post-1",
+    "stage": "post",
+    "question": "Every learning algorithm in this course can be described by three choices. Which set is it?",
+    "options": [
+      "Dataset, GPU, and framework",
+      "Model (hypothesis class), loss, and optimizer",
+      "Features, labels, and test set",
+      "Accuracy, precision, and recall"
+    ],
+    "correct": 1,
+    "explanation": "The model fixes the shape of the rule, the loss scores candidate rules on data, and the optimizer searches for the best-scoring one."
+  },
+  {
+    "id": "mlintro-post-2",
+    "stage": "post",
+    "question": "Why do you evaluate the learned threshold on a separate test set instead of on the training data?",
+    "options": [
+      "The training data is too small to compute accuracy",
+      "The test set is always easier, so the score looks better",
+      "Training accuracy is optimistically biased because the rule was chosen to fit those exact samples",
+      "scikit-learn refuses to score on training data"
+    ],
+    "correct": 2,
+    "explanation": "The optimizer picked the rule that does best on the training samples, so their score overstates performance. Only unseen data tells you how well the rule generalizes."
+  },
+  {
+    "id": "mlintro-post-3",
+    "stage": "post",
+    "question": "Grouping customers into segments when you have no labels is an example of what?",
+    "options": [
+      "Unsupervised learning",
+      "Supervised classification",
+      "Reinforcement learning",
+      "Regression"
+    ],
+    "correct": 0,
+    "explanation": "Without labels you cannot learn f(x) = y. Finding groups in unlabeled data is clustering, a form of unsupervised learning."
+  }
+]

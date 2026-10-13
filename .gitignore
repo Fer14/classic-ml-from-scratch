@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+phases/**/code/*.png
+phases/**/code/*.csv
+.DS_Store

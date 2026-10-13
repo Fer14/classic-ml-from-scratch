@@ -1,0 +1,80 @@
+[
+  {
+    "id": "knn-pre-1",
+    "stage": "pre",
+    "question": "What does a KNN classifier do during fit?",
+    "options": [
+      "Runs gradient descent on the weights",
+      "Stores the training data",
+      "Builds a decision tree",
+      "Computes class means only"
+    ],
+    "correct": 1,
+    "explanation": "KNN is a lazy learner: fitting just memorizes the data and all work happens at prediction time."
+  },
+  {
+    "id": "knn-pre-2",
+    "stage": "pre",
+    "question": "Which value of k gives the most jagged, high-variance decision boundary?",
+    "options": [
+      "k = 1",
+      "k = 15",
+      "k = n (all training points)",
+      "It does not depend on k"
+    ],
+    "correct": 0,
+    "explanation": "With k = 1 each prediction follows a single neighbor, so the boundary bends around every point and noise."
+  },
+  {
+    "id": "knn-post-1",
+    "stage": "post",
+    "question": "One feature is in millimetres and ranges up to 8000; the others are below 10. What happens with unscaled Euclidean KNN?",
+    "options": [
+      "Nothing, KNN is scale invariant",
+      "The large feature dominates distances and the others are effectively ignored",
+      "KNN automatically standardizes features",
+      "Accuracy always improves"
+    ],
+    "correct": 1,
+    "explanation": "Distances sum raw squared differences, so the feature with the largest range decides who the neighbors are. Standardize first."
+  },
+  {
+    "id": "knn-post-2",
+    "stage": "post",
+    "question": "Why is training accuracy useless for choosing k?",
+    "options": [
+      "Because it is always 0",
+      "Because with k = 1 every training point is its own nearest neighbor, so training accuracy is perfect",
+      "Because KNN has no training set",
+      "Because accuracy is not defined for KNN"
+    ],
+    "correct": 1,
+    "explanation": "Evaluating on training data rewards memorization. Use cross-validation to choose k."
+  },
+  {
+    "id": "knn-post-3",
+    "stage": "post",
+    "question": "What does the curse of dimensionality do to nearest neighbor search?",
+    "options": [
+      "Makes distances exactly zero",
+      "Makes the nearest and farthest distances nearly equal, so nearness loses meaning",
+      "Makes KNN faster",
+      "Only affects regression, not classification"
+    ],
+    "correct": 1,
+    "explanation": "In high dimensions distances concentrate: the nearest/farthest ratio approaches 1, as the script shows going from 0.015 in 2D to 0.90 in 1000D."
+  },
+  {
+    "id": "knn-post-4",
+    "stage": "post",
+    "question": "What does the identity ||a - b||^2 = ||a||^2 + ||b||^2 - 2 a.b buy you?",
+    "options": [
+      "Exact integer distances",
+      "All pairwise distances from one matrix multiplication",
+      "Manhattan distance for free",
+      "It removes the need for scaling"
+    ],
+    "correct": 1,
+    "explanation": "The cross term for every pair is A @ B.T, so the whole distance matrix is computed without Python loops."
+  }
+]

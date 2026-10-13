@@ -1,0 +1,80 @@
+[
+  {
+    "id": "hgb-pre-1",
+    "stage": "pre",
+    "question": "What is the main reason histogram-based boosting trains much faster than classic gradient boosting?",
+    "options": [
+      "It uses fewer trees",
+      "It bins features once, so split search sums gradients into a few hundred bins instead of sorting values at every node",
+      "It skips computing gradients",
+      "It trains each tree on a single feature"
+    ],
+    "correct": 1,
+    "explanation": "After binning, each node needs one pass to fill gradient and Hessian histograms and a scan over at most 255 bins per feature, instead of an O(n log n) sort per feature."
+  },
+  {
+    "id": "hgb-pre-2",
+    "stage": "pre",
+    "question": "Which library is the runnable stand-in for XGBoost and LightGBM in this course?",
+    "options": [
+      "sklearn.ensemble.RandomForestClassifier",
+      "sklearn.ensemble.AdaBoostClassifier",
+      "sklearn.ensemble.HistGradientBoostingClassifier / Regressor",
+      "sklearn.tree.DecisionTreeClassifier"
+    ],
+    "correct": 2,
+    "explanation": "HistGradientBoosting is scikit-learn's LightGBM-inspired implementation with histogram binning, early stopping, native categorical support and missing-value handling."
+  },
+  {
+    "id": "hgb-post-1",
+    "stage": "post",
+    "question": "With gradient sum G, Hessian sum H and L2 regularization lambda in a leaf, what is the XGBoost-optimal leaf weight?",
+    "options": [
+      "G / H",
+      "-G / (H + lambda)",
+      "-H / (G + lambda)",
+      "mean of y in the leaf"
+    ],
+    "correct": 1,
+    "explanation": "Minimizing G*w + 0.5*(H + lambda)*w^2 over w gives w = -G/(H + lambda). Lambda shrinks the weight toward zero, especially in leaves with small H."
+  },
+  {
+    "id": "hgb-post-2",
+    "stage": "post",
+    "question": "What does the gamma (min_split_loss) parameter do?",
+    "options": [
+      "Sets the learning rate",
+      "Requires a split's gain to exceed gamma, otherwise the node stays a leaf",
+      "Controls the number of bins",
+      "Sets the fraction of rows sampled per tree"
+    ],
+    "correct": 1,
+    "explanation": "Gamma is subtracted from the split gain, acting as a per-leaf complexity cost. Splits that do not reduce the loss by more than gamma are not made."
+  },
+  {
+    "id": "hgb-post-3",
+    "stage": "post",
+    "question": "You have a feature with 200 unordered categories encoded as integers 0-199. Why can declaring it categorical improve accuracy?",
+    "options": [
+      "Integers use more memory than categories",
+      "As integers, trees can only split on intervals of an arbitrary order; categorical splits can group any categories together",
+      "Categorical features are ignored by the model, which reduces noise",
+      "It converts the feature into 200 one-hot columns automatically"
+    ],
+    "correct": 1,
+    "explanation": "Native categorical splits sort categories by their gradient statistics and find the best two-group partition, so one split can separate related categories regardless of their codes."
+  },
+  {
+    "id": "hgb-post-4",
+    "stage": "post",
+    "question": "What is a sound default strategy for choosing the number of trees in XGBoost, LightGBM or HistGradientBoosting?",
+    "options": [
+      "Always use exactly 100 trees",
+      "Use as many trees as there are features",
+      "Set a large maximum and use early stopping on a validation set, keeping the best iteration",
+      "Pick the number that gives zero training error"
+    ],
+    "correct": 2,
+    "explanation": "Boosting can overfit with too many trees. Early stopping monitors validation loss and keeps the best round, which is why it is exposed as early_stopping_rounds, lgb.early_stopping, or n_iter_no_change."
+  }
+]

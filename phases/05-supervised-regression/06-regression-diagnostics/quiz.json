@@ -1,0 +1,80 @@
+[
+  {
+    "id": "diag-pre-1",
+    "stage": "pre",
+    "question": "You add a column of pure random noise to a linear regression. What happens to the training R^2?",
+    "options": [
+      "It decreases",
+      "It stays the same or increases",
+      "It becomes negative",
+      "It becomes exactly 1"
+    ],
+    "correct": 1,
+    "explanation": "OLS can always set the new weight to zero, so the fit cannot get worse. In practice R^2 creeps up slightly by fitting noise, which is why adjusted R^2 exists."
+  },
+  {
+    "id": "diag-pre-2",
+    "stage": "pre",
+    "question": "A residuals-vs-fitted plot shows a funnel: spread grows with the prediction. Which assumption is violated?",
+    "options": [
+      "Linearity",
+      "Independence",
+      "Homoscedasticity (constant error variance)",
+      "Normality of the features"
+    ],
+    "correct": 2,
+    "explanation": "A funnel means the error variance depends on the level of the prediction, which is heteroscedasticity. Standard errors computed under constant variance are then unreliable."
+  },
+  {
+    "id": "diag-post-1",
+    "stage": "post",
+    "question": "What is the leverage of sample i?",
+    "options": [
+      "Its residual divided by the residual standard deviation",
+      "The i-th diagonal element of the hat matrix X (X^T X)^(-1) X^T",
+      "The absolute value of its target",
+      "Its Cook's distance squared"
+    ],
+    "correct": 1,
+    "explanation": "h_ii measures how far x_i is from the bulk of the inputs and how strongly y_i pulls its own fitted value. Leverages sum to the number of parameters."
+  },
+  {
+    "id": "diag-post-2",
+    "stage": "post",
+    "question": "Which point is most likely to have a large Cook's distance?",
+    "options": [
+      "Low leverage, small residual",
+      "Low leverage, large residual",
+      "High leverage, small residual",
+      "High leverage, large residual"
+    ],
+    "correct": 3,
+    "explanation": "Cook's distance grows with both the squared residual and h/(1-h)^2. A point with an unusual input that is also badly fit has the power to drag the whole model."
+  },
+  {
+    "id": "diag-post-3",
+    "stage": "post",
+    "question": "Feature j has VIF = 9. What does that mean?",
+    "options": [
+      "Feature j explains 90% of the target",
+      "The variance of its coefficient is about 9 times larger than if it were uncorrelated with the other features",
+      "Feature j has 9 outliers",
+      "The coefficient is 9 times too large"
+    ],
+    "correct": 1,
+    "explanation": "VIF = 1 / (1 - R^2_j). VIF = 9 means R^2_j is about 0.89: the other features predict feature j well, inflating its coefficient's variance ninefold."
+  },
+  {
+    "id": "diag-post-4",
+    "stage": "post",
+    "question": "A model has R^2 = 0.94 and every coefficient has p < 0.001. What can you conclude?",
+    "options": [
+      "The coefficients are correct and can be interpreted",
+      "Nothing about correctness yet; you still need to check residuals, influence and collinearity",
+      "The model will generalize perfectly",
+      "There are no outliers"
+    ],
+    "correct": 1,
+    "explanation": "High R^2 and small p-values are compatible with a model distorted by an influential point or violated assumptions, as the lesson's planted row shows."
+  }
+]

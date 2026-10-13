@@ -1,0 +1,80 @@
+[
+  {
+    "id": "vectors-pre-1",
+    "stage": "pre",
+    "question": "What is [3, 1] + [-1, 2]?",
+    "options": [
+      "[2, 3]",
+      "[4, -1]",
+      "[-3, 2]",
+      "[2, -1]"
+    ],
+    "correct": 0,
+    "explanation": "Add component by component: [3 + (-1), 1 + 2] = [2, 3]. Geometrically, walk along the first arrow, then along the second from its tip."
+  },
+  {
+    "id": "vectors-pre-2",
+    "stage": "pre",
+    "question": "Geometrically, what does multiplying a vector by -2 do?",
+    "options": [
+      "Rotates it by 90 degrees",
+      "Doubles its length and flips it to point the opposite way",
+      "Halves its length",
+      "Moves its starting point to (-2, -2)"
+    ],
+    "correct": 1,
+    "explanation": "Scalar multiplication stretches the arrow by the absolute value of the scalar; a negative scalar also reverses its direction."
+  },
+  {
+    "id": "vectors-post-1",
+    "stage": "post",
+    "question": "What is the span of v = [1, 2] and w = [-2, -4]?",
+    "options": [
+      "The whole 2-D plane",
+      "Only the origin",
+      "A single line through the origin",
+      "Two separate lines"
+    ],
+    "correct": 2,
+    "explanation": "w = -2v, so the vectors are collinear. Every linear combination a v + b w = (a - 2b) v lies on the line through v."
+  },
+  {
+    "id": "vectors-post-2",
+    "stage": "post",
+    "question": "In the basis v = [1, 0], w = [1, 1], what are the coordinates of the point [3, 2]?",
+    "options": [
+      "[3, 2]",
+      "[2, 1]",
+      "[5, 2]",
+      "[1, 2]"
+    ],
+    "correct": 3,
+    "explanation": "You need a v + b w = [a + b, b] = [3, 2], so b = 2 and a = 1. The same arrow has coordinates [1, 2] in this basis."
+  },
+  {
+    "id": "vectors-post-3",
+    "stage": "post",
+    "question": "For 2-D vectors v and w, v1*w2 - v2*w1 = 0. What does that tell you?",
+    "options": [
+      "v and w are collinear, so they span only a line (or a point)",
+      "v and w are perpendicular",
+      "v and w have the same length",
+      "v + w is the zero vector"
+    ],
+    "correct": 0,
+    "explanation": "v1*w2 - v2*w1 is the signed area of the parallelogram formed by v and w. Zero area means the parallelogram is flat: the vectors lie on one line."
+  },
+  {
+    "id": "vectors-post-4",
+    "stage": "post",
+    "question": "If M has v and w as its columns, what does M @ [a, b] compute?",
+    "options": [
+      "The dot product of v and w",
+      "The linear combination a v + b w",
+      "[a * b, v * w]",
+      "The area spanned by v and w"
+    ],
+    "correct": 1,
+    "explanation": "A matrix-vector product is a linear combination of the matrix's columns, weighted by the vector's entries. This is the column picture used throughout the phase."
+  }
+]

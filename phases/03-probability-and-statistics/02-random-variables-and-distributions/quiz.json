@@ -1,0 +1,67 @@
+[
+  {
+    "id": "distributions-pre-1",
+    "stage": "pre",
+    "question": "Which distribution best models the number of website visits in one hour?",
+    "options": [
+      "Bernoulli",
+      "Uniform",
+      "Poisson",
+      "Normal with negative values allowed"
+    ],
+    "correct": 2,
+    "explanation": "The Poisson distribution models non-negative integer counts of events occurring at a constant average rate in a fixed interval."
+  },
+  {
+    "id": "distributions-pre-2",
+    "stage": "pre",
+    "question": "For a continuous random variable X, what is P(X = 2.5) exactly?",
+    "options": [
+      "The value of the PDF at 2.5",
+      "0",
+      "The value of the CDF at 2.5",
+      "It depends on the variance"
+    ],
+    "correct": 1,
+    "explanation": "Probabilities for continuous variables are areas under the PDF. A single point has zero width, so its probability is 0. The PDF value is a density, not a probability."
+  },
+  {
+    "id": "distributions-post-1",
+    "stage": "post",
+    "question": "A Normal(0, 0.1) has a peak PDF value of about 3.99. Why is this not a contradiction?",
+    "options": [
+      "It is a bug: densities must be at most 1",
+      "Densities are not probabilities; only the total area under the curve must equal 1",
+      "The normal PDF is only valid for standard deviation 1",
+      "The value is a log-probability"
+    ],
+    "correct": 1,
+    "explanation": "A narrow distribution needs a tall curve to keep its area equal to 1. Density can be any non-negative number."
+  },
+  {
+    "id": "distributions-post-2",
+    "stage": "post",
+    "question": "How does inverse transform sampling generate exponential samples from uniform numbers u?",
+    "options": [
+      "x = λ u",
+      "x = exp(-λ u)",
+      "x = -ln(1 - u) / λ",
+      "x = u^λ"
+    ],
+    "correct": 2,
+    "explanation": "The exponential CDF is F(x) = 1 - e^(-λx). Solving u = F(x) for x gives x = -ln(1 - u) / λ, and F^-1(U) has distribution F."
+  },
+  {
+    "id": "distributions-post-3",
+    "stage": "post",
+    "question": "In scipy.stats, how do you create an exponential distribution with rate λ = 1.5?",
+    "options": [
+      "stats.expon(rate=1.5)",
+      "stats.expon(scale=1.5)",
+      "stats.expon(scale=1 / 1.5)",
+      "stats.expon(loc=1.5)"
+    ],
+    "correct": 2,
+    "explanation": "scipy parameterizes the exponential by scale = 1 / rate. Using scale=1.5 would give a mean of 1.5 instead of 1/1.5."
+  }
+]

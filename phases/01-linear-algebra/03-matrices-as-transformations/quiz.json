@@ -1,0 +1,80 @@
+[
+  {
+    "id": "transform-pre-1",
+    "stage": "pre",
+    "question": "What is [[1, 2], [3, 4]] @ [1, 1]?",
+    "options": [
+      "[4, 6]",
+      "[1, 2]",
+      "[3, 7]",
+      "[2, 5]"
+    ],
+    "correct": 2,
+    "explanation": "Column picture: 1 * [1, 3] + 1 * [2, 4] = [3, 7]. Row picture gives the same: [1+2, 3+4]."
+  },
+  {
+    "id": "transform-pre-2",
+    "stage": "pre",
+    "question": "Which of these functions on 2-D vectors is linear?",
+    "options": [
+      "f(v) = v + [1, 0]",
+      "f(v) = [v1^2, v2]",
+      "f(v) = [v1, 1]",
+      "f(v) = [2 v1, v1 + v2]"
+    ],
+    "correct": 3,
+    "explanation": "[2 v1, v1 + v2] is the matrix [[2, 0], [1, 1]] applied to v. The others move the origin or square an entry, which breaks linearity."
+  },
+  {
+    "id": "transform-post-1",
+    "stage": "post",
+    "question": "A linear transformation sends i_hat to [2, 1] and j_hat to [-1, 3]. What is its matrix?",
+    "options": [
+      "[[2, -1], [1, 3]]",
+      "[[2, 1], [-1, 3]]",
+      "[[1, 2], [3, -1]]",
+      "[[-1, 3], [2, 1]]"
+    ],
+    "correct": 0,
+    "explanation": "The columns of the matrix are where the basis vectors land: first column [2, 1], second column [-1, 3], giving rows [2, -1] and [1, 3]."
+  },
+  {
+    "id": "transform-post-2",
+    "stage": "post",
+    "question": "Why does a linear model y = w . x need a separate bias b to fit data whose best line does not pass through the origin?",
+    "options": [
+      "Because dot products are not defined for negative numbers",
+      "Because a linear map always sends 0 to 0, so w . x alone can only describe planes through the origin",
+      "Because the bias makes training faster",
+      "Because w must be a unit vector"
+    ],
+    "correct": 1,
+    "explanation": "Linearity forces T(0) = 0. Adding b is a translation, which is not linear, and it is exactly what lets the model shift away from the origin."
+  },
+  {
+    "id": "transform-post-3",
+    "stage": "post",
+    "question": "The matrix [[1, 0], [0, 0]] is applied to every point of the plane. What happens?",
+    "options": [
+      "Every point is rotated by 90 degrees",
+      "Nothing, it is the identity",
+      "The plane is flattened onto the x-axis, and different points can land on the same output",
+      "Every point is reflected across the x-axis"
+    ],
+    "correct": 2,
+    "explanation": "i_hat stays put and j_hat collapses to zero, so every point (x, y) goes to (x, 0). The y information is lost, so the transformation cannot be undone."
+  },
+  {
+    "id": "transform-post-4",
+    "stage": "post",
+    "question": "Points are stored as rows of an (n, 2) array X. How do you apply the 2x2 matrix M to all of them at once?",
+    "options": [
+      "M @ X",
+      "X * M",
+      "M.T @ X.T",
+      "X @ M.T"
+    ],
+    "correct": 3,
+    "explanation": "Each row p must become (M p)^T = p^T M^T, so stacking rows gives X @ M.T, an (n, 2) array of transformed points."
+  }
+]

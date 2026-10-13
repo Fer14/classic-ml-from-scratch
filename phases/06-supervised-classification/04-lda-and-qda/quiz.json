@@ -1,0 +1,80 @@
+[
+  {
+    "id": "lda-pre-1",
+    "stage": "pre",
+    "question": "What is the key difference between LDA and QDA?",
+    "options": [
+      "LDA uses gradient descent, QDA does not",
+      "LDA assumes one covariance shared by all classes, QDA estimates one per class",
+      "QDA only works for two classes",
+      "LDA requires standardized labels"
+    ],
+    "correct": 1,
+    "explanation": "Sharing the covariance makes the quadratic terms cancel, giving linear boundaries. QDA keeps them, giving quadratic boundaries."
+  },
+  {
+    "id": "lda-pre-2",
+    "stage": "pre",
+    "question": "How does Gaussian Naive Bayes differ from QDA?",
+    "options": [
+      "Naive Bayes uses a diagonal covariance per class, ignoring feature correlations",
+      "Naive Bayes uses a full shared covariance",
+      "They are identical",
+      "QDA ignores the prior"
+    ],
+    "correct": 0,
+    "explanation": "Gaussian NB is QDA with the off-diagonal covariance entries forced to zero."
+  },
+  {
+    "id": "lda-post-1",
+    "stage": "post",
+    "question": "With 13 features and 3 classes, how many covariance parameters does QDA estimate versus LDA?",
+    "options": [
+      "13 vs 13",
+      "91 vs 273",
+      "273 vs 91",
+      "39 vs 13"
+    ],
+    "correct": 2,
+    "explanation": "One symmetric 13x13 matrix has 13*14/2 = 91 free entries. QDA needs three of them (273), LDA one (91)."
+  },
+  {
+    "id": "lda-post-2",
+    "stage": "post",
+    "question": "One class is a tight round cloud and the other a wide ellipse centered near it. Which model should do better?",
+    "options": [
+      "LDA, because it has fewer parameters",
+      "QDA, because the covariances differ and the best boundary is curved",
+      "Both identical",
+      "Neither can exceed 50%"
+    ],
+    "correct": 1,
+    "explanation": "The optimal boundary is an ellipse around the tight class. LDA can only draw a line; in the lesson LDA got about 0.76 and QDA about 0.91."
+  },
+  {
+    "id": "lda-post-3",
+    "stage": "post",
+    "question": "What is the maximum number of discriminant axes LDA can produce for K classes?",
+    "options": [
+      "K",
+      "K - 1",
+      "Number of features",
+      "Number of samples"
+    ],
+    "correct": 1,
+    "explanation": "The between-class scatter matrix is built from K means around their weighted average, so its rank is at most K - 1."
+  },
+  {
+    "id": "lda-post-4",
+    "stage": "post",
+    "question": "A class has fewer training samples than features. What breaks in QDA and how do you fix it?",
+    "options": [
+      "Nothing breaks",
+      "The class covariance is singular; add a regularization term to its diagonal",
+      "The prior becomes negative; drop the class",
+      "LDA becomes quadratic"
+    ],
+    "correct": 1,
+    "explanation": "With n_k <= d the sample covariance has rank below d and cannot be inverted. Adding reg * I (reg_param in sklearn) makes it invertible."
+  }
+]

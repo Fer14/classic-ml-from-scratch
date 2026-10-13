@@ -1,0 +1,80 @@
+[
+  {
+    "id": "interpret-pre-1",
+    "stage": "pre",
+    "question": "What does a model-agnostic interpretability method need from the model?",
+    "options": [
+      "Its coefficients",
+      "Its tree structure",
+      "Only the ability to call predict on new inputs",
+      "Its training loss history"
+    ],
+    "correct": 2,
+    "explanation": "Model-agnostic methods like permutation importance, partial dependence and KernelSHAP treat the model as a black box and only query its predictions."
+  },
+  {
+    "id": "interpret-pre-2",
+    "stage": "pre",
+    "question": "Which question is a local explanation?",
+    "options": [
+      "Which features matter most across the dataset?",
+      "Why did the model predict 7.9 for this particular customer?",
+      "How does the average prediction change with age?",
+      "What is the model's test accuracy?"
+    ],
+    "correct": 1,
+    "explanation": "Local explanations attribute one specific prediction to the features. Global explanations describe the model's behavior over the whole dataset."
+  },
+  {
+    "id": "interpret-post-1",
+    "stage": "post",
+    "question": "Why should permutation importance be computed on held-out data?",
+    "options": [
+      "It is faster on smaller datasets",
+      "On training data an overfit model can appear to rely on features that do not help generalization",
+      "sklearn does not allow training data",
+      "Shuffling changes the training labels"
+    ],
+    "correct": 1,
+    "explanation": "Importance on training data measures what the model memorized. On held-out data it measures what actually contributes to predictive performance."
+  },
+  {
+    "id": "interpret-post-2",
+    "stage": "post",
+    "question": "y depends on a*b. The partial dependence curve of a is flat. What is the best conclusion?",
+    "options": [
+      "a is irrelevant and can be dropped",
+      "The model is broken",
+      "The effect of a may depend on b and cancel out on average; check ICE curves or permutation importance",
+      "Partial dependence was computed on the wrong feature"
+    ],
+    "correct": 2,
+    "explanation": "PD averages over all rows. Positive slopes when b > 0 and negative slopes when b < 0 cancel. ICE curves reveal the heterogeneity."
+  },
+  {
+    "id": "interpret-post-3",
+    "stage": "post",
+    "question": "What does the efficiency property of Shapley values guarantee?",
+    "options": [
+      "They are fast to compute",
+      "The base value plus the sum of all feature Shapley values equals the model's prediction for that row",
+      "All features receive equal credit",
+      "They are always positive"
+    ],
+    "correct": 1,
+    "explanation": "Efficiency means the attributions fully account for the difference between the prediction and the expected prediction over the background data."
+  },
+  {
+    "id": "interpret-post-4",
+    "stage": "post",
+    "question": "Why do practical SHAP tools not enumerate all coalitions for a model with 50 features?",
+    "options": [
+      "Coalitions are only defined for 5 features or fewer",
+      "There are 2^50 coalitions, which is computationally infeasible, so they sample or exploit tree structure",
+      "Shapley values are not defined for more than 50 features",
+      "Enumeration gives the wrong answer"
+    ],
+    "correct": 1,
+    "explanation": "Exact enumeration costs 2^p model evaluations. KernelSHAP samples coalitions; TreeSHAP computes exact values in polynomial time using the tree structure."
+  }
+]

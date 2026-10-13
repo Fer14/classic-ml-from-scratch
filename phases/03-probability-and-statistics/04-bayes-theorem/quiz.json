@@ -1,0 +1,67 @@
+[
+  {
+    "id": "bayes-pre-1",
+    "stage": "pre",
+    "question": "A disease affects 1% of people. A test is positive for 95% of sick people and 5% of healthy people. You test positive. Roughly how likely are you to be sick?",
+    "options": [
+      "95%",
+      "50%",
+      "16%",
+      "5%"
+    ],
+    "correct": 2,
+    "explanation": "Out of 10,000 people, 95 sick people and 495 healthy people test positive. Only 95/590, about 16%, of positives are sick."
+  },
+  {
+    "id": "bayes-pre-2",
+    "stage": "pre",
+    "question": "In Bayes' theorem P(H | D) = P(D | H) P(H) / P(D), what is P(H) called?",
+    "options": [
+      "The likelihood",
+      "The prior",
+      "The evidence",
+      "The posterior"
+    ],
+    "correct": 1,
+    "explanation": "P(H) is the prior: your belief in the hypothesis before seeing the data."
+  },
+  {
+    "id": "bayes-post-1",
+    "stage": "post",
+    "question": "You get a second independent positive test. How should you compute the new probability of being sick?",
+    "options": [
+      "Use the original prevalence again as the prior",
+      "Use the posterior after the first test as the new prior",
+      "Multiply the sensitivity by itself and stop",
+      "Average the two posteriors"
+    ],
+    "correct": 1,
+    "explanation": "In sequential updating, yesterday's posterior becomes today's prior. Starting from 16.1%, a second positive gives about 78%."
+  },
+  {
+    "id": "bayes-post-2",
+    "stage": "post",
+    "question": "With a uniform prior on a coin's bias θ, which estimate does the MAP coincide with?",
+    "options": [
+      "0.5 always",
+      "The maximum likelihood estimate heads / (heads + tails)",
+      "The posterior mean exactly",
+      "The prior mean"
+    ],
+    "correct": 1,
+    "explanation": "A uniform prior is constant, so maximizing likelihood times prior is the same as maximizing the likelihood alone."
+  },
+  {
+    "id": "bayes-post-3",
+    "stage": "post",
+    "question": "The prior on θ is Beta(1, 1) and you observe 41 heads and 9 tails. What is the posterior?",
+    "options": [
+      "Beta(41, 9)",
+      "Beta(42, 10)",
+      "Beta(50, 50)",
+      "Normal(0.82, 0.05)"
+    ],
+    "correct": 1,
+    "explanation": "The Beta prior is conjugate to the coin likelihood: Beta(α, β) becomes Beta(α + heads, β + tails) = Beta(42, 10)."
+  }
+]

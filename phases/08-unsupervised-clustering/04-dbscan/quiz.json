@@ -1,0 +1,80 @@
+[
+  {
+    "id": "dbscan-pre-1",
+    "stage": "pre",
+    "question": "Which of these can DBSCAN do that k-means cannot?",
+    "options": [
+      "Run on numeric features",
+      "Label isolated points as noise instead of forcing them into a cluster",
+      "Use Euclidean distance",
+      "Produce cluster labels"
+    ],
+    "correct": 1,
+    "explanation": "DBSCAN explicitly marks points in low-density regions as noise (-1). K-means assigns every point to some centroid."
+  },
+  {
+    "id": "dbscan-pre-2",
+    "stage": "pre",
+    "question": "What two parameters define DBSCAN?",
+    "options": [
+      "k and the number of iterations",
+      "Learning rate and batch size",
+      "eps (neighborhood radius) and min_samples (points needed to be a core point)",
+      "Linkage type and distance threshold"
+    ],
+    "correct": 2,
+    "explanation": "eps sets the neighborhood size and min_samples sets how many points that neighborhood needs for its center to be dense."
+  },
+  {
+    "id": "dbscan-post-1",
+    "stage": "post",
+    "question": "What is the difference between a core point and a border point?",
+    "options": [
+      "Core points are in the cluster center, border points are always noise",
+      "Border points expand the cluster, core points do not",
+      "There is no difference, they are synonyms",
+      "A core point has at least min_samples neighbors and expands the cluster; a border point is near a core point but does not expand it"
+    ],
+    "correct": 3,
+    "explanation": "Only core points pull their neighbors into the cluster. Border points join but stop the expansion, which prevents leaking across sparse gaps."
+  },
+  {
+    "id": "dbscan-post-2",
+    "stage": "post",
+    "question": "You raise eps from 0.15 to 0.4 and the two moons merge into one cluster. Why?",
+    "options": [
+      "Neighborhoods grow large enough to bridge the gap between the moons through core points",
+      "A larger eps creates more noise points",
+      "eps controls the number of clusters directly",
+      "DBSCAN becomes k-means when eps is large"
+    ],
+    "correct": 0,
+    "explanation": "With a large radius, points on one moon have core neighbors on the other, so a density-connected chain links both shapes."
+  },
+  {
+    "id": "dbscan-post-3",
+    "stage": "post",
+    "question": "How do you use the k-distance curve to choose eps?",
+    "options": [
+      "Pick the largest k-distance so no point is noise",
+      "Pick the smallest k-distance",
+      "Sort each point's distance to its k-th neighbor and choose eps near the bend where values shoot up",
+      "Average all pairwise distances"
+    ],
+    "correct": 2,
+    "explanation": "Points inside clusters have small k-distances and outliers have large ones. The bend separates the two populations."
+  },
+  {
+    "id": "dbscan-post-4",
+    "stage": "post",
+    "question": "Your data has a tight cluster and a diffuse cluster. Why does DBSCAN struggle, and what helps?",
+    "options": [
+      "DBSCAN needs scaled features; standardizing fixes it",
+      "A single eps implies a single density threshold; HDBSCAN handles multiple densities",
+      "DBSCAN cannot find more than one cluster",
+      "Increasing min_samples always fixes it"
+    ],
+    "correct": 1,
+    "explanation": "Any eps either drops the diffuse cluster as noise or merges nearby tight structure. HDBSCAN explores all density levels and keeps stable clusters."
+  }
+]

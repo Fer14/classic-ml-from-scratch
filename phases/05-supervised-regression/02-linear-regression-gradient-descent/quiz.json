@@ -1,0 +1,67 @@
+[
+  {
+    "id": "olsgd-pre-1",
+    "stage": "pre",
+    "question": "When is gradient descent preferable to the closed-form normal equation for linear regression?",
+    "options": [
+      "When you have very few features and few samples",
+      "When the number of features or samples is so large that forming and solving X^T X is too expensive",
+      "When you need an exact answer",
+      "When the loss is not convex"
+    ],
+    "correct": 1,
+    "explanation": "Each gradient step is O(np) and can work on mini-batches, while the normal equation needs O(np^2 + p^3) and the full matrix in memory."
+  },
+  {
+    "id": "olsgd-pre-2",
+    "stage": "pre",
+    "question": "What happens if the learning rate is far too large?",
+    "options": [
+      "Training converges faster with no downside",
+      "The weights stop changing",
+      "Each step overshoots the minimum and the loss diverges",
+      "The model automatically reduces it"
+    ],
+    "correct": 2,
+    "explanation": "Above roughly 2 / lambda_max of the Hessian, each update overshoots by more than the previous error, so the loss grows without bound."
+  },
+  {
+    "id": "olsgd-post-1",
+    "stage": "post",
+    "question": "What is the gradient of L = (1/n)||Xw + b - y||^2 with respect to w?",
+    "options": [
+      "(2/n) X (Xw + b - y)",
+      "(2/n) X^T (Xw + b - y)",
+      "(1/n) (Xw + b - y)",
+      "2 X^T X"
+    ],
+    "correct": 1,
+    "explanation": "Differentiating the squared norm gives 2/n times X^T multiplied by the error vector e = Xw + b - y."
+  },
+  {
+    "id": "olsgd-post-2",
+    "stage": "post",
+    "question": "You trained on standardized features z = (x - mean) / std and got weight w_z for one feature. What is its weight in original units?",
+    "options": [
+      "w_z * std",
+      "w_z - mean",
+      "w_z / std",
+      "w_z, scaling does not change weights"
+    ],
+    "correct": 2,
+    "explanation": "w_z * (x - mean) / std = (w_z / std) * x minus a constant, so the original-unit slope is w_z / std and the constant moves into the intercept."
+  },
+  {
+    "id": "olsgd-post-3",
+    "stage": "post",
+    "question": "Why do you reshuffle the data every epoch in mini-batch gradient descent?",
+    "options": [
+      "To make the final weights deterministic",
+      "So that any ordering in the dataset does not bias consecutive updates",
+      "Because NumPy requires it for matrix multiplication",
+      "To increase the learning rate"
+    ],
+    "correct": 1,
+    "explanation": "If data is sorted (by date, by price), consecutive batches would pull the weights systematically in one direction. Shuffling makes each mini-batch gradient an unbiased estimate of the full gradient."
+  }
+]

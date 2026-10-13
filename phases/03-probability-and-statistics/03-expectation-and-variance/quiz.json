@@ -1,0 +1,67 @@
+[
+  {
+    "id": "expvar-pre-1",
+    "stage": "pre",
+    "question": "What is the expected value of a single roll of a fair six-sided die?",
+    "options": [
+      "3",
+      "3.5",
+      "4",
+      "It has no expected value because 3.5 is not a face"
+    ],
+    "correct": 1,
+    "explanation": "E[X] = (1 + 2 + 3 + 4 + 5 + 6) / 6 = 3.5. The expectation is a long-run average and does not need to be a possible outcome."
+  },
+  {
+    "id": "expvar-pre-2",
+    "stage": "pre",
+    "question": "If Var(X) = 4, what is Var(3X + 10)?",
+    "options": [
+      "12",
+      "22",
+      "36",
+      "46"
+    ],
+    "correct": 2,
+    "explanation": "Var(aX + b) = a^2 Var(X). The shift b has no effect and the scale is squared: 9 * 4 = 36."
+  },
+  {
+    "id": "expvar-post-1",
+    "stage": "post",
+    "question": "Why does the unbiased sample variance divide by n - 1 instead of n?",
+    "options": [
+      "To make the formula work when n = 1",
+      "Because deviations are measured from the sample mean, which is fitted to the same data and makes them systematically too small",
+      "Because the last data point is always an outlier",
+      "To convert variance into standard deviation"
+    ],
+    "correct": 1,
+    "explanation": "The sample mean is the point that minimizes the sum of squared deviations for that sample, so dividing by n underestimates the true variance by a factor (n-1)/n on average."
+  },
+  {
+    "id": "expvar-post-2",
+    "stage": "post",
+    "question": "U is uniform on [-1, 1] and V = U^2. What is their correlation, approximately?",
+    "options": [
+      "1, because V is a function of U",
+      "-1",
+      "0, because the relationship is not linear",
+      "0.5"
+    ],
+    "correct": 2,
+    "explanation": "Cov(U, U^2) = E[U^3] - E[U]E[U^2] = 0 by symmetry. Correlation only captures linear association, so fully dependent variables can be uncorrelated."
+  },
+  {
+    "id": "expvar-post-3",
+    "stage": "post",
+    "question": "What is the default ddof of np.var and of pandas Series.var?",
+    "options": [
+      "Both use ddof=0",
+      "Both use ddof=1",
+      "np.var uses ddof=0, pandas uses ddof=1",
+      "np.var uses ddof=1, pandas uses ddof=0"
+    ],
+    "correct": 2,
+    "explanation": "NumPy computes the population (divide by n) variance by default, pandas computes the sample (divide by n - 1) variance. Pass ddof explicitly to avoid surprises."
+  }
+]

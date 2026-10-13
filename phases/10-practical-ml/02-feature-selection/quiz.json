@@ -1,0 +1,80 @@
+[
+  {
+    "id": "featsel-pre-1",
+    "stage": "pre",
+    "question": "Which of these is a benefit of removing useless features?",
+    "options": [
+      "It always increases training accuracy",
+      "It reduces overfitting risk, production cost and makes the model easier to explain",
+      "It makes cross-validation unnecessary",
+      "It guarantees the model becomes linear"
+    ],
+    "correct": 1,
+    "explanation": "Fewer features mean fewer parameters to overfit, fewer inputs to compute and monitor, and a simpler model to explain. Training accuracy usually goes down slightly, not up."
+  },
+  {
+    "id": "featsel-pre-2",
+    "stage": "pre",
+    "question": "A feature has the same value in 100% of rows. What can it contribute to a model?",
+    "options": [
+      "Nothing, because it carries no information that distinguishes samples",
+      "It acts as a strong regularizer",
+      "It is the most important feature",
+      "It improves recall on rare classes"
+    ],
+    "correct": 0,
+    "explanation": "A constant feature cannot help separate or predict anything. A variance threshold filter removes such features."
+  },
+  {
+    "id": "featsel-post-1",
+    "stage": "post",
+    "question": "Why does SelectKBest with f_regression sometimes keep two nearly identical features?",
+    "options": [
+      "Because the F-test is computed incorrectly for correlated features",
+      "Because filter methods score each feature on its own and cannot see that one adds nothing given the other",
+      "Because SelectKBest always keeps pairs of features",
+      "Because it uses Lasso internally"
+    ],
+    "correct": 1,
+    "explanation": "Univariate filters measure each feature's relation to the target independently. A copy of a strong feature is also strong on its own, so both get high scores."
+  },
+  {
+    "id": "featsel-post-2",
+    "stage": "post",
+    "question": "In forward selection, how is the next feature chosen?",
+    "options": [
+      "The feature with the highest variance",
+      "A random feature",
+      "The candidate that, added to the already selected set, gives the best cross-validated score",
+      "The feature with the largest Lasso coefficient"
+    ],
+    "correct": 2,
+    "explanation": "Forward selection is a greedy wrapper: each step tries every remaining feature together with the current set and keeps the one with the best CV score."
+  },
+  {
+    "id": "featsel-post-3",
+    "stage": "post",
+    "question": "You select the 10 features most correlated with y using all your data, then report 5-fold CV accuracy on those 10 features. What is wrong?",
+    "options": [
+      "Nothing, this is the recommended procedure",
+      "The CV score is optimistically biased because selection already saw the validation folds",
+      "5-fold CV cannot be used with 10 features",
+      "Correlation cannot be computed before cross-validation"
+    ],
+    "correct": 1,
+    "explanation": "Selection is part of training. Doing it on all data leaks information from validation folds. Selection must be repeated inside each training fold, which a pipeline handles automatically."
+  },
+  {
+    "id": "featsel-post-4",
+    "stage": "post",
+    "question": "Why is Lasso called an embedded feature selection method?",
+    "options": [
+      "Because it embeds features into a lower-dimensional space",
+      "Because its L1 penalty drives some coefficients to exactly zero during training",
+      "Because it ranks features by correlation before fitting",
+      "Because it trains one model per feature"
+    ],
+    "correct": 1,
+    "explanation": "The L1 penalty makes the optimum sparse: features with zero coefficients are effectively removed by the training process itself."
+  }
+]

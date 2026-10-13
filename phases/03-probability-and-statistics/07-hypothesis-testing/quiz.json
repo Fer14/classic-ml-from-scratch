@@ -1,0 +1,80 @@
+[
+  {
+    "id": "hyptest-pre-1",
+    "stage": "pre",
+    "question": "What does a p-value of 0.03 mean?",
+    "options": [
+      "There is a 3% probability that the null hypothesis is true",
+      "If the null hypothesis were true, data at least this extreme would occur about 3% of the time",
+      "The effect size is 3%",
+      "There is a 97% probability that the alternative hypothesis is true"
+    ],
+    "correct": 1,
+    "explanation": "A p-value is computed assuming H0 is true. It is the probability of a test statistic at least as extreme as the observed one, not the probability of any hypothesis."
+  },
+  {
+    "id": "hyptest-pre-2",
+    "stage": "pre",
+    "question": "What is a type I error?",
+    "options": [
+      "Failing to detect a real effect",
+      "Rejecting the null hypothesis when it is actually true",
+      "Using the wrong test statistic",
+      "Collecting too few samples"
+    ],
+    "correct": 1,
+    "explanation": "A type I error is a false positive. Its long-run rate equals the significance level α when the test's assumptions hold."
+  },
+  {
+    "id": "hyptest-post-1",
+    "stage": "post",
+    "question": "A real effect of 0.3 standard deviations exists, but your test with 20 users per group gives p = 0.4. What is the most reasonable conclusion?",
+    "options": [
+      "There is no effect",
+      "The test was underpowered; you lack evidence either way",
+      "The effect must be negative",
+      "Lower α until the result becomes significant"
+    ],
+    "correct": 1,
+    "explanation": "With n = 20 per group, power for this effect is under 20%, so failing to reject is the most likely outcome even though the effect is real. Absence of evidence is not evidence of absence."
+  },
+  {
+    "id": "hyptest-post-2",
+    "stage": "post",
+    "question": "How does a permutation test build the null distribution?",
+    "options": [
+      "By assuming the data is normal and using the t distribution",
+      "By resampling each group with replacement",
+      "By randomly shuffling group labels and recomputing the statistic many times",
+      "By adding noise to the observed difference"
+    ],
+    "correct": 2,
+    "explanation": "Under H0 the labels are exchangeable. Shuffling them and recomputing the difference gives the distribution of the statistic when there is no effect."
+  },
+  {
+    "id": "hyptest-post-3",
+    "stage": "post",
+    "question": "You test 20 metrics where none has a real effect, each at α = 0.05. Roughly what is the chance that at least one comes out significant?",
+    "options": [
+      "5%",
+      "20%",
+      "64%",
+      "100%"
+    ],
+    "correct": 2,
+    "explanation": "P(at least one false positive) = 1 - 0.95^20 ≈ 0.64. Bonferroni (α/20 per test) brings it back to about 5%."
+  },
+  {
+    "id": "hyptest-post-4",
+    "stage": "post",
+    "question": "In scipy, what does stats.ttest_ind(a, b, equal_var=False) run?",
+    "options": [
+      "Student's t-test assuming equal variances",
+      "Welch's t-test, which allows unequal variances",
+      "A paired t-test",
+      "A Mann-Whitney U test"
+    ],
+    "correct": 1,
+    "explanation": "equal_var=False selects Welch's t-test with Welch-Satterthwaite degrees of freedom. The default (equal_var=True) assumes both groups share a variance."
+  }
+]

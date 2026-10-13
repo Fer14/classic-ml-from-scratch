@@ -1,0 +1,67 @@
+[
+  {
+    "id": "pybasics-pre-1",
+    "stage": "pre",
+    "question": "What does `7 // 2` evaluate to in Python 3?",
+    "options": [
+      "3.5",
+      "3",
+      "4",
+      "1"
+    ],
+    "correct": 1,
+    "explanation": "`//` is floor division: it divides and rounds down, giving 3. True division `7 / 2` gives 3.5 and `7 % 2` gives the remainder 1."
+  },
+  {
+    "id": "pybasics-pre-2",
+    "stage": "pre",
+    "question": "Why does `0.1 + 0.2 == 0.3` evaluate to False?",
+    "options": [
+      "Python rounds floats to one decimal place",
+      "The + operator is not defined for floats",
+      "0.1, 0.2 and 0.3 cannot be represented exactly in binary floating point, so the sum differs slightly",
+      "== compares object identity, not value"
+    ],
+    "correct": 2,
+    "explanation": "Binary floating point cannot represent 0.1 exactly. The sum is 0.30000000000000004. Compare floats with math.isclose and a tolerance instead of ==."
+  },
+  {
+    "id": "pybasics-post-1",
+    "stage": "post",
+    "question": "Which loop is the natural choice for Newton's method, where you repeat an update until the error is below a tolerance?",
+    "options": [
+      "A for loop over range(10)",
+      "A list comprehension",
+      "An if/elif/else chain",
+      "A while loop whose condition checks the error"
+    ],
+    "correct": 3,
+    "explanation": "You do not know in advance how many iterations are needed. A while loop runs until its condition (error above tolerance) becomes false."
+  },
+  {
+    "id": "pybasics-post-2",
+    "stage": "post",
+    "question": "statistics.variance and np.var (default arguments) give different answers on the same list. What is the most likely reason?",
+    "options": [
+      "statistics.variance divides by n - 1 (sample variance) while np.var divides by n by default",
+      "NumPy uses lower-precision floats",
+      "statistics.variance sorts the data first",
+      "np.var returns the standard deviation"
+    ],
+    "correct": 0,
+    "explanation": "statistics.variance computes the sample variance with n - 1 in the denominator. np.var defaults to ddof=0, the population variance with n. Pass ddof=1 to NumPy to match."
+  },
+  {
+    "id": "pybasics-post-3",
+    "stage": "post",
+    "question": "In `lowest, highest = min_and_max(values)`, what does min_and_max actually return?",
+    "options": [
+      "Two separate return statements executed in sequence",
+      "A tuple of two values, which is unpacked into two variables",
+      "A list that must be indexed",
+      "A dictionary with keys lowest and highest"
+    ],
+    "correct": 1,
+    "explanation": "`return smallest, largest` builds a tuple. Assigning it to `lowest, highest` unpacks the tuple element by element."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "linsys-pre-1",
+    "stage": "pre",
+    "question": "What is the solution of x + y = 3 and x - y = 1?",
+    "options": [
+      "x = 2, y = 1",
+      "x = 1, y = 2",
+      "x = 3, y = 0",
+      "There is no solution"
+    ],
+    "correct": 0,
+    "explanation": "Adding the equations gives 2x = 4, so x = 2, and then y = 1. Geometrically, the two lines cross at (2, 1)."
+  },
+  {
+    "id": "linsys-pre-2",
+    "stage": "pre",
+    "question": "In the column picture, what does solving A x = b mean?",
+    "options": [
+      "Finding where the rows of A intersect",
+      "Finding the weights that combine the columns of A into b",
+      "Multiplying A by b",
+      "Finding the largest entry of A"
+    ],
+    "correct": 1,
+    "explanation": "A x is a linear combination of A's columns with weights x. Solving asks which weights reach b, i.e. which input A sends onto b."
+  },
+  {
+    "id": "linsys-post-1",
+    "stage": "post",
+    "question": "A = [[1, 2], [2, 4]] and b = [3, 5]. How many solutions does A x = b have?",
+    "options": [
+      "Exactly one",
+      "Infinitely many",
+      "None",
+      "Two"
+    ],
+    "correct": 2,
+    "explanation": "Both columns lie on the line through [1, 2], so every output of A is on that line. [3, 5] is not a multiple of [1, 2], so nothing reaches it."
+  },
+  {
+    "id": "linsys-post-2",
+    "stage": "post",
+    "question": "Why is partial pivoting used in Gaussian elimination?",
+    "options": [
+      "It reduces the number of equations",
+      "It guarantees an integer solution",
+      "It makes the matrix symmetric",
+      "It avoids dividing by tiny pivots, which would amplify rounding errors"
+    ],
+    "correct": 3,
+    "explanation": "Choosing the row with the largest absolute value in the column keeps the elimination multipliers at most 1 in size, which keeps rounding errors under control."
+  },
+  {
+    "id": "linsys-post-3",
+    "stage": "post",
+    "question": "Why prefer np.linalg.solve(A, b) over np.linalg.inv(A) @ b?",
+    "options": [
+      "solve is faster and more accurate because it never forms the full inverse",
+      "inv does not work for 2x2 matrices",
+      "solve works on singular matrices",
+      "They give different answers in exact arithmetic"
+    ],
+    "correct": 0,
+    "explanation": "Solving with an LU factorization does less work than computing the inverse and then multiplying, and it accumulates less rounding error."
+  },
+  {
+    "id": "linsys-post-4",
+    "stage": "post",
+    "question": "A system has condition number 10^8. What should you expect?",
+    "options": [
+      "The solution is exact",
+      "Tiny changes or rounding errors in b can produce large changes in x",
+      "The matrix has 10^8 rows",
+      "The system has no solution"
+    ],
+    "correct": 1,
+    "explanation": "The condition number bounds how much relative errors in the input can be amplified in the solution. A large value means the system is nearly singular and the answer is fragile."
+  }
+]

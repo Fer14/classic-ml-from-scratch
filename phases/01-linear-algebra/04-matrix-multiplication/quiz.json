@@ -1,0 +1,80 @@
+[
+  {
+    "id": "matmul-pre-1",
+    "stage": "pre",
+    "question": "A has shape (4, 3) and B has shape (3, 5). What is the shape of A @ B?",
+    "options": [
+      "(3, 3)",
+      "(5, 4)",
+      "It is undefined",
+      "(4, 5)"
+    ],
+    "correct": 3,
+    "explanation": "The inner dimensions (3 and 3) match and disappear; the outer dimensions give the result shape (4, 5)."
+  },
+  {
+    "id": "matmul-pre-2",
+    "stage": "pre",
+    "question": "In NumPy, A and B are both 2x2 arrays. What does A * B compute?",
+    "options": [
+      "The element-wise product",
+      "The matrix product",
+      "The dot product of the first rows",
+      "An error"
+    ],
+    "correct": 0,
+    "explanation": "* multiplies matching entries. Matrix multiplication is A @ B (or np.matmul)."
+  },
+  {
+    "id": "matmul-post-1",
+    "stage": "post",
+    "question": "In the product S @ R applied to a vector v, which transformation is applied to v first?",
+    "options": [
+      "S",
+      "R",
+      "They are applied simultaneously",
+      "It depends on the shapes"
+    ],
+    "correct": 1,
+    "explanation": "(S R) v = S (R v). Like function composition f(g(x)), the rightmost matrix acts first."
+  },
+  {
+    "id": "matmul-post-2",
+    "stage": "post",
+    "question": "What is the first column of A @ B?",
+    "options": [
+      "The first column of A times the first column of B, element-wise",
+      "The first row of A times B",
+      "A applied to the first column of B",
+      "The first column of B applied to A"
+    ],
+    "correct": 2,
+    "explanation": "Column j of AB = A @ (column j of B). Geometrically: where B sends a basis vector, then where A sends that result."
+  },
+  {
+    "id": "matmul-post-3",
+    "stage": "post",
+    "question": "A network applies two linear layers with no activation in between: (X @ W1) @ W2. What is true?",
+    "options": [
+      "It can represent strictly more functions than a single linear layer",
+      "It is equivalent to X @ (W2 @ W1)",
+      "It is non-linear because there are two layers",
+      "It is equivalent to a single linear layer with weights W1 @ W2"
+    ],
+    "correct": 3,
+    "explanation": "By associativity, (X W1) W2 = X (W1 W2). Stacking linear maps without a non-linearity gives another linear map."
+  },
+  {
+    "id": "matmul-post-4",
+    "stage": "post",
+    "question": "Which identity is correct for the transpose of a product?",
+    "options": [
+      "(AB)^T = B^T A^T",
+      "(AB)^T = A^T B^T",
+      "(AB)^T = AB",
+      "(AB)^T = BA"
+    ],
+    "correct": 0,
+    "explanation": "Transposing reverses the order: (AB)^T = B^T A^T. The shapes only line up this way."
+  }
+]

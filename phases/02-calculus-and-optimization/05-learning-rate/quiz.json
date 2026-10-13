@@ -1,0 +1,80 @@
+[
+  {
+    "id": "learningrate-pre-1",
+    "stage": "pre",
+    "question": "Your training loss becomes nan after a few iterations. What is the most likely cause?",
+    "options": [
+      "The learning rate is too small",
+      "The learning rate is too large",
+      "The model has too few parameters",
+      "The dataset is too large"
+    ],
+    "correct": 1,
+    "explanation": "A learning rate beyond the stability limit makes each step overshoot more than the last, so the weights and loss grow until they overflow to inf or nan."
+  },
+  {
+    "id": "learningrate-pre-2",
+    "stage": "pre",
+    "question": "The loss decreases smoothly but is still clearly falling after 10,000 steps. What should you try first?",
+    "options": [
+      "Lower the learning rate",
+      "Raise the learning rate",
+      "Remove the bias term",
+      "Stop training immediately"
+    ],
+    "correct": 1,
+    "explanation": "A smooth but slow descent is the signature of a learning rate that is too small. Increase it (staying below the divergence threshold)."
+  },
+  {
+    "id": "learningrate-post-1",
+    "stage": "post",
+    "question": "For gradient descent on f(x) = (L/2) x^2, which learning rate reaches the minimum in exactly one step?",
+    "options": [
+      "eta = L",
+      "eta = 1 / L",
+      "eta = 2 / L",
+      "eta = L / 2"
+    ],
+    "correct": 1,
+    "explanation": "The update is x <- (1 - eta L) x. The factor is zero when eta = 1/L, so one step lands exactly at 0."
+  },
+  {
+    "id": "learningrate-post-2",
+    "stage": "post",
+    "question": "The Hessian of your MSE loss has eigenvalues 0.5, 2 and 20. What is the largest constant learning rate for which gradient descent converges?",
+    "options": [
+      "Just under 0.1",
+      "Just under 1",
+      "Just under 4",
+      "Just under 0.05"
+    ],
+    "correct": 0,
+    "explanation": "Every direction needs |1 - eta lambda| < 1, which is strictest for lambda_max = 20: eta < 2/20 = 0.1."
+  },
+  {
+    "id": "learningrate-post-3",
+    "stage": "post",
+    "question": "Why did a constant learning rate beat every decay schedule on full-batch linear regression in this lesson?",
+    "options": [
+      "Decay schedules are always worse",
+      "The full-batch gradient is exact and shrinks to zero at the minimum, so there is no noise for decay to average out",
+      "The constant rate was above the stability limit",
+      "Schedules only work for classification"
+    ],
+    "correct": 1,
+    "explanation": "With exact gradients, a constant eta already converges, and decaying it only slows progress. Decay matters when gradients are noisy, as in SGD."
+  },
+  {
+    "id": "learningrate-post-4",
+    "stage": "post",
+    "question": "What does backtracking line search check before accepting a step?",
+    "options": [
+      "That the gradient is exactly zero",
+      "That the new loss is lower than the old loss by at least c * eta * |g|^2 (the Armijo condition)",
+      "That the learning rate is below 2 / lambda_max",
+      "That the weights are all positive"
+    ],
+    "correct": 1,
+    "explanation": "It shrinks the trial step until L(w - eta g) <= L(w) - c eta |g|^2, which guarantees sufficient decrease without knowing the curvature."
+  }
+]

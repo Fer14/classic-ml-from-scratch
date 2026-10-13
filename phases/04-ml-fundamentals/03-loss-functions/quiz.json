@@ -1,0 +1,80 @@
+[
+  {
+    "id": "losses-pre-1",
+    "stage": "pre",
+    "question": "What is the role of a loss function during training?",
+    "options": [
+      "It decides how many features the model uses",
+      "It provides the number the optimizer tries to minimize",
+      "It splits the data into train and test sets",
+      "It converts categorical features into numbers"
+    ],
+    "correct": 1,
+    "explanation": "The optimizer only sees the loss. Training is the search for parameters that make the average loss as small as possible."
+  },
+  {
+    "id": "losses-pre-2",
+    "stage": "pre",
+    "question": "Which regression loss is most affected by a single very large residual?",
+    "options": [
+      "Mean absolute error",
+      "Huber loss",
+      "Mean squared error",
+      "All three are equally affected"
+    ],
+    "correct": 2,
+    "explanation": "MSE squares the residual, so a residual of 10 contributes 100. MAE contributes 10 and Huber grows only linearly beyond delta."
+  },
+  {
+    "id": "losses-post-1",
+    "stage": "post",
+    "question": "If a model can only output one constant value, which constant minimizes the mean absolute error?",
+    "options": [
+      "The mean of the targets",
+      "The median of the targets",
+      "The mode of the targets",
+      "Zero"
+    ],
+    "correct": 1,
+    "explanation": "The derivative of the sum of absolute errors is the count of points above minus the count below, which is zero at the median."
+  },
+  {
+    "id": "losses-post-2",
+    "stage": "post",
+    "question": "A classifier assigns probability 0.01 to the true class of one example. Roughly what is that example's cross-entropy loss?",
+    "options": [
+      "0.01",
+      "0.99",
+      "4.6",
+      "100"
+    ],
+    "correct": 2,
+    "explanation": "Cross-entropy is -log(p_true) = -log(0.01) = 4.6, compared with 0.1 for p = 0.9. Confident mistakes are punished heavily."
+  },
+  {
+    "id": "losses-post-3",
+    "stage": "post",
+    "question": "Why do classifiers train on cross-entropy instead of directly maximizing accuracy?",
+    "options": [
+      "Accuracy cannot be computed on training data",
+      "Accuracy is a step function of the parameters, so its gradient is zero almost everywhere",
+      "Cross-entropy always gives higher accuracy than any other method",
+      "Accuracy only works for regression"
+    ],
+    "correct": 1,
+    "explanation": "Small parameter changes rarely flip a prediction, so accuracy is flat almost everywhere. Cross-entropy is a smooth surrogate that gradient-based optimizers can use."
+  },
+  {
+    "id": "losses-post-4",
+    "stage": "post",
+    "question": "Minimizing mean squared error is equivalent to maximum likelihood under which noise assumption?",
+    "options": [
+      "Gaussian noise",
+      "Laplace noise",
+      "Uniform noise",
+      "Bernoulli noise"
+    ],
+    "correct": 0,
+    "explanation": "The Gaussian log-density is a negative squared distance plus constants, so maximizing the likelihood is minimizing the sum of squared residuals."
+  }
+]

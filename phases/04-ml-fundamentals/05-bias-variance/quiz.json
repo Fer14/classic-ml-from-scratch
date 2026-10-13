@@ -1,0 +1,67 @@
+[
+  {
+    "id": "biasvar-pre-1",
+    "stage": "pre",
+    "question": "A model gives very similar predictions no matter which training set it sees, but those predictions are consistently far from the truth. What does it have?",
+    "options": [
+      "High bias, low variance",
+      "Low bias, high variance",
+      "Low bias, low variance",
+      "High irreducible error only"
+    ],
+    "correct": 0,
+    "explanation": "Consistent predictions mean low variance. Being consistently off target means the average prediction is wrong: high bias."
+  },
+  {
+    "id": "biasvar-pre-2",
+    "stage": "pre",
+    "question": "Which part of the expected test error can no model reduce?",
+    "options": [
+      "Bias squared",
+      "Variance",
+      "Irreducible noise in the labels",
+      "The generalization gap"
+    ],
+    "correct": 2,
+    "explanation": "If y = f(x) + noise, even the true function f has expected squared error sigma^2. That noise term is a floor."
+  },
+  {
+    "id": "biasvar-post-1",
+    "stage": "post",
+    "question": "You double the size of the training set for a straight-line model fitted to a sine wave. What happens?",
+    "options": [
+      "Bias decreases and variance stays the same",
+      "Bias stays about the same and variance decreases",
+      "Both bias and variance increase",
+      "The irreducible noise decreases"
+    ],
+    "correct": 1,
+    "explanation": "A line cannot represent a sine no matter how much data it sees, so bias stays. More data makes the fitted line more stable, so variance falls."
+  },
+  {
+    "id": "biasvar-post-2",
+    "stage": "post",
+    "question": "Increasing the ridge penalty lambda typically does what?",
+    "options": [
+      "Lowers bias and raises variance",
+      "Raises bias and lowers variance",
+      "Lowers both bias and variance",
+      "Has no effect on either"
+    ],
+    "correct": 1,
+    "explanation": "A stronger penalty restricts the model, making it less able to fit the true function (more bias) but less sensitive to the particular training set (less variance)."
+  },
+  {
+    "id": "biasvar-post-3",
+    "stage": "post",
+    "question": "Why does bagging fully grown decision trees improve test error?",
+    "options": [
+      "It reduces the bias of each tree",
+      "It removes label noise from the data",
+      "Averaging many high-variance, low-bias trees reduces variance while keeping bias low",
+      "It makes each tree shallower"
+    ],
+    "correct": 2,
+    "explanation": "Deep trees have low bias and high variance. Averaging predictions from trees trained on different bootstrap samples cancels much of the variance without adding bias."
+  }
+]

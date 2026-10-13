@@ -1,0 +1,80 @@
+[
+  {
+    "id": "scaling-pre-1",
+    "stage": "pre",
+    "question": "Which of these models is essentially unaffected by rescaling a feature?",
+    "options": [
+      "k-nearest neighbors",
+      "A decision tree",
+      "An SVM with an RBF kernel",
+      "Ridge regression"
+    ],
+    "correct": 1,
+    "explanation": "A tree splits one feature at a threshold. Any monotonic rescaling just moves the threshold, so the splits and predictions are identical."
+  },
+  {
+    "id": "scaling-pre-2",
+    "stage": "pre",
+    "question": "Why is mapping cities to 0, 1, 2, 3 a bad encoding for a linear model?",
+    "options": [
+      "Linear models cannot read integers",
+      "It invents an order and spacing between cities that does not exist",
+      "It uses too many columns",
+      "It makes the model scale-invariant"
+    ],
+    "correct": 1,
+    "explanation": "A linear model treats the code as a quantity, implying city 3 is three times city 1. One-hot encoding gives each city its own independent weight."
+  },
+  {
+    "id": "scaling-post-1",
+    "stage": "post",
+    "question": "A feature contains a few extreme outliers. Which scaler keeps the bulk of the values well spread out?",
+    "options": [
+      "Min-max scaling",
+      "Standard scaling",
+      "Robust scaling with median and IQR",
+      "No scaling at all"
+    ],
+    "correct": 2,
+    "explanation": "The median and interquartile range ignore extreme values, so the normal points keep a sensible spread. Min-max and standard scaling are both stretched by the outliers."
+  },
+  {
+    "id": "scaling-post-2",
+    "stage": "post",
+    "question": "When should you compute the mean and standard deviation used for standardization?",
+    "options": [
+      "On the full dataset before splitting",
+      "On the test set, so test features are exactly mean 0",
+      "On the training data only, then apply them to validation and test data",
+      "Separately on each set, using each set's own statistics"
+    ],
+    "correct": 2,
+    "explanation": "Scaling statistics are learned parameters. Learning them from evaluation data leaks information; learning them separately per set makes the same raw value map to different numbers."
+  },
+  {
+    "id": "scaling-post-3",
+    "stage": "post",
+    "question": "Why does standardizing features speed up gradient descent for linear regression?",
+    "options": [
+      "It reduces the number of samples",
+      "It makes the loss surface closer to a round bowl, so one learning rate works well in every direction",
+      "It removes the need for an intercept",
+      "It turns the problem into classification"
+    ],
+    "correct": 1,
+    "explanation": "Features on very different scales create a long, narrow valley (a high condition number). The learning rate must be tiny for the steep direction, which makes progress along the flat direction extremely slow."
+  },
+  {
+    "id": "scaling-post-4",
+    "stage": "post",
+    "question": "What does OneHotEncoder(handle_unknown=\"ignore\") do with a category it did not see during fit?",
+    "options": [
+      "Raises an error",
+      "Adds a new column at transform time",
+      "Encodes it as a row of all zeros",
+      "Maps it to the most frequent category"
+    ],
+    "correct": 2,
+    "explanation": "The unseen value matches none of the learned categories, so every indicator is 0. This keeps the output shape fixed for the downstream model."
+  }
+]

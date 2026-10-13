@@ -1,0 +1,67 @@
+[
+  {
+    "id": "probbasics-pre-1",
+    "stage": "pre",
+    "question": "You roll two fair dice. What is P(sum = 7)?",
+    "options": [
+      "1/12",
+      "1/6",
+      "7/36",
+      "1/11"
+    ],
+    "correct": 1,
+    "explanation": "Six of the 36 equally likely ordered pairs sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1). 6/36 = 1/6."
+  },
+  {
+    "id": "probbasics-pre-2",
+    "stage": "pre",
+    "question": "What does it mean for events A and B to be independent?",
+    "options": [
+      "A and B cannot happen at the same time",
+      "P(A) + P(B) = 1",
+      "P(A and B) = P(A) * P(B)",
+      "P(A | B) = P(B | A)"
+    ],
+    "correct": 2,
+    "explanation": "Independence means knowing B does not change the probability of A, which is equivalent to P(A and B) = P(A) P(B). Mutually exclusive events are actually dependent (if one happens the other cannot)."
+  },
+  {
+    "id": "probbasics-post-1",
+    "stage": "post",
+    "question": "Why does the addition rule subtract P(A and B)?",
+    "options": [
+      "Because probabilities must be smaller than 1",
+      "Because outcomes in both A and B are counted twice by P(A) + P(B)",
+      "Because A and B are always independent",
+      "Because it converts a joint probability into a conditional one"
+    ],
+    "correct": 1,
+    "explanation": "P(A) + P(B) counts the overlap A and B once in each term. Subtracting it once leaves every outcome of A or B counted exactly once."
+  },
+  {
+    "id": "probbasics-post-2",
+    "stage": "post",
+    "question": "Given at least one die shows a 6, what happens to P(sum >= 10) compared to the unconditional value?",
+    "options": [
+      "It stays at 1/6 because the dice are independent",
+      "It drops to 0 because 6 is already counted",
+      "It rises to 5/11 because the sample space shrinks to 11 outcomes, 5 of which qualify",
+      "It rises to 5/6"
+    ],
+    "correct": 2,
+    "explanation": "Conditioning restricts the sample space to the 11 outcomes containing a 6. Of those, (4,6), (5,6), (6,6), (6,5), (6,4) have sum >= 10, giving 5/11. 5/6 is P(has a 6 | sum >= 10), the reversed conditional."
+  },
+  {
+    "id": "probbasics-post-3",
+    "stage": "post",
+    "question": "You estimate a probability by simulation. To make the typical error 10 times smaller, roughly how many more trials do you need?",
+    "options": [
+      "10 times more",
+      "100 times more",
+      "1000 times more",
+      "The error does not depend on the number of trials"
+    ],
+    "correct": 1,
+    "explanation": "Monte Carlo error shrinks like 1/sqrt(n). Reducing it by 10x requires 10^2 = 100x more trials."
+  }
+]

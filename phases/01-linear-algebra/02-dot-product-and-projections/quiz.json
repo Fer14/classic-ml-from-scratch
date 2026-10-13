@@ -1,0 +1,80 @@
+[
+  {
+    "id": "dotproj-pre-1",
+    "stage": "pre",
+    "question": "What is [1, 2, 3] . [4, -1, 2]?",
+    "options": [
+      "[4, -2, 6]",
+      "8",
+      "12",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "Multiply matching components and add: 1*4 + 2*(-1) + 3*2 = 4 - 2 + 6 = 8. The result is a single number, not a vector."
+  },
+  {
+    "id": "dotproj-pre-2",
+    "stage": "pre",
+    "question": "Two non-zero vectors have a dot product of 0. What is the angle between them?",
+    "options": [
+      "0 degrees",
+      "45 degrees",
+      "90 degrees",
+      "180 degrees"
+    ],
+    "correct": 2,
+    "explanation": "v . w = |v| |w| cos(theta). With non-zero lengths, the product is 0 only when cos(theta) = 0, which means theta = 90 degrees."
+  },
+  {
+    "id": "dotproj-post-1",
+    "stage": "post",
+    "question": "What is the projection of w = [3, 4] onto v = [1, 0]?",
+    "options": [
+      "[3, 4]",
+      "[0, 4]",
+      "[1, 0]",
+      "[3, 0]"
+    ],
+    "correct": 3,
+    "explanation": "proj_v(w) = (w . v / v . v) v = (3 / 1) [1, 0] = [3, 0]. Projecting onto the x-axis keeps only the x component."
+  },
+  {
+    "id": "dotproj-post-2",
+    "stage": "post",
+    "question": "Document B has exactly twice the word counts of document A. What is their cosine similarity?",
+    "options": [
+      "1",
+      "0.5",
+      "2",
+      "It depends on the vocabulary size"
+    ],
+    "correct": 0,
+    "explanation": "Scaling a vector does not change its direction. Cosine similarity depends only on the angle, which is 0, so the similarity is cos(0) = 1."
+  },
+  {
+    "id": "dotproj-post-3",
+    "stage": "post",
+    "question": "A linear model predicts price = w . x + b. You move a house x by a vector p with w . p = 0. What happens to the predicted price?",
+    "options": [
+      "It increases by |p|",
+      "It stays the same",
+      "It becomes zero",
+      "It changes sign"
+    ],
+    "correct": 1,
+    "explanation": "w . (x + p) + b = w . x + w . p + b = w . x + b. The model only responds to the component of x along w; perpendicular moves are invisible to it."
+  },
+  {
+    "id": "dotproj-post-4",
+    "stage": "post",
+    "question": "In Gram-Schmidt, what do you subtract from each new vector before normalizing it?",
+    "options": [
+      "Its mean",
+      "The previous vector",
+      "Its projections onto all previously built orthonormal vectors",
+      "Its length"
+    ],
+    "correct": 2,
+    "explanation": "Removing the shadows on every earlier axis leaves only the component perpendicular to all of them, which is then scaled to unit length."
+  }
+]

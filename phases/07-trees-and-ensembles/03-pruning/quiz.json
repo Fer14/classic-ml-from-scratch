@@ -1,0 +1,80 @@
+[
+  {
+    "id": "prune-pre-1",
+    "stage": "pre",
+    "question": "What is the main risk of a decision tree grown until every leaf is pure?",
+    "options": [
+      "It cannot make predictions on new data",
+      "It overfits by fitting noise in the training set",
+      "It always underfits",
+      "It requires feature scaling"
+    ],
+    "correct": 1,
+    "explanation": "A fully grown tree memorizes training points, including noisy ones, which hurts generalization. Pruning reduces this variance."
+  },
+  {
+    "id": "prune-pre-2",
+    "stage": "pre",
+    "question": "Which of these is a pre-pruning rule?",
+    "options": [
+      "Replacing a subtree with a leaf after the tree is fully grown",
+      "Refusing to split nodes that have fewer than 10 samples",
+      "Averaging many trees",
+      "Removing features with low variance"
+    ],
+    "correct": 1,
+    "explanation": "Pre-pruning stops growth early using rules like min_samples_split, min_samples_leaf, max_depth, or min_impurity_decrease."
+  },
+  {
+    "id": "prune-post-1",
+    "stage": "post",
+    "question": "Why can a minimum-gain stopping rule fail on XOR-shaped data?",
+    "options": [
+      "XOR data has no informative features",
+      "The first split on either feature has almost zero gain, even though the next level would separate the classes perfectly",
+      "Gini impurity is undefined for XOR",
+      "XOR requires a regression tree"
+    ],
+    "correct": 1,
+    "explanation": "This is the horizon problem: a split's value may only appear after further splits. Post-pruning grows the full tree first so such interactions are not missed."
+  },
+  {
+    "id": "prune-post-2",
+    "stage": "post",
+    "question": "An internal node has R(t) = 0.05, its subtree has R(T_t) = 0.02 and 4 leaves. What is its effective alpha?",
+    "options": [
+      "0.0075",
+      "0.01",
+      "0.03",
+      "0.0125"
+    ],
+    "correct": 1,
+    "explanation": "alpha_eff = (R(t) - R(T_t)) / (leaves - 1) = (0.05 - 0.02) / 3 = 0.01."
+  },
+  {
+    "id": "prune-post-3",
+    "stage": "post",
+    "question": "How should you choose ccp_alpha?",
+    "options": [
+      "Pick the alpha with the lowest training error",
+      "Always use alpha = 0",
+      "Evaluate the breakpoints from the pruning path with cross-validation and pick the best (or the 1-SE choice)",
+      "Use the largest alpha on the path"
+    ],
+    "correct": 2,
+    "explanation": "Training error always prefers alpha = 0 (the full tree) and the largest alpha gives a single leaf. Cross-validation over the path's breakpoints finds the right trade-off."
+  },
+  {
+    "id": "prune-post-4",
+    "stage": "post",
+    "question": "What does it mean that cost-complexity optimal subtrees are nested?",
+    "options": [
+      "Each tree contains every other tree on the path",
+      "As alpha increases, branches are only removed, never added back",
+      "The tree must be balanced",
+      "Each subtree uses a different impurity function"
+    ],
+    "correct": 1,
+    "explanation": "The optimal subtree for a larger alpha is always a pruned version of the optimal subtree for a smaller alpha, so the path is a single sequence of cuts."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "svd-pre-1",
+    "stage": "pre",
+    "question": "Which matrices have a singular value decomposition?",
+    "options": [
+      "Only square matrices",
+      "Only symmetric matrices",
+      "Only invertible matrices",
+      "Every real matrix, of any shape"
+    ],
+    "correct": 3,
+    "explanation": "Unlike eigen-decomposition, the SVD exists for every real m x n matrix, including rectangular and singular ones."
+  },
+  {
+    "id": "svd-pre-2",
+    "stage": "pre",
+    "question": "Geometrically, what does a matrix do to the unit sphere?",
+    "options": [
+      "It always keeps it a sphere",
+      "It maps it to an ellipsoid whose semi-axes have lengths equal to the singular values",
+      "It maps it to a cube",
+      "It translates it away from the origin"
+    ],
+    "correct": 1,
+    "explanation": "A = U S V^T rotates, stretches each axis by sigma_i, and rotates again, turning the unit sphere into an ellipsoid with semi-axes sigma_i."
+  },
+  {
+    "id": "svd-post-1",
+    "stage": "post",
+    "question": "A centered data matrix with n = 101 rows has a top singular value of 20. What is the variance along the first principal component?",
+    "options": [
+      "20",
+      "0.2",
+      "4",
+      "400"
+    ],
+    "correct": 2,
+    "explanation": "Variance along PC i is sigma_i^2 / (n - 1) = 400 / 100 = 4."
+  },
+  {
+    "id": "svd-post-2",
+    "stage": "post",
+    "question": "How many numbers do you need to store a rank-10 approximation of a 200 x 300 matrix?",
+    "options": [
+      "10 * (200 + 300 + 1) = 5010",
+      "200 * 300 = 60000",
+      "10 * 200 * 300",
+      "10 + 200 + 300"
+    ],
+    "correct": 0,
+    "explanation": "You store k columns of U (m each), k rows of V^T (n each) and k singular values: k (m + n + 1)."
+  },
+  {
+    "id": "svd-post-3",
+    "stage": "post",
+    "question": "Why does sklearn compute PCA with an SVD of the centered data instead of eigen-decomposing X^T X?",
+    "options": [
+      "SVD gives different, better components",
+      "Eigen-decomposition cannot handle more than 10 features",
+      "Forming X^T X squares the condition number and loses numerical precision",
+      "SVD does not need the data to be centered"
+    ],
+    "correct": 2,
+    "explanation": "Both give the same components in exact arithmetic, but X^T X squares the condition number, so small singular values lose precision. Working on X directly is more stable."
+  },
+  {
+    "id": "svd-post-4",
+    "stage": "post",
+    "question": "What does power iteration converge to when applied with A^T A?",
+    "options": [
+      "The smallest singular vector",
+      "The right singular vector with the largest singular value",
+      "A random orthonormal basis",
+      "The mean of the rows of A"
+    ],
+    "correct": 1,
+    "explanation": "Repeated multiplication by A^T A amplifies the component along its dominant eigenvector, which is the top right singular vector v_1."
+  }
+]

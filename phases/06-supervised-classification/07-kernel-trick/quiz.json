@@ -1,0 +1,80 @@
+[
+  {
+    "id": "kernel-pre-1",
+    "stage": "pre",
+    "question": "What does a kernel function k(x, z) compute?",
+    "options": [
+      "The distance between x and z in the original space only",
+      "A dot product phi(x) . phi(z) in some feature space, without building phi explicitly",
+      "The gradient of the loss with respect to x",
+      "The probability that x and z belong to the same class"
+    ],
+    "correct": 1,
+    "explanation": "A valid kernel equals an inner product in some (possibly infinite-dimensional) feature space. You get the dot product at the cost of a cheap function of the original inputs."
+  },
+  {
+    "id": "kernel-pre-2",
+    "stage": "pre",
+    "question": "A linear SVM gets about 50% accuracy on two concentric circles. Why?",
+    "options": [
+      "The learning rate is too high",
+      "C is too small",
+      "No straight line can separate an inner ring from an outer ring",
+      "The data needs to be standardized"
+    ],
+    "correct": 2,
+    "explanation": "Any line cuts both rings, so a linear boundary cannot do better than chance. You need a nonlinear boundary, which a kernel provides."
+  },
+  {
+    "id": "kernel-post-1",
+    "stage": "post",
+    "question": "Why can the SVM use the kernel trick?",
+    "options": [
+      "Because the hinge loss is convex",
+      "Because in the dual problem and the decision function the data appears only through dot products x_i . x_j",
+      "Because SVMs only use support vectors",
+      "Because the primal weight vector w is always low dimensional"
+    ],
+    "correct": 1,
+    "explanation": "The dual objective and f(x) = sum alpha_i y_i (x_i . x) + b depend on the data only via dot products. Replacing them with k(x_i, x_j) trains a linear SVM in the kernel's feature space."
+  },
+  {
+    "id": "kernel-post-2",
+    "stage": "post",
+    "question": "Your RBF SVM has 99% train accuracy, 75% test accuracy, and almost every training point is a support vector. What should you change first?",
+    "options": [
+      "Increase gamma",
+      "Decrease gamma (and possibly C)",
+      "Switch to a polynomial kernel of degree 10",
+      "Remove the bias term"
+    ],
+    "correct": 1,
+    "explanation": "Large gamma makes each support vector's influence very local, so the boundary wraps around individual points. Lowering gamma smooths the boundary; lowering C also adds regularization."
+  },
+  {
+    "id": "kernel-post-3",
+    "stage": "post",
+    "question": "In SMO, why are two alphas updated at a time instead of one?",
+    "options": [
+      "Updating one would violate the constraint sum_i alpha_i y_i = 0",
+      "Two updates are twice as fast as one",
+      "The kernel matrix is only defined for pairs of points",
+      "One alpha always belongs to each class"
+    ],
+    "correct": 0,
+    "explanation": "The equality constraint sum alpha_i y_i = 0 means changing a single alpha breaks feasibility. Changing two together, along the line that keeps the sum fixed, gives a 1-D problem with a closed-form solution."
+  },
+  {
+    "id": "kernel-post-4",
+    "stage": "post",
+    "question": "Which of these is true about (x . z + 1)^2 for 2-D inputs?",
+    "options": [
+      "It is not a valid kernel because it can exceed 1",
+      "It equals the dot product of 6-D feature vectors containing a constant, the linear terms, the squares, and the cross term",
+      "It is the same as the RBF kernel with gamma = 2",
+      "It only works for binary features"
+    ],
+    "correct": 1,
+    "explanation": "Expanding gives 1 + 2 x1 z1 + 2 x2 z2 + x1^2 z1^2 + x2^2 z2^2 + 2 x1 x2 z1 z2, which is phi(x) . phi(z) for phi = [1, sqrt2 x1, sqrt2 x2, x1^2, x2^2, sqrt2 x1 x2]."
+  }
+]

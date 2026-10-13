@@ -1,0 +1,80 @@
+[
+  {
+    "id": "assoc-pre-1",
+    "stage": "pre",
+    "question": "In 1000 baskets, 200 contain bread and 150 contain both bread and butter. What is the confidence of bread -> butter?",
+    "options": [
+      "0.15",
+      "0.20",
+      "0.75",
+      "1.33"
+    ],
+    "correct": 2,
+    "explanation": "Confidence = support(bread and butter) / support(bread) = 0.15 / 0.20 = 0.75."
+  },
+  {
+    "id": "assoc-pre-2",
+    "stage": "pre",
+    "question": "Why is it infeasible to count every possible itemset in a large store?",
+    "options": [
+      "There are 2^n itemsets for n items, which explodes combinatorially",
+      "Itemsets cannot be stored in memory as sets",
+      "Most transactions are empty",
+      "Support can only be computed for pairs"
+    ],
+    "correct": 0,
+    "explanation": "Every subset of the n items is an itemset, so there are 2^n of them. Even 50 items give about 10^15 candidates."
+  },
+  {
+    "id": "assoc-post-1",
+    "stage": "post",
+    "question": "What does the Apriori principle allow you to do?",
+    "options": [
+      "Skip any candidate that has an infrequent subset, because it cannot be frequent",
+      "Compute confidence without support",
+      "Count only the most popular item",
+      "Guarantee every rule has lift greater than 1"
+    ],
+    "correct": 0,
+    "explanation": "Support can only decrease when you add items, so if any subset is infrequent the superset is infrequent and can be pruned before counting."
+  },
+  {
+    "id": "assoc-post-2",
+    "stage": "post",
+    "question": "Water appears in 60% of all baskets. The rule coffee -> water has confidence 0.61. What is the lift, and what does it mean?",
+    "options": [
+      "About 0.61; coffee buyers avoid water",
+      "About 1.0; coffee tells you almost nothing about water",
+      "About 6.1; a strong association",
+      "Lift cannot be computed without the support of coffee"
+    ],
+    "correct": 1,
+    "explanation": "Lift = 0.61 / 0.60 = 1.02. High confidence comes from water being popular, not from any association with coffee."
+  },
+  {
+    "id": "assoc-post-3",
+    "stage": "post",
+    "question": "bread -> butter has lift 2.98 and bread, water -> butter has lift 3.10, where water is independent of both. How should you treat the second rule?",
+    "options": [
+      "As the most important rule, since it has the highest lift",
+      "As redundant: adding water does not meaningfully change the association and the small lift gain is noise",
+      "As proof that water causes butter purchases",
+      "As a rule with lift below 1"
+    ],
+    "correct": 1,
+    "explanation": "Longer rules that do not clearly beat their simpler versions add clutter. Good practice is to filter them out."
+  },
+  {
+    "id": "assoc-post-4",
+    "stage": "post",
+    "question": "What is the main advantage of FP-Growth over Apriori?",
+    "options": [
+      "It finds different frequent itemsets",
+      "It does not need a minimum support",
+      "It avoids candidate generation by compressing transactions into a prefix tree, making it faster",
+      "It computes lift instead of support"
+    ],
+    "correct": 2,
+    "explanation": "FP-Growth returns the same frequent itemsets, but mines them from a compact FP-tree with far fewer passes over the data."
+  }
+]

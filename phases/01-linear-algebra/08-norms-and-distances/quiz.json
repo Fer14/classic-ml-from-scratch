@@ -1,0 +1,80 @@
+[
+  {
+    "id": "norms-pre-1",
+    "stage": "pre",
+    "question": "What is the L1 norm of [3, -4]?",
+    "options": [
+      "5",
+      "-1",
+      "4",
+      "7"
+    ],
+    "correct": 3,
+    "explanation": "The L1 norm sums absolute values: |3| + |-4| = 7. The L2 norm would be 5 and the L-infinity norm 4."
+  },
+  {
+    "id": "norms-pre-2",
+    "stage": "pre",
+    "question": "Why should you standardize features before running k-nearest neighbors?",
+    "options": [
+      "Because features with large numeric ranges would otherwise dominate the distance",
+      "To make the algorithm run faster",
+      "Because k-NN only accepts values between 0 and 1",
+      "To remove outliers"
+    ],
+    "correct": 0,
+    "explanation": "Euclidean distance sums squared differences across features. A feature measured in thousands swamps one measured in units unless all features are put on a comparable scale."
+  },
+  {
+    "id": "norms-post-1",
+    "stage": "post",
+    "question": "What shape is the set of 2-D points with L1 norm equal to 1?",
+    "options": [
+      "A circle",
+      "A diamond (square rotated 45 degrees)",
+      "An axis-aligned square",
+      "A star"
+    ],
+    "correct": 1,
+    "explanation": "|x| + |y| = 1 is a diamond with corners at (+-1, 0) and (0, +-1). Those corners on the axes are why L1 regularization produces sparse solutions."
+  },
+  {
+    "id": "norms-post-2",
+    "stage": "post",
+    "question": "Two documents have word counts [1, 2, 0] and [10, 20, 0]. Which statement is true?",
+    "options": [
+      "Their Euclidean distance and cosine distance are both 0",
+      "Their cosine distance is 1",
+      "Their Euclidean distance is large but their cosine distance is 0",
+      "They cannot be compared because the counts differ"
+    ],
+    "correct": 2,
+    "explanation": "The vectors point in the same direction, so the angle is 0 and cosine distance is 0. Their lengths differ a lot, so Euclidean distance is large."
+  },
+  {
+    "id": "norms-post-3",
+    "stage": "post",
+    "question": "A data cloud has standard deviation 3 along its main axis and 0.5 across it. Point P is 3 units from the center along the main axis; Q is 3 units across. Which is more unusual by Mahalanobis distance?",
+    "options": [
+      "P, with Mahalanobis distance 6",
+      "Both have Mahalanobis distance 3",
+      "Both have Mahalanobis distance 1",
+      "Q, with Mahalanobis distance 6"
+    ],
+    "correct": 3,
+    "explanation": "Mahalanobis distance divides each direction by its standard deviation: P is 3/3 = 1 standard deviation away, Q is 3/0.5 = 6. Q is the outlier."
+  },
+  {
+    "id": "norms-post-4",
+    "stage": "post",
+    "question": "What happens to the ratio (max distance - min distance) / min distance among random points as the dimension grows to 1000?",
+    "options": [
+      "It shrinks toward 0, so all points look about equally far apart",
+      "It grows without bound",
+      "It stays constant",
+      "It becomes negative"
+    ],
+    "correct": 0,
+    "explanation": "Each squared distance is a sum of many independent terms, which concentrates around its mean. Nearest and farthest neighbors become nearly indistinguishable: the curse of dimensionality."
+  }
+]

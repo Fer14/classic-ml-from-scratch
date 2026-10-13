@@ -1,0 +1,80 @@
+[
+  {
+    "id": "metrics-pre-1",
+    "stage": "pre",
+    "question": "On a dataset with 95% negatives, a model that always predicts negative has what accuracy?",
+    "options": [
+      "5%",
+      "50%",
+      "95%",
+      "100%"
+    ],
+    "correct": 2,
+    "explanation": "It is right on every negative, which is 95% of the data, while catching zero positives. This is why accuracy misleads on imbalanced data."
+  },
+  {
+    "id": "metrics-pre-2",
+    "stage": "pre",
+    "question": "Which metric answers the question: of all the items the model flagged as positive, what fraction were actually positive?",
+    "options": [
+      "Recall",
+      "Precision",
+      "Specificity",
+      "Accuracy"
+    ],
+    "correct": 1,
+    "explanation": "Precision = TP / (TP + FP), the fraction of positive predictions that were correct."
+  },
+  {
+    "id": "metrics-post-1",
+    "stage": "post",
+    "question": "You lower the classification threshold from 0.8 to 0.3. What typically happens?",
+    "options": [
+      "Precision and recall both increase",
+      "Recall increases and precision decreases",
+      "Precision increases and recall decreases",
+      "Neither changes because the model is the same"
+    ],
+    "correct": 1,
+    "explanation": "A lower threshold flags more items: more true positives (higher recall) but also more false positives (usually lower precision)."
+  },
+  {
+    "id": "metrics-post-2",
+    "stage": "post",
+    "question": "A model has ROC AUC = 0.9. What does that mean?",
+    "options": [
+      "90% of predictions are correct",
+      "A randomly chosen positive gets a higher score than a randomly chosen negative 90% of the time",
+      "Precision is 0.9 at threshold 0.5",
+      "90% of positives are detected"
+    ],
+    "correct": 1,
+    "explanation": "ROC AUC measures ranking quality: the probability that a random positive outranks a random negative. It does not depend on any threshold."
+  },
+  {
+    "id": "metrics-post-3",
+    "stage": "post",
+    "question": "With 0.5% positives, why is average precision often more informative than ROC AUC?",
+    "options": [
+      "ROC AUC cannot be computed with imbalanced data",
+      "The false positive rate stays tiny even with many false positives because negatives are so numerous, so ROC AUC can look excellent while precision is poor",
+      "Average precision is always higher than ROC AUC",
+      "Average precision ignores false positives"
+    ],
+    "correct": 1,
+    "explanation": "FPR divides false positives by a huge number of negatives, hiding them. Precision divides by the number of flagged items, so it exposes a flood of false alarms."
+  },
+  {
+    "id": "metrics-post-4",
+    "stage": "post",
+    "question": "A regression model has MAE = 10 and RMSE = 40. What does the gap suggest?",
+    "options": [
+      "The model is perfectly calibrated",
+      "A few very large errors dominate the squared error",
+      "The model always predicts the mean",
+      "RMSE was computed incorrectly; it cannot exceed MAE"
+    ],
+    "correct": 1,
+    "explanation": "RMSE squares errors before averaging, so a handful of large errors inflate it far more than MAE. RMSE is always at least MAE."
+  }
+]

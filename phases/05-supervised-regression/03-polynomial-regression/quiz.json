@@ -1,0 +1,67 @@
+[
+  {
+    "id": "poly-pre-1",
+    "stage": "pre",
+    "question": "Why is y = w0 + w1 x + w2 x^2 still called linear regression?",
+    "options": [
+      "Because the plot is a straight line",
+      "Because the prediction is linear in the parameters w",
+      "Because x^2 is approximately linear for small x",
+      "It is not; it requires a nonlinear solver"
+    ],
+    "correct": 1,
+    "explanation": "Linearity refers to the parameters. The features x and x^2 are fixed columns, and the prediction is a weighted sum of them, so OLS still applies."
+  },
+  {
+    "id": "poly-pre-2",
+    "stage": "pre",
+    "question": "As you increase the polynomial degree, what happens to training error with OLS?",
+    "options": [
+      "It never increases",
+      "It always increases",
+      "It first increases then decreases",
+      "It stays constant"
+    ],
+    "correct": 0,
+    "explanation": "A higher-degree model contains every lower-degree model (set extra weights to zero), so the best training fit can only stay the same or improve."
+  },
+  {
+    "id": "poly-post-1",
+    "stage": "post",
+    "question": "Validation MSE is 0.088 at degree 5 and 0.197 at degree 15, while training MSE is lower at degree 15. What does this indicate?",
+    "options": [
+      "Degree 15 underfits",
+      "Degree 15 overfits; prefer degree 5",
+      "The validation set is broken",
+      "You should always pick the lowest training error"
+    ],
+    "correct": 1,
+    "explanation": "Lower training error but higher validation error is the signature of overfitting. Choose the degree with the lowest validation error."
+  },
+  {
+    "id": "poly-post-2",
+    "stage": "post",
+    "question": "Why rescale x to about [-1, 1] before building high-degree polynomial features?",
+    "options": [
+      "To make the model nonlinear",
+      "To keep powers of x within similar magnitudes so X^T X is not numerically singular",
+      "Because NumPy cannot raise numbers above 1 to a power",
+      "To remove the need for an intercept"
+    ],
+    "correct": 1,
+    "explanation": "If x is large, x^12 dwarfs x^0 by many orders of magnitude, so the design matrix is badly conditioned and least squares loses precision."
+  },
+  {
+    "id": "poly-post-3",
+    "stage": "post",
+    "question": "The best validation MSE you found was about 0.088 and the noise standard deviation is 0.3. What does that tell you?",
+    "options": [
+      "The model is still badly underfitting",
+      "The model is close to the irreducible error of 0.09, so little improvement is possible",
+      "The model is leaking test data",
+      "You should increase the degree to reach 0"
+    ],
+    "correct": 1,
+    "explanation": "Noise variance 0.3^2 = 0.09 is the irreducible error. A validation MSE near it means the model has captured essentially all the learnable signal."
+  }
+]

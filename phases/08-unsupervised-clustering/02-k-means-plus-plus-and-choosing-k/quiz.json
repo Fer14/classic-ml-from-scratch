@@ -1,0 +1,67 @@
+[
+  {
+    "id": "kmeanspp-pre-1",
+    "stage": "pre",
+    "question": "Why can't you choose k by picking the value with the lowest inertia?",
+    "options": [
+      "Inertia is undefined for k greater than 2",
+      "Inertia always decreases as k grows, reaching zero when every point is its own cluster",
+      "Inertia increases with k",
+      "Inertia depends only on the number of features"
+    ],
+    "correct": 1,
+    "explanation": "More clusters can only reduce within-cluster distances. Minimizing inertia would always pick k = n, which is useless."
+  },
+  {
+    "id": "kmeanspp-pre-2",
+    "stage": "pre",
+    "question": "With 5 equal-sized clusters and purely random seeding, roughly how likely is it that each cluster receives exactly one seed?",
+    "options": [
+      "About 4%",
+      "About 50%",
+      "About 96%",
+      "Exactly 20%"
+    ],
+    "correct": 0,
+    "explanation": "The probability is k!/k^k = 120/3125, about 3.8%. Random seeding almost always relies on Lloyd's iterations to fix the placement."
+  },
+  {
+    "id": "kmeanspp-post-1",
+    "stage": "post",
+    "question": "How does k-means++ choose the next initial centroid?",
+    "options": [
+      "It picks the point farthest from all existing centroids, deterministically",
+      "It picks the mean of all data points",
+      "It samples a data point with probability proportional to its squared distance to the nearest chosen centroid",
+      "It picks uniformly at random, like random init"
+    ],
+    "correct": 2,
+    "explanation": "Sampling proportional to D(x)^2 favors distant points while staying random, which spreads seeds out without always picking outliers."
+  },
+  {
+    "id": "kmeanspp-post-2",
+    "stage": "post",
+    "question": "What does the gap statistic compare your clustering against?",
+    "options": [
+      "The clustering found by hierarchical clustering",
+      "The same data with labels",
+      "Clusterings of reference data drawn uniformly over the bounding box of your data",
+      "A Gaussian mixture model"
+    ],
+    "correct": 2,
+    "explanation": "Gap(k) is the expected log-inertia on structureless uniform data minus the observed log-inertia. A large gap means the data clusters much better than noise."
+  },
+  {
+    "id": "kmeanspp-post-3",
+    "stage": "post",
+    "question": "The elbow, gap maximum and silhouette suggest k = 4, 5 and 6 respectively. What is a sensible next step?",
+    "options": [
+      "Always take the average, k = 5, without looking further",
+      "Inspect the candidate clusterings and pick the k that is most useful for the downstream decision",
+      "Discard the data, since clustering has failed",
+      "Pick the largest k because it has the lowest inertia"
+    ],
+    "correct": 1,
+    "explanation": "Diagnostics narrow the range. Within that range, the right k is the one whose clusters are interpretable and actionable for the task."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "logreg-pre-1",
+    "stage": "pre",
+    "question": "What does the sigmoid function output for an input of 0?",
+    "options": [
+      "0",
+      "0.5",
+      "1",
+      "It is undefined at 0"
+    ],
+    "correct": 1,
+    "explanation": "sigma(0) = 1/(1+e^0) = 1/2. A linear score of zero means the model is exactly undecided."
+  },
+  {
+    "id": "logreg-pre-2",
+    "stage": "pre",
+    "question": "Why is plain linear regression a poor choice for 0/1 labels?",
+    "options": [
+      "It cannot use more than one feature",
+      "It can predict values below 0 and above 1, which are not probabilities",
+      "It always overfits",
+      "It requires the labels to be standardized"
+    ],
+    "correct": 1,
+    "explanation": "A straight line is unbounded, so its outputs cannot be read as probabilities and outliers shift the 0.5 cut."
+  },
+  {
+    "id": "logreg-post-1",
+    "stage": "post",
+    "question": "What quantity does logistic regression model as a linear function of the features?",
+    "options": [
+      "The probability p",
+      "The log-odds log(p/(1-p))",
+      "The squared error",
+      "The class label directly"
+    ],
+    "correct": 1,
+    "explanation": "Inverting the sigmoid gives log(p/(1-p)) = w^T x + b, so each weight is a change in log-odds per unit of its feature."
+  },
+  {
+    "id": "logreg-post-2",
+    "stage": "post",
+    "question": "What is the gradient of the binary cross-entropy with respect to w (averaged over n samples)?",
+    "options": [
+      "X^T (y - p)^2 / n",
+      "X^T (p - y) / n",
+      "p (1 - p) / n",
+      "X^T X w / n"
+    ],
+    "correct": 1,
+    "explanation": "The sigmoid derivative cancels against the log terms, leaving X^T (p - y) / n, the same form as linear regression's gradient."
+  },
+  {
+    "id": "logreg-post-3",
+    "stage": "post",
+    "question": "You lower the decision threshold from 0.5 to 0.3 without retraining. What typically happens?",
+    "options": [
+      "Precision rises and recall falls",
+      "Recall rises and precision falls",
+      "Both rise",
+      "The weights change"
+    ],
+    "correct": 1,
+    "explanation": "More points cross the lower threshold, so you catch more positives (recall up) at the cost of more false alarms (precision down). The weights are untouched."
+  },
+  {
+    "id": "logreg-post-4",
+    "stage": "post",
+    "question": "On perfectly separable data with no regularization, what happens to the weights during training?",
+    "options": [
+      "They converge to zero",
+      "Their norm keeps growing toward infinity",
+      "They oscillate around a fixed value",
+      "Training stops after one epoch"
+    ],
+    "correct": 1,
+    "explanation": "The loss can always be reduced by scaling w up to make predictions more confident, so the norm diverges. L2 regularization keeps it finite."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "anomaly-pre-1",
+    "stage": "pre",
+    "question": "Why is anomaly detection usually treated as an unsupervised problem?",
+    "options": [
+      "Anomalies are always easy to label",
+      "Anomalies are rare, often unlabelled, and new ones may not look like past ones",
+      "Supervised models cannot output probabilities",
+      "Anomalies always have missing values"
+    ],
+    "correct": 1,
+    "explanation": "Labels are scarce and anomalies vary, so detectors model normal behavior and flag points that do not fit it."
+  },
+  {
+    "id": "anomaly-pre-2",
+    "stage": "pre",
+    "question": "Under a normal distribution, roughly what fraction of points have |z| > 3?",
+    "options": [
+      "0.3%",
+      "5%",
+      "15%",
+      "32%"
+    ],
+    "correct": 0,
+    "explanation": "About 99.7% of a normal distribution lies within 3 standard deviations of the mean."
+  },
+  {
+    "id": "anomaly-post-1",
+    "stage": "post",
+    "question": "A latency series has 13% extreme spikes and the standard z-score flags none of them. What is happening?",
+    "options": [
+      "The spikes are not anomalies",
+      "Masking: the spikes inflate the mean and standard deviation so their own z-scores fall below 3",
+      "The z-score only works on negative values",
+      "The data must be sorted first"
+    ],
+    "correct": 1,
+    "explanation": "Mean and std are not robust. Many outliers inflate sigma, which shrinks every z-score. Median and MAD resist this."
+  },
+  {
+    "id": "anomaly-post-2",
+    "stage": "post",
+    "question": "In an isolation forest, which points get high anomaly scores?",
+    "options": [
+      "Points that need many random splits to be isolated",
+      "Points closest to the global mean",
+      "Points that are isolated after only a few random splits on average",
+      "Points with the largest feature values"
+    ],
+    "correct": 2,
+    "explanation": "Short average path length means the point sits in a sparse region. The score 2^(-E[h]/c(n)) approaches 1 as E[h] gets small."
+  },
+  {
+    "id": "anomaly-post-3",
+    "stage": "post",
+    "question": "What is the role of c(n) in the isolation forest score?",
+    "options": [
+      "It is the number of trees",
+      "It normalizes path length by the expected depth for a sample of size n, making scores comparable",
+      "It is the contamination rate",
+      "It sets the maximum number of features per split"
+    ],
+    "correct": 1,
+    "explanation": "c(n) is the average path length of an unsuccessful binary search tree lookup with n points; dividing by it makes scores independent of sample size."
+  },
+  {
+    "id": "anomaly-post-4",
+    "stage": "post",
+    "question": "Which anomalies are hardest for an isolation forest?",
+    "options": [
+      "Single points far from all data",
+      "Points with one extreme feature",
+      "A small, tight group of anomalies close to each other",
+      "Points outside the training range"
+    ],
+    "correct": 2,
+    "explanation": "Points in a tight group protect each other: separating them takes many cuts, so their path lengths look normal. Subsampling helps partially."
+  }
+]

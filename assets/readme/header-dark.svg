@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="Classic ML from Scratch: a reference manual in 11 phases, stacked from Python and math up to supervised, unsupervised and practical machine learning">
+  <defs>
+    <pattern id="paper" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="0" cy="0" r="1" fill="#ece6dc" fill-opacity="0.08"/>
+    </pattern>
+    <pattern id="paperRule" x="0" y="0" width="100" height="6" patternUnits="userSpaceOnUse">
+      <rect width="4" height="3" fill="#c4a48c"/>
+      <rect x="8" y="3" width="6" height="3" fill="#c4a48c" fill-opacity="0.35"/>
+    </pattern>
+    <style>
+      .bp { stroke: #c4a48c; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .display { font-family: 'VT323', ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 400; }
+      .serif { font-family: 'Source Serif 4', Georgia, serif; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="420" fill="#1a1714"/>
+  <rect width="1280" height="420" fill="url(#paper)"/>
+
+  <g class="mono" font-size="11" letter-spacing="2.4" fill="#a39a90" text-anchor="end">
+    <text x="1224" y="44">© 2026  ·  OPEN SOURCE  ·  MIT LICENSE</text>
+  </g>
+  <line x1="56" y1="64" x2="1224" y2="64" stroke="#c4a48c" stroke-width="0.6" stroke-opacity="0.4"/>
+
+  <g transform="translate(56, 110)">
+    <text class="display" x="0" y="58" font-size="68" letter-spacing="1.5" fill="#c4a48c">CLASSIC ML</text>
+    <text class="display" x="0" y="124" font-size="68" letter-spacing="1.5" fill="#ece6dc">FROM SCRATCH.</text>
+  </g>
+
+  <g class="serif" font-size="17" fill="#ece6dc">
+    <text x="56" y="296">A reference manual for people who want to understand machine learning from first principles.</text>
+  </g>
+
+  <line x1="780" y1="110" x2="780" y2="362" stroke="#c4a48c" stroke-width="0.6" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+
+  <g class="mono" font-size="9" letter-spacing="2" fill="#c4a48c">
+    <text x="820" y="120">FIG_000.A  ·  CURRICULUM STACK</text>
+  </g>
+
+    <g>
+      <polygon points="834,330 924,310 1014,330 1014,338 924,358 834,338" fill="#1a1714"/>
+      <polygon points="834,330 924,310 1014,330 924,350" fill="#c4a48c" fill-opacity="0.05"/>
+      <polygon points="834,330 924,350 924,358 834,338" fill="#c4a48c" fill-opacity="0.13"/>
+      <polygon points="924,350 1014,330 1014,338 924,358" fill="#c4a48c" fill-opacity="0.19"/>
+      <polygon class="bp" points="834,330 924,310 1014,330 924,350" stroke-width="1.1"/>
+      <polyline class="bp" points="834,330 834,338 924,358 1014,338 1014,330" stroke-width="1.1"/>
+      <line class="bp" x1="924" y1="350" x2="924" y2="358" stroke-width="1.1"/>
+    </g>
+    <g>
+      <polygon points="834,305 924,285 1014,305 1014,313 924,333 834,313" fill="#1a1714"/>
+      <polygon points="834,305 924,285 1014,305 924,325" fill="#c4a48c" fill-opacity="0.07"/>
+      <polygon points="834,305 924,325 924,333 834,313" fill="#c4a48c" fill-opacity="0.15"/>
+      <polygon points="924,325 1014,305 1014,313 924,333" fill="#c4a48c" fill-opacity="0.21"/>
+      <polygon class="bp" points="834,305 924,285 1014,305 924,325" stroke-width="1.1"/>
+      <polyline class="bp" points="834,305 834,313 924,333 1014,313 1014,305" stroke-width="1.1"/>
+      <line class="bp" x1="924" y1="325" x2="924" y2="333" stroke-width="1.1"/>
+    </g>
+    <g>
+      <polygon points="834,280 924,260 1014,280 1014,288 924,308 834,288" fill="#1a1714"/>
+      <polygon points="834,280 924,260 1014,280 924,300" fill="#c4a48c" fill-opacity="0.09"/>
+      <polygon points="834,280 924,300 924,308 834,288" fill="#c4a48c" fill-opacity="0.17"/>
+      <polygon points="924,300 1014,280 1014,288 924,308" fill="#c4a48c" fill-opacity="0.23"/>
+      <polygon class="bp" points="834,280 924,260 1014,280 924,300" stroke-width="1.1"/>
+      <polyline class="bp" points="834,280 834,288 924,308 1014,288 1014,280" stroke-width="1.1"/>
+      <line class="bp" x1="924" y1="300" x2="924" y2="308" stroke-width="1.1"/>
+    </g>
+    <g>
+      <polygon points="834,255 924,235 1014,255 1014,263 924,283 834,263" fill="#1a1714"/>
+      <polygon points="834,255 924,235 1014,255 924,275" fill="#c4a48c" fill-opacity="0.12"/>
+      <polygon points="834,255 924,275 924,283 834,263" fill="#c4a48c" fill-opacity="0.20"/>
+      <polygon points="924,275 1014,255 1014,263 924,283" fill="#c4a48c" fill-opacity="0.26"/>
+      <polygon class="bp" points="834,255 924,235 1014,255 924,275" stroke-width="1.1"/>
+      <polyline class="bp" points="834,255 834,263 924,283 1014,263 1014,255" stroke-width="1.1"/>
+      <line class="bp" x1="924" y1="275" x2="924" y2="283" stroke-width="1.1"/>
+    </g>
+    <g>
+      <polygon points="834,230 924,210 1014,230 1014,238 924,258 834,238" fill="#1a1714"/>
+      <polygon points="834,230 924,210 1014,230 924,250" fill="#c4a48c" fill-opacity="0.14"/>
+      <polygon points="834,230 924,250 924,258 834,238" fill="#c4a48c" fill-opacity="0.22"/>
+      <polygon points="924,250 1014,230 1014,238 924,258" fill="#c4a48c" fill-opacity="0.28"/>
+      <polygon class="bp" points="834,230 924,210 1014,230 924,250" stroke-width="1.1"/>
+      <polyline class="bp" points="834,230 834,238 924,258 1014,238 1014,230" stroke-width="1.1"/>
+      <line class="bp" x1="924" y1="250" x2="924" y2="258" stroke-width="1.1"/>
+    </g>
+    <g>
+      <polygon points="834,205 924,185 1014,205 1014,213 924,233 834,213" fill="#1a1714"/>
+      <polygon points="834,205 924,185 1014,205 924,225" fill="#c4a48c" fill-opacity="0.16"/>
+      <polygon points="834,205 924,225 924,233 834,213" fill="#c4a48c" fill-opacity="0.24"/>
+      <polygon points="924,225 1014,205 1014,213 924,233" fill="#c4a48c" fill-opacity="0.30"/>
+      <polygon class="bp" points="834,205 924,185 1014,205 924,225" stroke-width="1.1"/>
+      <polyline class="bp" points="834,205 834,213 924,233 1014,213 1014,205" stroke-width="1.1"/>
+      <line class="bp" x1="924" y1="225" x2="924" y2="233" stroke-width="1.1"/>
+    </g>
+    <g>
+      <polygon points="834,180 924,160 1014,180 1014,188 924,208 834,188" fill="#1a1714"/>
+      <polygon points="834,180 924,160 1014,180 924,200" fill="#c4a48c" fill-opacity="0.18"/>
+      <polygon points="834,180 924,200 924,208 834,188" fill="#c4a48c" fill-opacity="0.26"/>
+      <polygon points="924,200 1014,180 1014,188 924,208" fill="#c4a48c" fill-opacity="0.32"/>
+      <polygon class="bp" points="834,180 924,160 1014,180 924,200" stroke-width="1.5"/>
+      <polyline class="bp" points="834,180 834,188 924,208 1014,188 1014,180" stroke-width="1.5"/>
+      <line class="bp" x1="924" y1="200" x2="924" y2="208" stroke-width="1.5"/>
+    </g>
+
+  <g class="bp" stroke-width="0.8" stroke-dasharray="3 3">
+    <line x1="1018" y1="330" x2="1036" y2="330"/>
+    <line x1="1018" y1="305" x2="1036" y2="305"/>
+    <line x1="1018" y1="280" x2="1036" y2="280"/>
+    <line x1="1018" y1="255" x2="1036" y2="255"/>
+    <line x1="1018" y1="230" x2="1036" y2="230"/>
+    <line x1="1018" y1="205" x2="1036" y2="205"/>
+    <line x1="1018" y1="180" x2="1036" y2="180"/>
+  </g>
+  <g class="mono" font-size="10.5" letter-spacing="1" fill="#c4a48c" font-weight="600">
+    <text x="1044" y="333.5">PYTHON · LINEAR ALGEBRA</text>
+    <text x="1044" y="308.5">CALCULUS · PROBABILITY</text>
+    <text x="1044" y="283.5">ML FUNDAMENTALS</text>
+    <text x="1044" y="258.5">REGRESSION · CLASSIFICATION</text>
+    <text x="1044" y="233.5">TREES · ENSEMBLES</text>
+    <text x="1044" y="208.5">CLUSTERING · PCA</text>
+    <text x="1044" y="183.5">PRACTICAL ML</text>
+  </g>
+  <g class="mono" font-size="9" letter-spacing="1" fill="#a39a90">
+    <text x="1044" y="344.5">PHASE 00 · 01</text>
+    <text x="1044" y="319.5">PHASE 02 · 03</text>
+    <text x="1044" y="294.5">PHASE 04</text>
+    <text x="1044" y="269.5">PHASE 05 · 06</text>
+    <text x="1044" y="244.5">PHASE 07</text>
+    <text x="1044" y="219.5">PHASE 08 · 09</text>
+    <text x="1044" y="194.5">PHASE 10</text>
+  </g>
+
+  <rect x="0" y="408" width="1280" height="6" fill="url(#paperRule)"/>
+  <line x1="0" y1="404" x2="1280" y2="404" stroke="#ece6dc" stroke-opacity="0.16" stroke-width="0.8"/>
+</svg>

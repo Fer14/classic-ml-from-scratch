@@ -1,0 +1,80 @@
+[
+  {
+    "id": "funcclass-pre-1",
+    "stage": "pre",
+    "question": "In `def f(a, *rest, scale=1, **options)`, what is `rest` inside the function when you call `f(1, 2, 3, scale=5, mode='x')`?",
+    "options": [
+      "[2, 3]",
+      "{'mode': 'x'}",
+      "(2, 3, 5)",
+      "(2, 3)"
+    ],
+    "correct": 3,
+    "explanation": "*rest collects the extra positional arguments into a tuple: (2, 3). scale is set by keyword to 5, and mode='x' goes into the options dict."
+  },
+  {
+    "id": "funcclass-pre-2",
+    "stage": "pre",
+    "question": "What is a closure?",
+    "options": [
+      "An inner function that remembers variables from the enclosing function after it has returned",
+      "A function that closes open files automatically",
+      "A class with no methods",
+      "A function that cannot be called twice"
+    ],
+    "correct": 0,
+    "explanation": "make_power_loss(3) returns power_loss, which still has access to power = 3 even though make_power_loss has finished. That captured state is the closure."
+  },
+  {
+    "id": "funcclass-post-1",
+    "stage": "post",
+    "question": "In scikit-learn's convention, what does a trailing underscore in an attribute name like `mean_` signal?",
+    "options": [
+      "The attribute is private and should not be accessed",
+      "The attribute was learned from data during fit and exists only after fitting",
+      "The attribute is a hyperparameter set in __init__",
+      "The attribute is deprecated"
+    ],
+    "correct": 1,
+    "explanation": "Learned attributes end with an underscore and are created by fit. Hyperparameters set in __init__ have no trailing underscore."
+  },
+  {
+    "id": "funcclass-post-2",
+    "stage": "post",
+    "question": "Why does `fit` return `self`?",
+    "options": [
+      "Python requires every method to return something",
+      "To make a copy of the model",
+      "So calls can be chained, as in Model().fit(X, y).predict(X)",
+      "So the model can be garbage collected"
+    ],
+    "correct": 2,
+    "explanation": "Returning the fitted instance lets you chain construction, fitting, and prediction in one expression."
+  },
+  {
+    "id": "funcclass-post-3",
+    "stage": "post",
+    "question": "A majority-class baseline gets 77.5% accuracy on a spam dataset. Your new classifier gets 76%. What can you conclude?",
+    "options": [
+      "Your classifier is good because 76% is well above 50%",
+      "Accuracy is not defined for spam detection",
+      "The baseline must have been trained incorrectly",
+      "Your classifier is worse than always predicting the most common class"
+    ],
+    "correct": 3,
+    "explanation": "The meaningful bar is the baseline, not random guessing. A model below the majority-class accuracy has not learned anything useful from the features."
+  },
+  {
+    "id": "funcclass-post-4",
+    "stage": "post",
+    "question": "A model always predicts the mean of the training targets. What is its R^2 on that same training data?",
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "It depends on the variance of the targets"
+    ],
+    "correct": 0,
+    "explanation": "With y_hat = mean(y), the residual sum of squares equals the total sum of squares, so R^2 = 1 - 1 = 0."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "gmm-pre-1",
+    "stage": "pre",
+    "question": "What does a Gaussian mixture model output for each point that k-means does not?",
+    "options": [
+      "A probability of belonging to each cluster",
+      "A distance to the origin",
+      "A regression prediction",
+      "A noise label"
+    ],
+    "correct": 0,
+    "explanation": "A GMM gives soft assignments: the posterior probability of each component given the point. K-means gives a single hard label."
+  },
+  {
+    "id": "gmm-pre-2",
+    "stage": "pre",
+    "question": "What lets a Gaussian component model a tilted, elongated cluster?",
+    "options": [
+      "Its mixing weight",
+      "A full covariance matrix with off-diagonal terms",
+      "A larger number of iterations",
+      "Using Manhattan distance"
+    ],
+    "correct": 1,
+    "explanation": "Off-diagonal covariance terms encode correlation between features, which rotates and stretches the Gaussian's ellipse."
+  },
+  {
+    "id": "gmm-post-1",
+    "stage": "post",
+    "question": "What does the E-step compute?",
+    "options": [
+      "New means and covariances",
+      "The number of components",
+      "Responsibilities: the posterior probability of each component for each point under the current parameters",
+      "The BIC score"
+    ],
+    "correct": 2,
+    "explanation": "The E-step applies Bayes' theorem with the current parameters. The M-step then refits means, covariances and weights using those responsibilities as soft weights."
+  },
+  {
+    "id": "gmm-post-2",
+    "stage": "post",
+    "question": "In the M-step, how is the new mean of component k computed?",
+    "options": [
+      "The plain mean of all data points",
+      "The point with the highest responsibility",
+      "The median of points hard-assigned to k",
+      "The responsibility-weighted average of all points"
+    ],
+    "correct": 3,
+    "explanation": "mu_k = sum_i r_ik x_i / sum_i r_ik. Every point contributes in proportion to how responsible component k is for it."
+  },
+  {
+    "id": "gmm-post-3",
+    "stage": "post",
+    "question": "Why add reg_covar to the diagonal of each covariance?",
+    "options": [
+      "To make the model converge in one step",
+      "To prevent a component collapsing onto a single point with a singular covariance and infinite likelihood",
+      "To make all clusters spherical",
+      "To compute BIC"
+    ],
+    "correct": 1,
+    "explanation": "If a component shrinks onto one point, its covariance determinant goes to zero and the density blows up. A small diagonal term keeps it invertible."
+  },
+  {
+    "id": "gmm-post-4",
+    "stage": "post",
+    "question": "BIC values for 2, 3 and 4 components are 5275, 4892 and 4915. Which model should you prefer and why?",
+    "options": [
+      "3 components, because lower BIC means a better trade-off between fit and number of parameters",
+      "4 components, because it has more parameters",
+      "2 components, because simpler is always better",
+      "BIC cannot compare models with different numbers of components"
+    ],
+    "correct": 0,
+    "explanation": "BIC = -2 log L + p log n. The 4-component model fits slightly better but not enough to justify its extra parameters."
+  }
+]

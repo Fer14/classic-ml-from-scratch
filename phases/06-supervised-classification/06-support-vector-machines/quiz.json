@@ -1,0 +1,80 @@
+[
+  {
+    "id": "svm-pre-1",
+    "stage": "pre",
+    "question": "Among all hyperplanes that separate two classes, which one does a hard-margin SVM choose?",
+    "options": [
+      "The first one found by gradient descent",
+      "The one that maximizes the distance to the closest training points",
+      "The one that passes through the class means",
+      "The one with the smallest bias term"
+    ],
+    "correct": 1,
+    "explanation": "The SVM picks the maximum-margin hyperplane: the one with the widest empty corridor to the nearest points of either class."
+  },
+  {
+    "id": "svm-pre-2",
+    "stage": "pre",
+    "question": "What is the hinge loss of a correctly classified point with y * f(x) = 2?",
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "log(1 + e^-2)"
+    ],
+    "correct": 0,
+    "explanation": "Hinge loss is max(0, 1 - y f(x)) = max(0, -1) = 0. Points beyond the margin contribute nothing to the loss."
+  },
+  {
+    "id": "svm-post-1",
+    "stage": "post",
+    "question": "With the canonical scaling y_i (w . x_i + b) = 1 for the closest points, what is the margin width?",
+    "options": [
+      "||w||",
+      "1 / ||w||^2",
+      "2 / ||w||",
+      "|b| / ||w||"
+    ],
+    "correct": 2,
+    "explanation": "Each gutter hyperplane is at distance 1/||w|| from the decision boundary, so the full corridor is 2/||w||. Maximizing it is equivalent to minimizing ||w||^2."
+  },
+  {
+    "id": "svm-post-2",
+    "stage": "post",
+    "question": "You increase C from 0.01 to 100 on a noisy dataset. What do you expect?",
+    "options": [
+      "A wider margin and more support vectors",
+      "A narrower margin, fewer points inside it, and a higher risk of overfitting",
+      "No change, because C only affects training speed",
+      "The model switches from linear to nonlinear"
+    ],
+    "correct": 1,
+    "explanation": "C is the cost of each margin violation. Large C makes violations expensive, so the optimizer accepts a larger ||w|| (narrower margin) to fit the training points: less bias, more variance."
+  },
+  {
+    "id": "svm-post-3",
+    "stage": "post",
+    "question": "You delete a training point that lies far outside the margin on the correct side and retrain the SVM. What happens to the decision boundary?",
+    "options": [
+      "It moves toward the deleted point",
+      "It moves away from the deleted point",
+      "It does not change, because only support vectors determine the solution",
+      "It becomes undefined"
+    ],
+    "correct": 2,
+    "explanation": "Points with y f(x) > 1 have zero hinge loss and zero dual weight alpha. The solution w = sum alpha_i y_i x_i depends only on support vectors."
+  },
+  {
+    "id": "svm-post-4",
+    "stage": "post",
+    "question": "Why must you standardize features before training an SVM?",
+    "options": [
+      "Because the hinge loss is only defined for values between -1 and 1",
+      "Because the margin is a Euclidean distance, so features with large scales dominate it",
+      "Because SVMs require Gaussian-distributed inputs",
+      "Because scikit-learn raises an error otherwise"
+    ],
+    "correct": 1,
+    "explanation": "The margin and the penalty ||w||^2 are measured in Euclidean geometry. A feature measured in thousands would dominate distances and receive a tiny weight, distorting the solution."
+  }
+]

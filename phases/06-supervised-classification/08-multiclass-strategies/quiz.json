@@ -1,0 +1,80 @@
+[
+  {
+    "id": "multiclass-pre-1",
+    "stage": "pre",
+    "question": "How many binary classifiers does one-vs-one train for K = 5 classes?",
+    "options": [
+      "5",
+      "10",
+      "20",
+      "25"
+    ],
+    "correct": 1,
+    "explanation": "One-vs-one trains one model per unordered pair of classes: K(K-1)/2 = 5*4/2 = 10."
+  },
+  {
+    "id": "multiclass-pre-2",
+    "stage": "pre",
+    "question": "What does the softmax function guarantee about its outputs?",
+    "options": [
+      "They are all integers",
+      "They are positive and sum to 1",
+      "Exactly one output is 1 and the rest are 0",
+      "They are sorted in descending order"
+    ],
+    "correct": 1,
+    "explanation": "Softmax exponentiates each score (making it positive) and divides by the total, producing a valid probability distribution over the K classes."
+  },
+  {
+    "id": "multiclass-post-1",
+    "stage": "post",
+    "question": "A softmax regression with all weights initialized to zero is trained on 4 classes. What is the cross-entropy loss before the first update?",
+    "options": [
+      "0",
+      "1",
+      "log(4), about 1.386",
+      "4"
+    ],
+    "correct": 2,
+    "explanation": "Zero weights give equal logits, so every class gets probability 1/4. The loss is -log(1/4) = log 4, a useful sanity check for any multiclass training loop."
+  },
+  {
+    "id": "multiclass-post-2",
+    "stage": "post",
+    "question": "Why does scikit-learn's kernel SVC use one-vs-one rather than one-vs-rest?",
+    "options": [
+      "One-vs-one always gives higher accuracy",
+      "Kernel SVM training cost grows faster than linearly in n, so many small pairwise problems are cheaper than K problems on the full dataset",
+      "One-vs-rest cannot be used with kernels",
+      "One-vs-one produces calibrated probabilities"
+    ],
+    "correct": 1,
+    "explanation": "Each OvO model trains on about 2n/K samples. With roughly O(n^2) training cost, K(K-1)/2 small problems are cheaper overall than K problems of size n."
+  },
+  {
+    "id": "multiclass-post-3",
+    "stage": "post",
+    "question": "Why do you subtract the row maximum from the logits before applying exp in softmax?",
+    "options": [
+      "To make the largest probability exactly 1",
+      "To avoid overflow; softmax is unchanged when you add the same constant to every logit",
+      "To center the logits at zero mean",
+      "To speed up the gradient computation"
+    ],
+    "correct": 1,
+    "explanation": "exp of a large logit overflows to infinity. Since exp(z - c) / sum exp(z_j - c) = exp(z) / sum exp(z_j), shifting by the max is free and numerically safe."
+  },
+  {
+    "id": "multiclass-post-4",
+    "stage": "post",
+    "question": "Which model needs no one-vs-rest or one-vs-one wrapper to handle K classes?",
+    "options": [
+      "A linear SVM with hinge loss",
+      "The perceptron",
+      "A decision tree",
+      "Binary logistic regression with a sigmoid output"
+    ],
+    "correct": 2,
+    "explanation": "Decision trees are natively multiclass: each leaf stores a class distribution over all K classes. SVMs, perceptrons, and sigmoid logistic regression are binary and need a reduction."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "clustereval-pre-1",
+    "stage": "pre",
+    "question": "What is the difference between internal and external clustering metrics?",
+    "options": [
+      "Internal metrics use only the data and assignments; external metrics compare against known labels",
+      "Internal metrics are computed on the training set, external on the test set",
+      "External metrics are always better",
+      "There is no difference"
+    ],
+    "correct": 0,
+    "explanation": "Internal metrics (silhouette, Davies-Bouldin, Calinski-Harabasz) need no labels. External metrics (ARI, NMI, purity) need ground truth."
+  },
+  {
+    "id": "clustereval-pre-2",
+    "stage": "pre",
+    "question": "Why can't you use plain accuracy to compare cluster labels with true classes?",
+    "options": [
+      "Accuracy is only defined for regression",
+      "Cluster ids are arbitrary: cluster 0 may correspond to class 3, so a direct comparison is meaningless",
+      "Clustering never produces integer labels",
+      "Accuracy requires probabilities"
+    ],
+    "correct": 1,
+    "explanation": "Clustering metrics must be invariant to permutations of the cluster ids. ARI and NMI work from the contingency table, which ignores naming."
+  },
+  {
+    "id": "clustereval-post-1",
+    "stage": "post",
+    "question": "A point has silhouette value -0.3. What does that suggest?",
+    "options": [
+      "It is perfectly placed",
+      "It sits exactly on the boundary",
+      "It is on average closer to another cluster than to its own, so it is probably misassigned",
+      "Its cluster has only one point"
+    ],
+    "correct": 2,
+    "explanation": "s = (b - a) / max(a, b) is negative when a > b, meaning the mean distance to its own cluster exceeds that to the nearest other cluster."
+  },
+  {
+    "id": "clustereval-post-2",
+    "stage": "post",
+    "question": "Putting every point in its own cluster gives purity 1.0. Which metric correctly reports this as useless?",
+    "options": [
+      "Purity",
+      "Adjusted Rand Index",
+      "Number of clusters",
+      "Inertia"
+    ],
+    "correct": 1,
+    "explanation": "ARI subtracts the agreement expected by chance. Singletons never put any pair together, so ARI is 0."
+  },
+  {
+    "id": "clustereval-post-3",
+    "stage": "post",
+    "question": "On two moons, DBSCAN recovers the true crescents (ARI 1.0) but has a lower silhouette than k-means (ARI 0.24). What does this show?",
+    "options": [
+      "DBSCAN is broken",
+      "Silhouette should always be preferred over ARI",
+      "K-means is the better algorithm for moons",
+      "Silhouette rewards compact convex clusters, so it can prefer the wrong answer for non-convex shapes"
+    ],
+    "correct": 3,
+    "explanation": "Internal metrics encode a notion of good geometry. Long curved clusters have large intra-cluster distances, which silhouette penalizes even when they are correct."
+  },
+  {
+    "id": "clustereval-post-4",
+    "stage": "post",
+    "question": "For Davies-Bouldin and Calinski-Harabasz, which direction is better?",
+    "options": [
+      "Lower Davies-Bouldin, higher Calinski-Harabasz",
+      "Higher for both",
+      "Lower for both",
+      "Higher Davies-Bouldin, lower Calinski-Harabasz"
+    ],
+    "correct": 0,
+    "explanation": "Davies-Bouldin measures worst-case overlap between clusters (lower is better). Calinski-Harabasz is a between/within variance ratio (higher is better)."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "graddescent-pre-1",
+    "stage": "pre",
+    "question": "What is the gradient descent update rule?",
+    "options": [
+      "w_new = w_old + learning_rate * gradient",
+      "w_new = w_old - learning_rate * gradient",
+      "w_new = gradient / learning_rate",
+      "w_new = w_old * gradient"
+    ],
+    "correct": 1,
+    "explanation": "The gradient points uphill, so you subtract it (scaled by the learning rate) to move downhill."
+  },
+  {
+    "id": "graddescent-pre-2",
+    "stage": "pre",
+    "question": "Why do we need gradient descent if linear regression has a closed-form solution?",
+    "options": [
+      "The closed form is always wrong",
+      "Most models, like logistic regression and neural networks, have no closed-form solution",
+      "Gradient descent is always faster",
+      "The closed form only works for one feature"
+    ],
+    "correct": 1,
+    "explanation": "Setting the gradient to zero gives solvable equations only in special cases. For most models you must optimize iteratively."
+  },
+  {
+    "id": "graddescent-post-1",
+    "stage": "post",
+    "question": "Gradient descent on f(x) = (x - 3)^2 with learning rate 0.2 multiplies the distance to the minimum by what factor each step?",
+    "options": [
+      "0.2",
+      "0.4",
+      "0.6",
+      "0.8"
+    ],
+    "correct": 2,
+    "explanation": "x - 0.2 * 2(x - 3) - 3 = 0.6 (x - 3). Each step keeps 60% of the gap, closing 40% of it."
+  },
+  {
+    "id": "graddescent-post-2",
+    "stage": "post",
+    "question": "On f(x, y) = x^2 + 10y^2, what limits how large the learning rate can be?",
+    "options": [
+      "The flat x direction",
+      "The steep y direction, because too large a step makes y overshoot and diverge",
+      "The starting point",
+      "The number of iterations"
+    ],
+    "correct": 1,
+    "explanation": "The y update is y <- (1 - 20 eta) y. For eta above 0.1 the factor has magnitude above 1 and y diverges, even though x would like larger steps."
+  },
+  {
+    "id": "graddescent-post-3",
+    "stage": "post",
+    "question": "Your linear regression loss stops decreasing at 0.26 while the noise standard deviation in the data is 0.5. What does this mean?",
+    "options": [
+      "The learning rate is too small",
+      "The model is underfitting badly",
+      "The remaining error is about the noise variance (0.25), so the model has essentially reached the best possible fit",
+      "Gradient descent has diverged"
+    ],
+    "correct": 2,
+    "explanation": "MSE cannot go below the variance of the irreducible noise, 0.5^2 = 0.25. A plateau there means the optimizer has converged."
+  },
+  {
+    "id": "graddescent-post-4",
+    "stage": "post",
+    "question": "Which stopping criterion directly tests that you are near a critical point?",
+    "options": [
+      "A fixed number of epochs",
+      "The gradient norm falling below a tolerance",
+      "The learning rate reaching zero",
+      "The weights becoming positive"
+    ],
+    "correct": 1,
+    "explanation": "Critical points are where the gradient is zero, so |grad L| < tolerance checks that condition directly."
+  }
+]

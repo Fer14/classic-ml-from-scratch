@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ada-pre-1",
+    "stage": "pre",
+    "question": "What does boosting primarily reduce, compared with bagging?",
+    "options": [
+      "Variance, by averaging independent models",
+      "Bias, by fitting learners sequentially to what the ensemble still gets wrong",
+      "Training time, by using fewer models",
+      "The number of features, by selecting the best ones"
+    ],
+    "correct": 1,
+    "explanation": "Bagging averages independent high-variance models. Boosting adds high-bias weak learners one after another, each correcting the current ensemble, which reduces bias."
+  },
+  {
+    "id": "ada-pre-2",
+    "stage": "pre",
+    "question": "What is a decision stump?",
+    "options": [
+      "A tree that was pruned to remove all leaves",
+      "A tree of depth 1: a single split on one feature",
+      "A tree trained on a bootstrap sample",
+      "A tree whose leaves predict probabilities"
+    ],
+    "correct": 1,
+    "explanation": "A stump makes one split on one feature and predicts a constant on each side. It is the classic weak learner for AdaBoost."
+  },
+  {
+    "id": "ada-post-1",
+    "stage": "post",
+    "question": "A stump has weighted error 0.5 on the current weights. What alpha does AdaBoost assign it?",
+    "options": [
+      "1.0",
+      "0.5",
+      "0",
+      "Infinity"
+    ],
+    "correct": 2,
+    "explanation": "alpha = 0.5 * ln((1 - 0.5) / 0.5) = 0.5 * ln(1) = 0. A learner no better than chance gets no vote."
+  },
+  {
+    "id": "ada-post-2",
+    "stage": "post",
+    "question": "After a round of AdaBoost, how do the weights of misclassified samples change?",
+    "options": [
+      "They are multiplied by exp(alpha), so they grow before normalization",
+      "They are set to zero",
+      "They are unchanged; only correct samples are reweighted",
+      "They are multiplied by exp(-alpha), so they shrink"
+    ],
+    "correct": 0,
+    "explanation": "w_i is multiplied by exp(-alpha * y_i * h(x_i)). For a mistake y_i * h(x_i) = -1, so the factor is exp(alpha) > 1. After normalization the mistakes hold half the total weight."
+  },
+  {
+    "id": "ada-post-3",
+    "stage": "post",
+    "question": "Which loss function does AdaBoost greedily minimize?",
+    "options": [
+      "Squared error",
+      "Hinge loss",
+      "Exponential loss, sum of exp(-y F(x))",
+      "Zero-one loss directly"
+    ],
+    "correct": 2,
+    "explanation": "Friedman, Hastie and Tibshirani showed AdaBoost is forward stagewise additive modeling with the exponential loss. The sample weights are each point's current exponential loss."
+  },
+  {
+    "id": "ada-post-4",
+    "stage": "post",
+    "question": "Your training labels contain about 20% errors. What is the most likely behavior of AdaBoost as rounds increase?",
+    "options": [
+      "Test error decreases monotonically forever",
+      "Test error reaches a minimum early and then rises as weight piles onto mislabeled points",
+      "AdaBoost automatically detects and ignores the noisy labels",
+      "Training error stays at 20% no matter how many rounds"
+    ],
+    "correct": 1,
+    "explanation": "The exponential loss grows without bound for wrong-side points, so mislabeled examples accumulate huge weights and later learners chase them. Use early stopping, shrinkage, or a more robust loss."
+  }
+]

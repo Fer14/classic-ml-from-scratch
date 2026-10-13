@@ -1,0 +1,67 @@
+[
+  {
+    "id": "splits-pre-1",
+    "stage": "pre",
+    "question": "Why can't you judge a model by its error on the training data?",
+    "options": [
+      "Training error is always zero",
+      "The model was fitted to those exact samples, so the error is optimistically low",
+      "Training data is never labeled",
+      "Training error is measured in different units"
+    ],
+    "correct": 1,
+    "explanation": "The optimizer chose parameters to minimize error on the training samples. Their error therefore underestimates the error on new data."
+  },
+  {
+    "id": "splits-pre-2",
+    "stage": "pre",
+    "question": "Which of these is a hyperparameter rather than a parameter?",
+    "options": [
+      "The slope learned by linear regression",
+      "The centroid of a class",
+      "The degree of a polynomial model",
+      "The intercept of a fitted line"
+    ],
+    "correct": 2,
+    "explanation": "The degree is chosen before training and controls the model's capacity. Slopes, intercepts and centroids are computed by the training procedure."
+  },
+  {
+    "id": "splits-post-1",
+    "stage": "post",
+    "question": "You try 50 model configurations and pick the one with the best test-set score. What is wrong with reporting that score?",
+    "options": [
+      "Nothing, as long as the test set was never used for fitting",
+      "The score is biased upward because the test set was used to select the model",
+      "The score is biased downward because the model is too simple",
+      "Test scores can only be reported for a single configuration in scikit-learn"
+    ],
+    "correct": 1,
+    "explanation": "Picking the maximum of many noisy scores favors configurations that got lucky on that specific set. Selection must happen on a validation set so the test score stays unbiased."
+  },
+  {
+    "id": "splits-post-2",
+    "stage": "post",
+    "question": "Your dataset has 3% positive labels. What does a stratified split guarantee?",
+    "options": [
+      "Every split has exactly 50% positives",
+      "The positive rate is about 3% in each split",
+      "Positives only appear in the training set",
+      "The test set is larger than the training set"
+    ],
+    "correct": 1,
+    "explanation": "Stratification splits each class separately, preserving the original class proportions in every subset."
+  },
+  {
+    "id": "splits-post-3",
+    "stage": "post",
+    "question": "You are forecasting daily sales. How should you split the data?",
+    "options": [
+      "Shuffle all days, then take a random 20% as test",
+      "Use odd days for training and even days for testing",
+      "Train on earlier days and test on the most recent days, without shuffling across the cutoff",
+      "Use the same days for training and testing"
+    ],
+    "correct": 2,
+    "explanation": "In production you only know the past. A time-ordered split reproduces that; shuffling lets the model see the future and inflates the score."
+  }
+]

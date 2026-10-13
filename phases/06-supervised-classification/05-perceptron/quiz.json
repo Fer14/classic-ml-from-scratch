@@ -1,0 +1,67 @@
+[
+  {
+    "id": "perceptron-pre-1",
+    "stage": "pre",
+    "question": "When does the perceptron update its weights?",
+    "options": [
+      "After every training example, regardless of the prediction",
+      "Only when an example is misclassified, i.e. y * f(x) <= 0",
+      "Only at the end of each epoch, using the average gradient",
+      "Only when the loss increases compared to the previous step"
+    ],
+    "correct": 1,
+    "explanation": "The perceptron is mistake-driven: correctly classified points leave w and b untouched. A mistake triggers w += eta * y * x and b += eta * y."
+  },
+  {
+    "id": "perceptron-pre-2",
+    "stage": "pre",
+    "question": "Why can a single perceptron not learn XOR on the raw inputs (x1, x2)?",
+    "options": [
+      "XOR has too few examples to train on",
+      "The learning rate is always too large for XOR",
+      "No straight line separates the positive and negative XOR points",
+      "The perceptron only works with continuous inputs"
+    ],
+    "correct": 2,
+    "explanation": "A perceptron draws a single hyperplane. The XOR points (0,1),(1,0) vs (0,0),(1,1) are not linearly separable, so no choice of w and b classifies all four correctly."
+  },
+  {
+    "id": "perceptron-post-1",
+    "stage": "post",
+    "question": "Novikoff's theorem bounds the number of perceptron mistakes on separable data by (R/gamma)^2. What makes this bound small?",
+    "options": [
+      "A large margin gamma relative to the data radius R",
+      "A large number of training samples",
+      "A small learning rate",
+      "A high number of input dimensions"
+    ],
+    "correct": 0,
+    "explanation": "The bound depends only on the ratio of the data radius R to the margin gamma. Wide margins mean few mistakes. It does not depend on sample count or dimension."
+  },
+  {
+    "id": "perceptron-post-2",
+    "stage": "post",
+    "question": "You train a perceptron on overlapping classes and the number of mistakes per epoch never reaches zero. What is the most sensible fix from this lesson?",
+    "options": [
+      "Train for more epochs until it converges",
+      "Use the averaged perceptron, which returns the mean of all intermediate weight vectors",
+      "Increase the learning rate to escape the oscillation",
+      "Initialize the weights randomly instead of at zero"
+    ],
+    "correct": 1,
+    "explanation": "On non-separable data the plain perceptron never converges, no matter how long you train. Averaging the weights gives a stable boundary that usually generalizes better."
+  },
+  {
+    "id": "perceptron-post-3",
+    "stage": "post",
+    "question": "Starting from w = 0, b = 0, what happens to the perceptron's predictions if you change the learning rate from 1 to 0.01?",
+    "options": [
+      "Training becomes 100 times slower",
+      "The model converges to a larger margin",
+      "Nothing: every update is scaled by the same factor, so the sign of w . x + b never changes",
+      "The model can now learn XOR"
+    ],
+    "correct": 2,
+    "explanation": "From a zero start, w and b are always eta times the sum of y_i * x_i over mistakes. Scaling them all by eta leaves the sign of every score, and therefore every prediction and update, unchanged."
+  }
+]

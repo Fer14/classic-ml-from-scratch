@@ -1,0 +1,80 @@
+[
+  {
+    "id": "chainrule-pre-1",
+    "stage": "pre",
+    "question": "What is d/dx of (3x + 1)^2?",
+    "options": [
+      "2(3x + 1)",
+      "6(3x + 1)",
+      "(3x + 1)",
+      "9x^2"
+    ],
+    "correct": 1,
+    "explanation": "Outer derivative 2u evaluated at u = 3x + 1, times inner derivative 3, gives 6(3x + 1)."
+  },
+  {
+    "id": "chainrule-pre-2",
+    "stage": "pre",
+    "question": "In a pipeline x -> u -> y, u changes 4 times as fast as x and y changes 0.5 times as fast as u. How fast does y change relative to x?",
+    "options": [
+      "4.5",
+      "3.5",
+      "2",
+      "8"
+    ],
+    "correct": 2,
+    "explanation": "The chain rule multiplies local rates: dy/dx = dy/du * du/dx = 0.5 * 4 = 2."
+  },
+  {
+    "id": "chainrule-post-1",
+    "stage": "post",
+    "question": "For logistic regression with a = sigmoid(z) and log loss L, what does dL/dz simplify to?",
+    "options": [
+      "a(1 - a)",
+      "y - a",
+      "a - y",
+      "log(a) - log(y)"
+    ],
+    "correct": 2,
+    "explanation": "dL/da = -y/a + (1-y)/(1-a) and da/dz = a(1-a). Their product simplifies to a - y: prediction minus label."
+  },
+  {
+    "id": "chainrule-post-2",
+    "stage": "post",
+    "question": "In an autodiff engine, why must the backward pass use parent.grad += ... instead of parent.grad = ...?",
+    "options": [
+      "To make the code run faster",
+      "Because a variable used in several places receives gradient from every path, and those contributions must be summed",
+      "Because gradients are always positive",
+      "To avoid division by zero"
+    ],
+    "correct": 1,
+    "explanation": "The multivariable chain rule sums contributions over all paths. Overwriting would keep only the last path and give a wrong gradient for reused variables."
+  },
+  {
+    "id": "chainrule-post-3",
+    "stage": "post",
+    "question": "Why is reverse-mode autodiff the standard for training ML models?",
+    "options": [
+      "One backward pass gives the gradient with respect to all parameters at roughly the cost of one forward pass",
+      "It does not require storing intermediate values",
+      "It works without the chain rule",
+      "It always finds the global minimum"
+    ],
+    "correct": 0,
+    "explanation": "Reverse mode computes the derivative of a scalar loss with respect to every input in a single sweep, unlike numerical gradients that need about two evaluations per parameter."
+  },
+  {
+    "id": "chainrule-post-4",
+    "stage": "post",
+    "question": "During backprop, a multiplication node c = a * b receives upstream gradient dL/dc = 2. With a = 3 and b = 5, what gradient flows to a?",
+    "options": [
+      "2",
+      "6",
+      "10",
+      "15"
+    ],
+    "correct": 2,
+    "explanation": "The local derivative of a*b with respect to a is b = 5. Multiply by the upstream gradient: 5 * 2 = 10."
+  }
+]

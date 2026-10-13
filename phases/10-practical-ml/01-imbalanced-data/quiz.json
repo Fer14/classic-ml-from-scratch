@@ -1,0 +1,67 @@
+[
+  {
+    "id": "imbalanced-pre-1",
+    "stage": "pre",
+    "question": "A dataset has 99% negatives and 1% positives. A model that always predicts negative has what accuracy?",
+    "options": [
+      "1%",
+      "50%",
+      "99%",
+      "It cannot be computed"
+    ],
+    "correct": 2,
+    "explanation": "The constant classifier is right on every negative, which is 99% of the data, while catching zero positives. This is why accuracy is misleading on imbalanced data."
+  },
+  {
+    "id": "imbalanced-pre-2",
+    "stage": "pre",
+    "question": "Which metric answers the question 'of all the actual positives, how many did the model find'?",
+    "options": [
+      "Precision",
+      "Recall",
+      "Accuracy",
+      "Specificity"
+    ],
+    "correct": 1,
+    "explanation": "Recall = TP / (TP + FN) measures the fraction of actual positives that were detected. Precision measures how many predicted positives were correct."
+  },
+  {
+    "id": "imbalanced-post-1",
+    "stage": "post",
+    "question": "How does SMOTE create a new minority sample?",
+    "options": [
+      "It duplicates a random minority sample exactly",
+      "It samples from a Gaussian fitted to the whole dataset",
+      "It places a point at a random position on the segment between a minority sample and one of its nearest minority neighbors",
+      "It flips the label of the nearest majority sample"
+    ],
+    "correct": 2,
+    "explanation": "SMOTE interpolates: x_new = x_i + gap * (x_neighbor - x_i) with gap drawn uniformly in [0, 1], where the neighbor is one of the k nearest minority points."
+  },
+  {
+    "id": "imbalanced-post-2",
+    "stage": "post",
+    "question": "Why must oversampling be applied only after the train/test split?",
+    "options": [
+      "Because oversampling is too slow on large datasets",
+      "Because copies of minority rows could end up in both train and test, leaking information and inflating test scores",
+      "Because the test set must stay imbalanced for the model to converge",
+      "Because sklearn raises an error otherwise"
+    ],
+    "correct": 1,
+    "explanation": "If you oversample first, duplicates or near-duplicates of the same minority point land on both sides of the split, so the test set no longer measures generalization."
+  },
+  {
+    "id": "imbalanced-post-3",
+    "stage": "post",
+    "question": "For a linear model like logistic regression, balanced class weights mostly have what effect?",
+    "options": [
+      "They make the model nonlinear",
+      "They shift predicted probabilities toward the minority class, similar to lowering the decision threshold",
+      "They remove the need for feature scaling",
+      "They always increase F1"
+    ],
+    "correct": 1,
+    "explanation": "Up-weighting the minority class mainly shifts the intercept, raising minority probabilities. That moves the operating point along the precision-recall curve, much like a lower threshold. It does not guarantee a better F1."
+  }
+]

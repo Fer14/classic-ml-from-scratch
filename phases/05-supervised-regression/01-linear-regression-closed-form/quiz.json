@@ -1,0 +1,67 @@
+[
+  {
+    "id": "olsclosed-pre-1",
+    "stage": "pre",
+    "question": "Why do you add a column of ones to the feature matrix X?",
+    "options": [
+      "To avoid division by zero",
+      "So the intercept becomes an ordinary weight in beta",
+      "To standardize the features",
+      "To make X square so it can be inverted"
+    ],
+    "correct": 1,
+    "explanation": "Multiplying the ones column by its weight adds a constant to every prediction, which is exactly the intercept. This lets one matrix equation solve for intercept and slopes together."
+  },
+  {
+    "id": "olsclosed-pre-2",
+    "stage": "pre",
+    "question": "What quantity does ordinary least squares minimize?",
+    "options": [
+      "The sum of absolute residuals",
+      "The largest residual",
+      "The sum of squared residuals",
+      "The number of misclassified points"
+    ],
+    "correct": 2,
+    "explanation": "OLS minimizes RSS = ||y - X beta||^2, the sum of squared differences between predictions and targets."
+  },
+  {
+    "id": "olsclosed-post-1",
+    "stage": "post",
+    "question": "Which equation characterizes the OLS solution?",
+    "options": [
+      "X beta = 0",
+      "X^T X beta = X^T y",
+      "beta = X y",
+      "X X^T beta = y"
+    ],
+    "correct": 1,
+    "explanation": "Setting the gradient -2 X^T y + 2 X^T X beta to zero gives the normal equation X^T X beta = X^T y."
+  },
+  {
+    "id": "olsclosed-post-2",
+    "stage": "post",
+    "question": "After fitting OLS with an intercept, what is X^T r, where r is the residual vector?",
+    "options": [
+      "The vector of coefficients",
+      "A vector of zeros",
+      "The identity matrix",
+      "The vector of predictions"
+    ],
+    "correct": 1,
+    "explanation": "OLS projects y onto the column space of X, so the residual is orthogonal to every column. With an intercept, this also means the residuals sum to zero."
+  },
+  {
+    "id": "olsclosed-post-3",
+    "stage": "post",
+    "question": "Why should you prefer np.linalg.lstsq or np.linalg.solve over computing np.linalg.inv(X.T @ X)?",
+    "options": [
+      "inv only works on integer matrices",
+      "inv gives a different mathematical answer",
+      "Explicit inversion is slower and less numerically stable, especially with collinear features",
+      "lstsq uses gradient descent internally and is more accurate"
+    ],
+    "correct": 2,
+    "explanation": "Solving the system directly (LU) or via SVD avoids the extra error and cost of forming an inverse. lstsq never forms X^T X, so it also handles ill-conditioned and rank-deficient X."
+  }
+]

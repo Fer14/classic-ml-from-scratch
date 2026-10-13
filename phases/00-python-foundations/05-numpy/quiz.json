@@ -1,0 +1,67 @@
+[
+  {
+    "id": "numpy-pre-1",
+    "stage": "pre",
+    "question": "X has shape (100, 4): 100 samples, 4 features. What is the shape of X.mean(axis=0)?",
+    "options": [
+      "(4,)",
+      "(100,)",
+      "(100, 4)",
+      "()"
+    ],
+    "correct": 0,
+    "explanation": "Reducing along axis 0 collapses the rows, leaving one mean per column: shape (4,)."
+  },
+  {
+    "id": "numpy-pre-2",
+    "stage": "pre",
+    "question": "Why is NumPy arithmetic on large arrays much faster than the equivalent Python loop?",
+    "options": [
+      "NumPy uses lower precision numbers",
+      "The loop runs in compiled C over a contiguous, single-type block of memory instead of through the interpreter",
+      "NumPy skips some of the elements",
+      "NumPy always runs on the GPU"
+    ],
+    "correct": 1,
+    "explanation": "NumPy avoids per-element interpreter overhead and object allocation by storing raw values contiguously and looping in compiled code."
+  },
+  {
+    "id": "numpy-post-1",
+    "stage": "post",
+    "question": "What is the shape of A + B when A has shape (5, 1) and B has shape (3,)?",
+    "options": [
+      "(3, 5)",
+      "(5, 1)",
+      "(5, 3)",
+      "It raises a broadcasting error"
+    ],
+    "correct": 2,
+    "explanation": "Align shapes from the right: (5, 1) and (1, 3). Each size-1 dimension stretches to match, giving (5, 3)."
+  },
+  {
+    "id": "numpy-post-2",
+    "stage": "post",
+    "question": "X has shape (n, d). What does X[:, np.newaxis, :] - X[np.newaxis, :, :] compute?",
+    "options": [
+      "The difference between consecutive rows, shape (n - 1, d)",
+      "The transpose of X",
+      "Each row minus the column mean, shape (n, d)",
+      "Every row minus every other row, shape (n, n, d)"
+    ],
+    "correct": 3,
+    "explanation": "Shapes (n, 1, d) and (1, n, d) broadcast to (n, n, d); entry [i, j] is X[i] - X[j]. Summing squares over the last axis gives pairwise squared distances."
+  },
+  {
+    "id": "numpy-post-3",
+    "stage": "post",
+    "question": "What does X[X[:, 0] > 0, 1] return?",
+    "options": [
+      "The values of column 1 for the rows where column 0 is positive",
+      "A boolean array of which rows have a positive first feature",
+      "Column 1 of all rows",
+      "The count of positive values in column 0"
+    ],
+    "correct": 0,
+    "explanation": "X[:, 0] > 0 is a boolean mask over rows. Using it as the row index together with column index 1 selects feature 1 from only the matching rows."
+  }
+]

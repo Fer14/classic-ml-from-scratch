@@ -1,0 +1,80 @@
+[
+  {
+    "id": "bagging-pre-1",
+    "stage": "pre",
+    "question": "What is a bootstrap sample of a dataset with n rows?",
+    "options": [
+      "The first n/2 rows",
+      "n rows drawn at random with replacement",
+      "n rows drawn at random without replacement, shuffled",
+      "The rows with the largest errors"
+    ],
+    "correct": 1,
+    "explanation": "Drawing with replacement means some rows appear several times and others not at all, which creates a slightly different training set each time."
+  },
+  {
+    "id": "bagging-pre-2",
+    "stage": "pre",
+    "question": "Which kind of model benefits most from averaging many copies trained on different data?",
+    "options": [
+      "A model with high bias and low variance",
+      "A model with low bias and high variance",
+      "A model with zero training error and zero test error",
+      "Any linear model"
+    ],
+    "correct": 1,
+    "explanation": "Averaging reduces variance and leaves bias unchanged, so it helps unstable, flexible models such as deep decision trees."
+  },
+  {
+    "id": "bagging-post-1",
+    "stage": "post",
+    "question": "Roughly what fraction of the unique training rows does a large bootstrap sample contain?",
+    "options": [
+      "36.8%",
+      "50%",
+      "63.2%",
+      "100%"
+    ],
+    "correct": 2,
+    "explanation": "The probability a row is never drawn is (1 - 1/n)^n, which approaches 1/e = 0.368. So about 63.2% of rows are included."
+  },
+  {
+    "id": "bagging-post-2",
+    "stage": "post",
+    "question": "How is the out-of-bag prediction for training row i computed?",
+    "options": [
+      "By averaging all trees' predictions on row i",
+      "By averaging only the trees whose bootstrap sample did not contain row i",
+      "By training a new tree without row i",
+      "By using the test set prediction closest to row i"
+    ],
+    "correct": 1,
+    "explanation": "Only trees that never saw row i give an honest held-out prediction for it. Aggregating those over all rows gives the OOB error estimate."
+  },
+  {
+    "id": "bagging-post-3",
+    "stage": "post",
+    "question": "The variance of an average of B models with variance sigma^2 and pairwise correlation rho is rho*sigma^2 + (1 - rho)*sigma^2/B. What does this imply?",
+    "options": [
+      "Adding more trees always drives variance to zero",
+      "Beyond some B, variance is limited by the correlation between models",
+      "Correlation between models does not matter",
+      "Bagging increases bias in proportion to rho"
+    ],
+    "correct": 1,
+    "explanation": "As B grows the second term vanishes, leaving rho*sigma^2. Lowering rho is exactly what random forests do by randomizing features at each split."
+  },
+  {
+    "id": "bagging-post-4",
+    "stage": "post",
+    "question": "Why does bagging decision stumps (depth-1 trees) give little improvement?",
+    "options": [
+      "Stumps cannot be trained on bootstrap samples",
+      "Stumps already have low variance; their error is mostly bias, which averaging does not reduce",
+      "Stumps overfit too much",
+      "Bagging only works for regression"
+    ],
+    "correct": 1,
+    "explanation": "In the bias-variance experiment, bagged stumps kept bias^2 around 0.16. Averaging cannot add the flexibility a stump lacks."
+  }
+]

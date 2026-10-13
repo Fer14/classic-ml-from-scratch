@@ -1,0 +1,80 @@
+[
+  {
+    "id": "tsne-pre-1",
+    "stage": "pre",
+    "question": "What is t-SNE primarily designed for?",
+    "options": [
+      "Compressing data for storage with minimal reconstruction error",
+      "Visualizing high-dimensional data in 2D or 3D while keeping local neighborhoods",
+      "Selecting the most predictive features for a classifier",
+      "Clustering data into a fixed number of groups"
+    ],
+    "correct": 1,
+    "explanation": "t-SNE is a visualization method. It preserves which points are neighbors, not global distances, and it has no transform for new data."
+  },
+  {
+    "id": "tsne-pre-2",
+    "stage": "pre",
+    "question": "Why can PCA fail to separate classes that a nonlinear method separates well?",
+    "options": [
+      "PCA only uses two features",
+      "PCA is a linear projection, so it cannot unfold curved structure",
+      "PCA requires labels",
+      "PCA is randomized"
+    ],
+    "correct": 1,
+    "explanation": "PCA projects onto a flat subspace. If classes lie on a curved manifold, they can overlap in every linear projection."
+  },
+  {
+    "id": "tsne-post-1",
+    "stage": "post",
+    "question": "Why does t-SNE use a Student-t kernel in the low-dimensional space instead of a Gaussian?",
+    "options": [
+      "It is cheaper to compute than a Gaussian",
+      "Its heavy tails let moderately distant points move far apart, reducing the crowding problem",
+      "It guarantees convex optimization",
+      "It makes the embedding identical to PCA"
+    ],
+    "correct": 1,
+    "explanation": "With heavy tails, placing dissimilar points far apart is cheap, which leaves room in 2D for local neighborhoods and opens gaps between clusters."
+  },
+  {
+    "id": "tsne-post-2",
+    "stage": "post",
+    "question": "In a t-SNE plot, cluster A looks twice as large as cluster B. What can you conclude?",
+    "options": [
+      "Cluster A has twice as many points",
+      "Cluster A has twice the variance in the original space",
+      "Very little: t-SNE adapts bandwidth to local density, so apparent sizes are not reliable",
+      "Cluster A is farther from the origin"
+    ],
+    "correct": 2,
+    "explanation": "Per-point sigma equalizes density, so the visual size of clusters in t-SNE does not reflect their spread in the original space."
+  },
+  {
+    "id": "tsne-post-3",
+    "stage": "post",
+    "question": "What does the perplexity parameter control?",
+    "options": [
+      "The number of output dimensions",
+      "The learning rate of gradient descent",
+      "The effective number of neighbors each point considers when sigma_i is calibrated",
+      "The number of iterations"
+    ],
+    "correct": 2,
+    "explanation": "Each sigma_i is chosen by binary search so that 2^entropy of the neighbor distribution equals the perplexity."
+  },
+  {
+    "id": "tsne-post-4",
+    "stage": "post",
+    "question": "Why does KL(P||Q) make t-SNE preserve local rather than global structure?",
+    "options": [
+      "Because KL is symmetric",
+      "Because large p_ij with small q_ij is heavily penalized, while small p_ij with large q_ij costs little",
+      "Because KL ignores all pairs with p_ij above a threshold",
+      "Because KL is computed only within clusters"
+    ],
+    "correct": 1,
+    "explanation": "The term p log(p/q) is large when true neighbors are placed far apart, but near zero when p is small, so far-apart points are free to move."
+  }
+]

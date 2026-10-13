@@ -1,0 +1,80 @@
+[
+  {
+    "id": "nb-pre-1",
+    "stage": "pre",
+    "question": "In Bayes' theorem P(y|x) = P(x|y)P(y)/P(x), which term can you ignore when picking the most likely class?",
+    "options": [
+      "P(y)",
+      "P(x|y)",
+      "P(x)",
+      "None of them"
+    ],
+    "correct": 2,
+    "explanation": "P(x) is the same for every class, so it does not change the argmax."
+  },
+  {
+    "id": "nb-pre-2",
+    "stage": "pre",
+    "question": "What does the 'naive' in Naive Bayes refer to?",
+    "options": [
+      "It uses no training data",
+      "Features are assumed independent given the class",
+      "It only works with two classes",
+      "It ignores the prior"
+    ],
+    "correct": 1,
+    "explanation": "The likelihood is factorized as a product of per-feature terms, which assumes conditional independence given the class."
+  },
+  {
+    "id": "nb-post-1",
+    "stage": "post",
+    "question": "Why does Naive Bayes sum log probabilities instead of multiplying probabilities?",
+    "options": [
+      "Logs are more accurate for large numbers",
+      "Multiplying many small probabilities underflows to 0 in floating point",
+      "Logs make the model linear",
+      "Sklearn requires it"
+    ],
+    "correct": 1,
+    "explanation": "The product of 500 probabilities of 0.01 is exactly 0.0 in float64, while the log sum is -2302.59."
+  },
+  {
+    "id": "nb-post-2",
+    "stage": "post",
+    "question": "A word never appeared in spam training emails. Without smoothing, what happens when it appears in a new email?",
+    "options": [
+      "The word is ignored",
+      "P(word|spam) = 0, so log likelihood is -inf and spam is ruled out",
+      "The email is always classified as spam",
+      "The prior takes over"
+    ],
+    "correct": 1,
+    "explanation": "A zero count gives probability zero, which vetoes the class. Laplace smoothing adds alpha to every count to prevent this."
+  },
+  {
+    "id": "nb-post-3",
+    "stage": "post",
+    "question": "Gaussian Naive Bayes on wine data outputs posteriors of 0.0000 and 1.0000. What is the most likely reason?",
+    "options": [
+      "The model is perfectly calibrated",
+      "Correlated features are counted as independent evidence, making the model overconfident",
+      "The variance smoothing is too large",
+      "The priors are wrong"
+    ],
+    "correct": 1,
+    "explanation": "Treating 13 correlated measurements as independent multiplies redundant evidence, pushing posteriors to extremes even when the ranking is right."
+  },
+  {
+    "id": "nb-post-4",
+    "stage": "post",
+    "question": "Which statement about generative vs discriminative classifiers is correct?",
+    "options": [
+      "Naive Bayes is discriminative",
+      "Logistic regression models P(x|y)",
+      "Naive Bayes models P(x|y) and P(y), logistic regression models P(y|x) directly",
+      "They always give the same predictions"
+    ],
+    "correct": 2,
+    "explanation": "Generative models learn how each class produces data and invert with Bayes; discriminative ones learn the conditional directly."
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "rf-pre-1",
+    "stage": "pre",
+    "question": "What is the only difference between bagged decision trees and a random forest?",
+    "options": [
+      "Random forests use shallow trees while bagging uses deep trees",
+      "Random forests consider only a random subset of features at each split",
+      "Random forests train on the full dataset instead of bootstrap samples",
+      "Random forests weight each tree by its training accuracy"
+    ],
+    "correct": 1,
+    "explanation": "A random forest is bagging plus per-split feature subsampling. Setting max_features to the total number of features turns it back into plain bagging."
+  },
+  {
+    "id": "rf-pre-2",
+    "stage": "pre",
+    "question": "Roughly what fraction of the training rows are left out of a single bootstrap sample of size n?",
+    "options": [
+      "About 10%",
+      "About 25%",
+      "About 37%",
+      "About 50%"
+    ],
+    "correct": 2,
+    "explanation": "Each row is missed with probability (1 - 1/n)^n, which approaches e^-1, about 0.368. These are the out-of-bag rows for that tree."
+  },
+  {
+    "id": "rf-post-1",
+    "stage": "post",
+    "question": "Averaging B models with variance sigma^2 and pairwise correlation rho gives variance rho*sigma^2 + (1-rho)/B*sigma^2. What does this imply?",
+    "options": [
+      "Adding more trees can drive the variance to zero regardless of rho",
+      "Once B is large, only lowering rho reduces the variance further",
+      "Correlation between trees does not affect the ensemble",
+      "Fewer trees are better because each one adds variance"
+    ],
+    "correct": 1,
+    "explanation": "The (1-rho)/B term disappears as B grows, but rho*sigma^2 remains. Feature subsampling lowers rho, which is why random forests beat bagging when trees would otherwise be similar."
+  },
+  {
+    "id": "rf-post-2",
+    "stage": "post",
+    "question": "How is the out-of-bag score of a random forest computed?",
+    "options": [
+      "By evaluating every tree on the test set and averaging",
+      "By predicting each training row using only the trees that did not see it in their bootstrap sample",
+      "By running 5-fold cross-validation inside fit",
+      "By measuring training accuracy and subtracting a penalty"
+    ],
+    "correct": 1,
+    "explanation": "Each row is out of bag for about a third of the trees. Aggregating only those trees' votes gives an honest, nearly free estimate of generalization accuracy."
+  },
+  {
+    "id": "rf-post-3",
+    "stage": "post",
+    "question": "You add a random ID column with thousands of unique values and it shows up high in feature_importances_. Why?",
+    "options": [
+      "The ID is genuinely predictive",
+      "Impurity-based importance is computed on training data and favors high-cardinality features that offer many split points",
+      "Random forests always rank the last column highest",
+      "feature_importances_ is computed on the test set"
+    ],
+    "correct": 1,
+    "explanation": "MDI rewards any split that lowers training impurity. Features with many unique values can always find such splits by chance. Permutation importance on held-out data does not have this bias."
+  },
+  {
+    "id": "rf-post-4",
+    "stage": "post",
+    "question": "What happens to test error as you keep increasing n_estimators in a random forest?",
+    "options": [
+      "It decreases and then plateaus; more trees do not cause overfitting",
+      "It decreases until about 10 trees and then rises sharply",
+      "It is unaffected because each tree is identical",
+      "It always keeps decreasing toward zero"
+    ],
+    "correct": 0,
+    "explanation": "Adding trees only reduces the (1-rho)/B variance term, so the error converges to a plateau. More trees cost compute, not accuracy."
+  }
+]
