@@ -81,10 +81,6 @@ def header(c):
     <pattern id="paper" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
       <circle cx="0" cy="0" r="1" fill="{c['dot']}" fill-opacity="0.08"/>
     </pattern>
-    <pattern id="paperRule" x="0" y="0" width="100" height="6" patternUnits="userSpaceOnUse">
-      <rect width="4" height="3" fill="{c['accent']}"/>
-      <rect x="8" y="3" width="6" height="3" fill="{c['accent']}" fill-opacity="0.35"/>
-    </pattern>
     <style>
       .bp {{ stroke: {c['accent']}; stroke-linejoin: round; stroke-linecap: round; }}
       .mono {{ font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }}
@@ -97,9 +93,6 @@ def header(c):
   <rect width="1280" height="420" fill="url(#paper)"/>
 
   {wordmark(56, 30, 22, c['ink'])}
-  <g class="mono" font-size="11" letter-spacing="2.4" fill="{c['muted']}" text-anchor="end">
-    <text x="1224" y="47">© 2026  ·  OPEN SOURCE  ·  MIT LICENSE</text>
-  </g>
   <line x1="56" y1="64" x2="1224" y2="64" stroke="{c['accent']}" stroke-width="0.6" stroke-opacity="0.4"/>
 
   <g transform="translate(56, 110)">
@@ -129,8 +122,6 @@ def header(c):
 {nums}
   </g>
 
-  <rect x="0" y="408" width="1280" height="6" fill="url(#paperRule)"/>
-  <line x1="0" y1="404" x2="1280" y2="404" stroke="{c['ink']}" stroke-opacity="0.16" stroke-width="0.8"/>
 </svg>
 """
 
